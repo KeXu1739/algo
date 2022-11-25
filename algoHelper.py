@@ -5309,10 +5309,59 @@ def wayToSplitN(N):
 
 
 def maxConnectedBSTTopoSize(head: Node):
+    class Record:
+        def __init__(self, l, r):
+            self.l = l
+            self.r = r
+
     def maxTopo(h:Node,n:Node):
         if h and n and isBSTNode(h, n, n.value):
             return maxTopo(h, n.left) + maxTopo(h, n.right) + 1
         return 0
+    def isBSTNode(h:Node, n:Node, val):
+        if h is None:
+            return False
+        if h == n:
+            return True
+
+        return isBSTNode(h.left if h.value > val else h.right, n, val)
+
+    def bstTopoSize(head:Node):
+        mp = {}
+        return posOrder(head, mp)
+
+    def posOrder(head:Node, mp:Dict):
+        if not head:
+            return 0
+
+        ls = posOrder(head.left, mp)
+        rs = posOrder(head.right, mp)
+        modifyMap(head.left, head.value, mp, True)
+        modifyMap(head.right, head.value, mp, False)
+
+        lr = mp[head.left] if head.left in mp else None
+        rr = mp[head.right] if head.right in mp else None
+
+        lbst = 0 if lr is None else lr.l + lr.r + 1
+        rbst = 0 if rr is None else rr.l + rr.r + 1
+        mp[head] = Record(lbst, rbst)
+        return max(lbst + rbst + 1, max(ls, rs))
+    def modifyMap(n: Node, v, mp, tf):
+        if n is None or n not in mp:
+            return 0
+        r = mp[n]
+        if (tf and n.value > v) or (not tf and n.value < v):
+            del mp[n]
+            return r.l + r.r + 1
+        else:
+            minus = modifyMap(n.right if tf else n.left, v, mp, tf)
+            if tf:
+                r.r = r.r - minus
+            else:
+                r.l = r.l - minus
+            mp[n, r]
+            return minus
+
     if not head:
         return 0
     mx = maxTopo(head, head)
@@ -5378,6 +5427,12 @@ def minCoverSubstring(s, p):
             l += 1
         r += 1
     return res_str
+
+
+def perfectShuffle(arr):
+    # 完美洗牌问题，len(arr)为偶数
+
+    pass
 
 
 
