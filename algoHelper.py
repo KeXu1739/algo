@@ -5626,6 +5626,31 @@ def balloonShoot(arr):
     return process(help, 1, N)
     
 
+def HanoiStatus(arr):
+    def process(arr, i, from_, other, to_):
+        # 把[0...i]的圆盘从from挪到to上去
+        # 分成三步：1.把[0...i-1]圆盘从from挪到other上， 2.把i盘从from挪到to上 3.把[0...i-1]盘从other挪到to上
+
+        if i == -1: # base case代表递归完所有的盘了
+            return 0
+        if arr[i] == other: # 三步没有任何一步中i盘到了other，所以这种状态不是最优状态中的一步
+            return -1
+
+        if arr[i] == from_: # 第一步没走完
+            return process(arr, i - 1, from_, to_, other)
+        else:
+            # 第三步
+            rest = process(arr, i - 1, other, from_, to_)
+            if rest == -1:
+                return -1
+            return (1 << i) + rest # 这里已经加了挪最大圆盘的那一步
+
+    if arr is None or len(arr) == 0:
+        return -1
+    return process(arr, len(arr)-1, 1, 3, 2)
+
+
+
 
 
 ###### 每日练手
