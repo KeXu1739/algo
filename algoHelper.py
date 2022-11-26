@@ -5431,8 +5431,200 @@ def minCoverSubstring(s, p):
 
 def perfectShuffle(arr):
     # 完美洗牌问题，len(arr)为偶数
-
     pass
+
+def strPatternMatchRecursive(s, p):
+    def isValid(s, p):
+        # 先确认s和p字符串本身没有问题，*前面必须是非*,s里只能有[a-z]
+        for item in s:
+            if item == "*" or item == "?":
+                return False
+        for i,item in enumerate(p):
+            if item == "*" and (i == 0 or p[i-1] == "*"):
+                return False
+
+    def process(s, p, si, pi):
+        # s[si...]能不能被p[pi...]匹配，这里必须保证pi压中的不是*这样可以保证当前位置不受前面位置东西的影响
+        # 0位置在之前的isValid函数已经查过了
+        if pi == len(p):
+            return si == len(s)
+        # ei+1位置不是*
+        if (pi+1 == len(p)) and (p[pi+1] != "*"):
+            # 没有pi+1位置时以及有pi+1位置但是下一个位置不是*
+            return si != len(s) and (p[pi] == s[si] or p[pi] == "?") and process(s, p, si+1, pi+1)
+        # ei+1位置是*
+        while si!=len(s) and (s[si]==p[pi] or p[pi]=="?"):
+            # 如果没hit到while循环，说明带*的这个pattern没法match这部分s，那么直接跳过这个pattern，等同于让*这部分变为“”，然后继续下面的
+            # match
+            if process(s, p, si, pi+2):
+                # 再尝试一次0字符配后续
+                return True
+            #零字符走不通那么至少当前的s[si]可以匹配上一个p[pi],由于pi+1是*，后续可能有更多的si和p[pi]匹配，这里直接移动si
+            si += 1
+
+        # 如果没hit到while循环，说明带*的这个pattern没法match si当前的东西，那么直接跳过这个pattern，等同于让*这部分变为“”，然后继续下面的
+        # match
+        return process(s, p, si, pi+2)
+
+
+    
+    if s is None or p is None:
+        return False
+    return process(s, p, 0, 0) if isValid(s, p) else False
+
+def strPatternMatchDp(s, p):
+    def isValid(s, p):
+        # 先确认s和p字符串本身没有问题，*前面必须是非*,s里只能有[a-z]
+        for item in s:
+            if item == "*" or item == "?":
+                return False
+        for i,item in enumerate(p):
+            if item == "*" and (i == 0 or p[i-1] == "*"):
+                return False
+
+    if s is None or p is None:
+        return False
+    if not isValid(s, p):
+        return False
+    sl, pl = len(s), len(p)
+    dp = [[False for col in range(pl+1)] for row in range(sl+1)]
+
+    # 填最后一列
+    for row in range(sl):
+        dp[row][-1] = True if row == sl - 1 else False
+
+        # 这里倒数第二列和最后一行要根据题目定义来填而不能直接用递归式来填
+        # 填倒数第二列
+
+    # 填最后一行: “{anychar}*"可以变为空串，否则全是false
+    dp[-1][-1] = True
+    dp[-1][-2] = False
+    for col in range(pl-2, -1, -2):
+        dp[-1][col] = True if p[col] != "*" and p[col+1] == "*" else False
+    
+    if sl > 0 and pl > 0:
+        if p[pl-1] == "?" or s[sl-1] == p[pl-1]:
+            dp[sl-1][pl-1] = True
+
+    for row in range(sl, -1, -1):
+        for col in range(pl-2, -1 -1):
+            if p[col+1] != "*":
+                dp[row][col] = (p[col] == s[row] or s[row] == "?") and dp[row+1][col+1]
+            else:
+                si = row
+                while si != sl and (p[col] == s[si] or p[col] == "?") :
+                    if dp[si][col+2]:
+                        dp[row][col] = True
+                        break
+                    si += 1
+                if not dp[row][col]:
+                    dp[row][col] = dp[si][col+2]
+
+
+def maxXORSubArray(arr):
+    def process1(arr):
+        if arr is None or len(arr) == 0:
+            return 0
+
+        ans = float("-inf")
+        for i in range(len(arr)):
+            for j in range(0, i):
+                cur = 0
+                for ele in arr[j, i+1]:
+                    cur ^= ele
+                ans = min(cur, ans)
+        return ans
+    def process2(arr):
+        if arr is None or len(arr) == 0:
+            return 0
+        preSum = [0 for ele in len(arr)]
+        preSum[0] = arr[0]
+        for i in range(1, len(arr)):
+            preSum[i] = preSum[i-1] ^ arr[i]
+
+        ans = float("-inf")
+        for i in range(len(arr)):
+            for j in range(0, i):
+                cur = preSum[j] ^ (preSum[i] if j-1 == -1 else 0)
+                ans = min(cur, ans)
+        return ans
+
+    def process3(arr):
+        # 前缀树方法，可以去掉内层循环
+        class NodeTrie:
+            def __init__(self):
+                self.nexts = [None, None]
+        class NumTrie:
+            def __init__(self):
+                self.head = NodeTrie()
+            
+            def add(self, num):
+                cur = self.head
+                for mv in range(31, -1, -1):
+                    path = (num >> mv) & 1 # 取出第mv位的0或1状态
+                    cur.nexts[path] = NodeTrie() if cur.nexts[path] is None else cur.nexts[path]
+                    cur = cur.nexts[path]
+
+            def maxXor(self, sm):
+                # 沿着前缀树从高位到低位走一遍，试图让sm与前缀树产生的数的异或和最大，就等同于试图让最高位符号位变成正且剩下的位凑出1
+                # 符号位：1=>负数，要尽量凑成0即走1的路
+                cur = self.head
+                res = 0
+                for mv in range(31, -1, -1):
+                    path = (sm >> mv) & 1 # 取出第mv位的0或1状态
+                    best = path if mv == 31 else path ^ 1 # best为凑成最大异或应该走的路
+                    best = best if cur.nexts[best] is not None else (best ^ 1) # 应该走的路在用来组合的前缀和中不一定有，那么这里更新成实际可以走的路
+
+                    # 给最终结果加上这一位实际二进制位 （path来自要组合XOR的数字）,best为当前位在当前前缀树中最合理的二进制组合位，
+                    # 异或后为存在于当前前缀树的最佳选择，左移mv位还愿当前二进制在哪一位，然后和res取或表明加在res上面
+                    res |= (path ^ best) << mv
+                    cur = cur.nexts[best]
+
+
+        if arr is None or len(arr) == 0:
+            return 0
+        mx = float("inf")
+        sm = 0
+        nTri = NumTrie()
+        nTri.add(0)
+
+        for ele in arr:
+            sm ^= ele
+            mx = max(mx, nTri.maxXor(sm))
+            nTri.add(sm)
+        return mx
+
+
+    return process3(arr)
+
+
+def balloonShoot(arr):
+    def process(ar, l, r):
+        if l == r:
+            return ar[l] * ar[l-1] * ar[r+1]
+
+        mx = max(
+            ar[l-1] * ar[l] * ar[r+1] + process(ar, l+1,r),
+            ar[l-1] * ar[r] * ar[r+1] + process(ar, l, r-1)
+        )
+        for loc in (l+1, r):
+            mx = max(mx, ar[loc] * ar[r+1] * ar[l-1] + process(ar, l+1, loc-1) + process(ar, loc+1, r-1))
+        return mx
+
+    if arr is None:
+        return 0
+    N = len(arr)
+    if N== 0:
+        return 0
+    if N == 1:
+        return arr[1]
+    help = [None for ele in range(N+2)]
+    help[0], help[-1] = 1
+    for i,ele in enumerate(arr):
+        help[i+1] = ele
+
+    return process(help, 1, N)
+    
 
 
 
@@ -5443,7 +5635,7 @@ def lowestCommonAncestorCheck(root, n1, n2):
     left = lowestCommonAncestorCheck(root.left, n1, n2)
     right = lowestCommonAncestorCheck(root.right, n1, n2)
 
-    if left != None and right != None:
+    if left is not None and right is not None:
         return root
     
     return left if left else right
