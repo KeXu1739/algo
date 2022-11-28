@@ -5370,6 +5370,7 @@ def maxConnectedBSTTopoSize(head: Node):
     return mx
 
 def minimumSubStringCoveringPattern(s, t):
+    # 最小覆盖子串问题，双指针可解
     need_pattern_map = collections.Counter(t)
 
     l,r = 0,0
@@ -5399,31 +5400,6 @@ def minimumSubStringCoveringPattern(s, t):
             if need_pattern_map[s[l]] == 1:
                 # 当需求map中某个字符需求变为1时，我们增加独一无二字符数的count
                 unique_pattern += 1
-            l += 1
-        r += 1
-    return res_str
-
-
-def minCoverSubstring(s, p):
-    need_pattern_map = collections.Counter(p)
-    res = float("inf")
-    res_str = ""
-    unique_p_count = len(need_pattern_map)
-    l, r = 0, 0
-    while r < len(s):
-        if s[r] in need_pattern_map:
-            need_pattern_map[s[r]] -= 1
-        if s[r] in need_pattern_map and need_pattern_map[s[r]] == 0:
-            unique_p_count -=1
-        while unique_p_count == 0:
-            if r - l + 1 < res:
-                res = r - l + 1
-                res_str = s[l:r+1]
-
-            if s[l] in need_pattern_map:
-                need_pattern_map[s[l]] += 1
-            if need_pattern_map[s[l]] == 1:
-                unique_p_count +=1
             l += 1
         r += 1
     return res_str
@@ -5649,6 +5625,63 @@ def HanoiStatus(arr):
         return -1
     return process(arr, len(arr)-1, 1, 3, 2)
 
+def isScrambleStr(str1, str2):
+    # 给两个字符串str1和str2，请返回这两个串是否互为旋变串
+    def sameFreq(str1, str2):
+        from collections import Counter
+        c1 = Counter(str1)
+        c2 = Counter(str2)
+        for k, v in c1.items():
+            if k not in c2 or c2[k] != v:
+                return False
+        return True
+
+    def method1(str1, str2):
+        def process(str1, str2, L1, L2, K):
+            if K == 1:
+                return str1[L1] == str2[L2]
+            for k in range(1, K):
+                # 第一个是左对左右对右，第二个是左对右右对左
+                if (process(str1, str2, L1, L2, k) and process(str1, str2, L1+k, L2+k, K-k)) or \
+                        (process(str1, str2, L1, L2+(K-k), k) and process(str1, str2, L1+k, L2, K-k)):
+                    return True
+            return False
+        if not str1 or not str2:
+            return False
+        if len(str1) != len(str2):
+            return False
+        if not sameFreq(str1, str2):
+            return False
+        if str1 == str2:
+            return True
+
+        return process(str1, str2, 0, 0, len(str1))
+    def method2(str1, str2):
+        if not str1 or not str2:
+            return False
+        if len(str1) != len(str2):
+            return False
+        if not sameFreq(str1, str2):
+            return False
+        if str1 == str2:
+            return True
+        N = len(str1)
+        dp = [[[False for _ in range(N)] for __ in range(N)] for ___ in range(N + 1)]
+        # dp[l1][l2][k]: str1从下标l1开始，str2从下标l2开始，长度为k的串是否互为旋变串
+
+        # 填好k第一层
+        for l1 in range(N):
+            for l2 in range(N):
+                dp[l1][l2][1] = str1[l1] == str2[l2]
+        # 根据递归关系填好上面每一层
+        for k in range(2, N+1):
+            for l1 in range(N-k+1):
+                for l2 in range(N-k+1):
+                    for runk in range(1, k):
+                        if (dp[l1][l2][runk] and dp[l1+runk][l2+runk][k-runk]) or (dp[l1+runk][l2][k-runk] and dp[l1][l2+k-runk][k]):
+                            dp[l1][l2][k] = True
+                            break
+        return dp[0][0][N]
 
 
 
