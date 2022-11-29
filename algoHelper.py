@@ -5684,6 +5684,13 @@ def isScrambleStr(str1, str2):
         return dp[0][0][N]
 
 
+def cycleGasStation(oil, distance):
+
+    # 用油数组来放net油数组，元素为加的油去掉从这个加油站出发到下一个油站的距离
+    # 小于0的位置直接是非法出发点
+    for i in range(len(oil)):
+        oil[i] -= distance[i]
+
 
 
 ###### 每日练手
