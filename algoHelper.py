@@ -5972,6 +5972,14 @@ def getTransformedLength(word, t):
     # return len(new_word) % (100000007)
 
 if __name__ == "__main__":
-    print("Hi")
-    print(equalizeTeamSize([1,2,2,3,4], 3))
+    from sortedcontainers import sorteddict
+    sdic = sorteddict.SortedDict()
+    sdic[10] = 10
+    sdic[1] = 1
+    sdic[4] = 5
+    for k, v in sdic.items():
+        print(k)
+
+    # print("Hi")
+    # print(equalizeTeamSize([1,2,2,3,4], 3))
 
