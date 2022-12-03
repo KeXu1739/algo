@@ -56,6 +56,60 @@ def lc_0027():
     print(removeElement(nums, t))
     print(nums)
 
+def lc_0034():
+    def compare(nums, target):
+        lb, rb = -1, -1
+        found = False
+        for i, ele in enumerate(nums):
+            if ele == target and not found:
+                lb = i
+                rb = i
+            elif ele == target:
+                rb = i
+        return [lb, rb]
+    def searchRange(nums, target):
+        # 查找target在有序数组sums上的范围，返回范围的左右边界，没有的话返回[-1,-1]
+        def lb(nums, target):
+            l, r = 0, len(nums)-1
+            while l <= r:
+                m = l+((r-l)>>1)
+                if nums[m] == target:
+                    r = m - 1
+                elif nums[m] > target:
+                    r = m - 1
+                elif nums[m] < target:
+                    l = m + 1
+            if l == len(nums):
+                return -1
+            return l if nums[l] == target else -1
+
+        def rb(nums, target):
+            l, r = 0, len(nums)-1
+            while l <= r:
+                m = l+((r-l)>>1)
+                if nums[m] == target:
+                    l = m+1
+                elif nums[m] > target:
+                    r = m-1
+                elif nums[m] < target:
+                    l = m+1
+            if r < 0:
+                return -1
+            return r if nums[r] == target else -1
+
+
+        return [lb(nums, target), rb(nums, target)]
+
+    for i in range(50000):
+        n = random.randint(1, 1000)
+        nums = sorted(list(set(list(np.random.randint(-10000, 10000, n)))))
+        target = random.randint(-10000, 10000)
+        A = searchRange(nums, target)
+        B = compare(nums, target)
+        if not all([a==b for a,b in zip(A, B)]):
+            print((nums, target))
+            break
+
 def lc_0035():
     def compare(arr, target):
         if target > arr[-1]:
@@ -68,23 +122,20 @@ def lc_0035():
     def searchInsert(nums: List[int], target: int) -> int:
         # 找在有序数组中target的位置或者插入target的位置
         # 使用对数器检查出这个二分搜索不适合有重复值的arr
-        if target > nums[-1]:
-            return len(nums)
-        if target < nums[0]:
-            return 0
+        # 二分查找[l,r]与[l,r)的写法不同，思考这个边界以及target大于mid的含义
         l, r = 0, len(nums) - 1
-        while l < r:
+        while l <= r:
             m = l + ((r-l) >> 1)
             if nums[m] == target:
                 return m
             elif nums[m] < target:
-                l = m + 1
+                l = m+1
             else:
-                r = m
-        return r
+                r = m-1
+        return r+1
 
-    for i in range(10000):
-        n = random.randint(1, 10000)
+    for i in range(50000):
+        n = random.randint(1, 1000)
         nums = sorted(list(set(list(np.random.randint(-10000, 10000, n)))))
         target = random.randint(-10000, 10000)
 
@@ -92,7 +143,39 @@ def lc_0035():
             print((nums, target))
             break
 
+def lc_0709():
+    def compare(nums, target):
+        for i, ele in enumerate(nums):
+            if ele == target:
+                return i
+        return -1
+
+    def search(nums: List[int], target: int) -> int:
+        # 二分搜索，请习惯使用闭区间，比较好解释
+        l, r = 0, len(nums)-1
+        while l <= r:
+            m = l + ((r-l) >> 1)
+            if nums[m] == target:
+                return m
+            elif nums[m] > target:
+                r = m - 1
+            else:
+                l = m + 1
+        return -1
+
+    for i in range(50000):
+        n = random.randint(1, 1000)
+        nums = sorted(list(set(list(np.random.randint(-10000, 10000, n)))))
+        target = random.randint(-10000, 10000)
+
+        if search(nums, target) != compare(nums, target):
+            print((nums, target))
+            break
 def lc_0066():
+    def compare(digits):
+        num = int("".join([str(i) for i in digits])) + 1
+        return list([int(i) for i in num])
+
     def plusOne(digits: List[int]) -> List[int]:
         n = len(digits)
         nextdig = 0
@@ -194,4 +277,4 @@ def lc_1704():
 
 
 if __name__ == "__main__":
-    lc_0088()
+    lc_0709()
