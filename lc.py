@@ -171,6 +171,57 @@ def lc_0709():
         if search(nums, target) != compare(nums, target):
             print((nums, target))
             break
+
+def lc_0069():
+    def compare(x):
+        return int(np.sqrt(x))
+
+    def mySqrt1(x: int) -> int:
+        # 二分搜索方法
+        l,r = 0, x
+        while l <= r:
+            m = l + ((r-l) >> 1)
+            if m * m <= x:
+                l = m+1
+            else:
+                r = m-1
+        return r
+    def mySqrt(x: int) -> int:
+        # 牛顿法万岁，这玩意比二分查找快多了
+        x0 = x
+        c = 100
+        while x0 * x0 > x and c > 0:
+            x0 = (x0 + x/x0) / 2
+            c -= 1
+
+        return int(x0)
+
+    for i in range(2**20):
+        if compare(i) != mySqrt(i):
+            print(i)
+            break
+
+def lc_0367():
+    def compare(x):
+        return abs(int(np.sqrt(x)) - np.sqrt(x)) < 1e-9
+
+    def isPerfectSquare(num: int) -> bool:
+        def newton(num):
+            x0 = num
+            c = 100
+            while x0 * x0 > num and c > 0:
+                x0 = (x0 + num/x0)/2
+                c -= 1
+            return x0
+        sqrtt = newton(num)
+        return abs(int(sqrtt) - sqrtt) < 1e-9
+
+    for i in range(2 ** 20):
+        if isPerfectSquare(i) != compare(i):
+            print(i)
+            break
+
+
 def lc_0066():
     def compare(digits):
         num = int("".join([str(i) for i in digits])) + 1
@@ -277,4 +328,4 @@ def lc_1704():
 
 
 if __name__ == "__main__":
-    lc_0709()
+    lc_0069()
