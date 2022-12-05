@@ -1,3 +1,5 @@
+import copy
+
 from algoHelper import *
 import numpy as np
 
@@ -13,6 +15,10 @@ def lc_0001():
 
 def lc_0026():
     # 数组中去掉重复数
+    def compare(nums):
+        return len(sorted(list(np.unique(nums))))
+
+
     def removeDuplicates(nums: List[int]):
         # 双指针占0，1位，快指针和当前慢指针位置比较，如果不等，慢指针+1并交换快慢值;快指针每次都向右挪一个，直到快指针走完
         # o(N), O(1)
@@ -35,14 +41,23 @@ def lc_0026():
                 k += 1
                 nums[k] = nums[i]
             i += 1
-        return k
-    in_ = [1,2,2,2,3,3,4,4,4,5,6,22,23,23,23]
-    print(removeDuplicates2(in_))
-    print(in_)
+        return k+1
+    for i in range(50000):
+        n = random.randint(1, 1000)
+        nums = sorted(list(np.random.randint(-10000, 10000, n)))
+        target = random.randint(-10000, 10000)
+        A = removeDuplicates2(copy.copy(nums))
+        B = compare(copy.copy(nums))
+        if A != B:
+            print((nums, A, B))
+            break
 
 def lc_0027():
+    def compare(nums, val):
+        return len([i for i in nums if i != val])
+
     def removeElement(nums: List[int], val: int) -> int:
-        # 快指针只要不是target value就填到慢指针上，然后两个指针都往右走
+        # 快指针只9要不是target value就填到慢指针上，然后两个指针都往右走
         k = 0
         for i in range(len(nums)):
             if nums[i] != val:
@@ -51,10 +66,44 @@ def lc_0027():
             i += 1
         return k
 
-    nums = [1,4,4,4,4,4,2,2,3]
-    t = 2
-    print(removeElement(nums, t))
-    print(nums)
+    for i in range(100000):
+        n = random.randint(1, 10)
+        nums = sorted(list(np.random.randint(-10000, 10000, n)))
+        target = random.randint(-10000, 10000)
+
+        # nums = [-7801, -5450, -3529, 933, 2341, 7326, 7326]
+        # target = 7326
+        A = removeElement(copy.copy(nums), target)
+        B = compare(copy.copy(nums), target)
+        if A != B:
+            print((nums, A, B))
+            break
+
+def lc_0283():
+    def compare(nums):
+        left = [i for i in nums if i != 0]
+        return left + [0] * (len(nums)-len(left))
+
+    def moveZeroes(nums: List[int]) -> None:
+        i, j = 0, 0
+        for i in range(len(nums)):
+            if nums[i] != 0:
+                nums[i], nums[j] = nums[j], nums[i]
+                j += 1
+            i += 1
+        return
+
+    for i in range(50000):
+        n = random.randint(1, 2000)
+        nums = sorted(list(np.random.randint(-1000, 1000, n)))
+        A = copy.copy(nums)
+        B = copy.copy(nums)
+        moveZeroes(A)
+        B = compare(B)
+
+        if not all([x==y for x, y in zip(A, B)]):
+            print((nums, A, B))
+            break
 
 def lc_0034():
     def compare(nums, target):
@@ -221,7 +270,6 @@ def lc_0367():
             print(i)
             break
 
-
 def lc_0066():
     def compare(digits):
         num = int("".join([str(i) for i in digits])) + 1
@@ -328,4 +376,4 @@ def lc_1704():
 
 
 if __name__ == "__main__":
-    lc_0069()
+    lc_0283()
