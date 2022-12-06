@@ -192,6 +192,50 @@ def lc_0035():
             print((nums, target))
             break
 
+
+def lc_0844():
+    def backspaceCompare1(s: str, t: str) -> bool:
+        def moveValues(sList):
+            i, j = 0, len(sList) -1
+            while j < len(sList):
+                if sList[j] == "#" and i > 0:
+                    i -= 1
+                elif sList[j] == "#":
+                    sList[i], sList[j] = sList[j], sList[i]
+                j += 1
+            return i
+        sL, tL = list(s), list(t)
+        ss, tt = moveValues(sL), moveValues(tL)
+        if ss != tt:
+            return False
+        for i in range(ss):
+            if sL[i] != tL[i]:
+                return False
+        return True
+
+    def backspaceCompare(s: str, t: str) -> bool:
+        def modStr(string):
+            res = []
+            for i in range(len(string)):
+                if string[i] != "#":
+                    res.append(string[i])
+                elif len(res) > 0:
+                    res.pop()
+            return "".join(res)
+        return modStr(s) == modStr(t)
+
+    for i in range(50000):
+        n = random.randint(1, 1000)
+        s = sorted(list(set(list(np.random.randint(-10000, 10000, n)))))
+        t = []
+        target = random.randint(-10000, 10000)
+        A = backspaceCompare(s, t)
+        B = backspaceCompare1(s, t)
+        if A != B:
+            print((s, t))
+            break
+
+
 def lc_0709():
     def compare(nums, target):
         for i, ele in enumerate(nums):
@@ -220,6 +264,7 @@ def lc_0709():
         if search(nums, target) != compare(nums, target):
             print((nums, target))
             break
+
 
 def lc_0069():
     def compare(x):
@@ -250,6 +295,7 @@ def lc_0069():
             print(i)
             break
 
+
 def lc_0367():
     def compare(x):
         return abs(int(np.sqrt(x)) - np.sqrt(x)) < 1e-9
@@ -269,6 +315,7 @@ def lc_0367():
         if isPerfectSquare(i) != compare(i):
             print(i)
             break
+
 
 def lc_0066():
     def compare(digits):
@@ -305,6 +352,7 @@ def lc_0066():
 
     digits = [8,9,9,9,9,9]
     print(plusOneOptimized(digits))
+
 
 def lc_0088():
     def compare(nums1, nums2, m, n):
@@ -356,6 +404,56 @@ def lc_0088():
             print(n)
             break
 
+
+def lc_0209():
+    def minSubArrayLen(target: int, nums: List[int]) -> int:
+        if sum(nums) < target:
+            return 0
+        if len(nums) == 1:
+            return 1 if nums[0]==target else 0
+        i, j = 0, 0
+        le = 1000000000
+        sm = 0
+        n = len(nums)
+        while i <= n - 1:
+            if j <= n - 1 and sm < target:
+                sm += nums[j]
+                j += 1
+            elif j <= n - 1 and sm >= target:
+                le = min(le, j - i)
+                sm -= nums[i]
+                i += 1
+            elif j > n - 1 and sm < target:
+                i += 1
+            elif j > n - 1 and sm >= target:
+                le = min(le, j - i)
+                sm -= nums[i]
+                i += 1
+        return le
+
+    def minSubArrayLenClean(target: int, nums: List[int]) -> int:
+        # start:end: range, curr: subarray sum, l: 长度
+        start, end, curr, l = 0, 0, 0, float("inf")
+        while end < len(nums):
+            if curr < target:
+                curr += nums[end]
+                end += 1
+            while curr >= target:
+                l = min(l, end - start) # end 加完range值之后多向后走了一步
+                curr -= nums[start]
+                start += 1
+        # 循环走完，curr==0的情况只有一种，就是没有碰到第二个while loop，也就是说所有值加起来都不够target
+        return 0 if curr == float("inf") else l
+
+
+
+
+
+    nums = [1,2,3,4,5]
+    target=15
+    print(minSubArrayLen(target, nums))
+
+
 def lc_1704():
     def halvesAreAlike(s: str) -> bool:
         # 检查一个string左半边和右半边字符串元音字母数量是不是相等
@@ -376,4 +474,4 @@ def lc_1704():
 
 
 if __name__ == "__main__":
-    lc_0283()
+    lc_0209()
