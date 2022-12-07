@@ -453,6 +453,118 @@ def lc_0209():
     target=15
     print(minSubArrayLen(target, nums))
 
+def lc_0904():
+    # 水果篮问题
+    def totalFruit2(fruits: List[int]) -> int:
+
+        # 更快一些的解法，记录某种水果最后出现的位置，左指针可以直接跳到合理的位置
+        start = 0
+        end = 0
+        maxlen = 0
+        d = {} # {fruittype:the rightmostlocation of this type of fruit}
+
+        while end < len(fruits):
+            d[fruits[end]] = end
+            if len(d) >= 3:
+                #print(min(d.values()))
+                minval = min(d.values()) # 直接删掉最靠左的水果记录，然后从下一个index开始当成start
+                del d[fruits[minval]]
+                start = minval+1
+            maxlen = max(maxlen, end-start+1)
+            end +=1
+        return maxlen
+
+    def totalFruit(fruits: List[int]) -> int:
+        # 一个类似于最短覆盖子串的思路，双指针同时维持一个长度最多为2的字典
+        cdict = {}
+        i, j = 0, 0
+        maxNum = 0
+
+        while j < len(fruits):
+            if fruits[j] not in cdict:
+                cdict[fruits[j]] = 1
+            else:
+                cdict[fruits[j]] += 1
+
+            while len(cdict) > 2 and i <= j:
+                if fruits[i] in cdict and cdict[fruits[i]] > 1:
+                    cdict[fruits[i]] -= 1
+                    i += 1
+                elif fruits[i] in cdict and cdict[fruits[i]] == 1:
+                    del cdict[fruits[i]]
+                    i += 1
+            if len(cdict) <= 2:
+                maxNum = max(maxNum, j - i + 1)
+            j += 1
+        return maxNum
+
+    print(totalFruit([0,1,2,2]))
+
+def lc_0076():
+    def minWindow(s: str, t: str) -> str:
+        # 最小覆盖子串问题
+        needMap = collections.Counter(t)
+        i, j = 0, 0
+        res = ""
+        minL = float("inf")
+        uniqueC = len(needMap)
+        while j < len(s):
+            if s[j] in needMap:
+                needMap[s[j]] -= 1
+            if s[j] in needMap and needMap[s[j]] == 0:
+                uniqueC -= 1
+            while uniqueC == 0:
+                if j - i + 1 < minL:
+                    minL = j - i + 1
+                    res = s[i:j+1]
+                    print(res)
+                if s[i] in needMap:
+                    needMap[s[i]] += 1
+                if needMap[s[i]] == 1:
+                    uniqueC += 1
+                i += 1
+            j += 1
+        return res
+
+    s = "ADOBECODEBANC"
+    t = "ABC"
+    print(minWindow(s, t))
+
+def lc_0054():
+    def spiralOrder(matrix: List[List[int]]) -> List[int]:
+        # 螺旋打印数组
+        def rotate(matrix, u, d, l, r, out):
+            # top row
+            for i in range(l, r):
+                out.append(matrix[u][i])
+            # right column
+            for i in range(u, d):
+                out.append(matrix[i][r])
+            # bottom row
+            for i in range(r, l, -1):
+                out.append(matrix[d][i])
+            # left column
+            for i in range(d, u, -1):
+                out.append(matrix[i][l])
+            return
+
+        out = []
+        m, n = len(matrix), len(matrix[0])
+        u, d, l, r = 0, m-1, 0, n-1
+        while u < d and l < r:
+            rotate(matrix, u, d, l, r, out)
+            u += 1
+            d -= 1
+            l += 1
+            r -= 1
+
+        if u == d:
+            for i in range(l, r+1):
+                out.append(matrix[u][i])
+        elif l == r:
+            for i in range(u, d+1):
+                out.append(matrix[i][l])
+        return out
 
 def lc_1704():
     def halvesAreAlike(s: str) -> bool:
@@ -474,4 +586,4 @@ def lc_1704():
 
 
 if __name__ == "__main__":
-    lc_0209()
+    lc_0076()
