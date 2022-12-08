@@ -1,4 +1,5 @@
 import copy
+from typing import Optional
 
 from algoHelper import *
 import numpy as np
@@ -566,6 +567,42 @@ def lc_0054():
                 out.append(matrix[i][l])
         return out
 
+
+def lc_0059():
+    ## 885, 2326 for III and IV
+    def generateMatrix(n: int) -> List[List[int]]:
+        mat = [[0 for i in range(n)] for j in range(n)]
+        u, d, l, r = 0, n-1, 0, n-1
+        c = 1
+        while u < d and l < r:
+            for i in range(l, r):
+                mat[u][i] = c
+                c += 1
+            for i in range(u, d):
+                mat[i][r] = c
+                c += 1
+            for i in range(r, l, -1):
+                mat[d][i] = c
+                c += 1
+            for i in range(d, u, -1):
+                mat[i][l] = c
+                c += 1
+            u += 1
+            d -= 1
+            l += 1
+            r -= 1
+
+        if u == d:
+            for i in range(l, r+1):
+                mat[u][i] = c
+                c += 1
+        elif l == r:
+            for i in range(u, d+1):
+                mat[i][l] = c
+                c += 1
+        return mat
+    print(generateMatrix(3))
+
 def lc_1704():
     def halvesAreAlike(s: str) -> bool:
         # 检查一个string左半边和右半边字符串元音字母数量是不是相等
@@ -585,5 +622,28 @@ def lc_1704():
     print(halvesAreAlike(st))
 
 
+def lc_0203():
+    class ListNode:
+        def __init__(self, val, nxt=None):
+            self.val = val
+            self.next = nxt
+
+    def removeElements(head: Optional[ListNode], val: int) -> Optional[ListNode]:
+        if not head:
+            return
+        dummy = ListNode(0)
+        dummy.next = head
+        prev = dummy
+        curr = head
+        while curr:
+            if curr.val == val:
+                prev.next = curr.next
+                curr = curr.next
+            else:
+                prev = prev.next
+                curr = curr.next
+        return dummy.next
+
+
 if __name__ == "__main__":
-    lc_0076()
+    lc_0059()
