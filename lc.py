@@ -567,7 +567,6 @@ def lc_0054():
                 out.append(matrix[i][l])
         return out
 
-
 def lc_0059():
     ## 885, 2326 for III and IV
     def generateMatrix(n: int) -> List[List[int]]:
@@ -621,7 +620,6 @@ def lc_1704():
     print(st)
     print(halvesAreAlike(st))
 
-
 def lc_0203():
     class ListNode:
         def __init__(self, val, nxt=None):
@@ -644,6 +642,225 @@ def lc_0203():
                 curr = curr.next
         return dummy.next
 
+def lc_0206():
+    class ListNode:
+        def __init__(self, val, nxt=None):
+            self.val = val
+            self.next = nxt
+
+    def reverseList(head: Optional[ListNode]) -> Optional[ListNode]:
+        if not head:
+            return
+        prev = None
+        curr = head
+        while curr:
+            next_ = curr.next
+            curr.next = prev
+            prev = curr
+            curr = next_
+        return prev
+
+def lc_0707():
+    # 链表设计
+    # 这是个好题，经常写一写
+    class ListNode:
+        def __init__(self, val=None, _next=None):
+            self.val = val
+            self._next = _next
+
+    class MyLinkedList:
+        def printLinkedList(self):
+            curr = self.head
+            while curr:
+                print(curr.val)
+                curr = curr._next
+
+        def __init__(self):
+            # 初始化时只初始化虚拟节点，头节点在后面插入的时候单独设置
+            # 注意由于这个设定，所有的add，get和 addat实现都要单独考虑头节点的问题
+            self.head = None
+            self._dummy = ListNode(val=None, _next=self.head)
+            return
+
+        def get(self, index: int) -> int:
+            if index < 0:
+                # 不合理的index
+                return -1
+
+            ret = self.head
+            while index > 0 and ret:
+                ret = ret._next
+                index -= 1
+
+            if index == 0 and ret:
+                # index变为0而且当前的位置不是最后面(i.e.当前位置有node)
+                return ret.val
+            else:
+                # index变为0而且当前的位置在最后面(i.e.当前位置没有node)
+                return -1
+
+        def addAtHead(self, val: int) -> None:
+            newNode = ListNode(val, self.head)
+            self._dummy._next = newNode
+            self.head = newNode
+            return
+
+        def addAtTail(self, val: int) -> None:
+            prev = self._dummy
+            curr = self.head
+            while curr:
+                curr = curr._next
+                prev = prev._next
+
+            prev._next = ListNode(val)
+            if self.head is None:
+                # corner case: 当前的链表刚刚初始化或者目前状态只有虚拟节点而无头节点
+                # 则检查头节点是否存在，不存在的话把刚加进来的虚拟节点的下一个节点设为头节点
+                self.head = prev._next
+            return
+
+        def addAtIndex(self, index: int, val: int) -> None:
+            if index < 0:
+                # 不合理的index
+                return
+
+            prev = self._dummy
+            curr = self.head
+            while curr and index > 0:
+                curr = curr._next
+                prev = prev._next
+                index -= 1
+
+            if index > 0:
+                return
+            newNode = ListNode(val, curr)
+            prev._next = newNode
+            if self.head is None:
+                # 如果当前的头为空，则是一个空链表，头节点还没设置，需要在这里设置
+                self.head = newNode
+            return
+
+        def deleteAtIndex(self, index: int) -> None:
+            if index < 0:
+                # 不合理的index
+                return
+
+            prev = self._dummy
+            curr = self.head
+            while curr and index > 0:
+                curr = curr._next
+                prev = prev._next
+                index -= 1
+
+            if index > 0:
+                return
+            if curr:
+                # 当前位置有node，则连到下一个node
+                prev._next = curr._next
+            else:
+                # 当前位置没有node，不需要任何删除直接返回
+                return
+
+            if curr == self.head:
+                # 防止删掉的是头节点
+                self.head = self.head._next
+            del curr
+            return
+
+    class MyLinkedList2:
+        # 只定义虚拟头节点而不定义真实头节点
+        # 这样写比较简洁，试一试能不能通过
+        def printLinkedList(self):
+            curr = self.head
+            while curr:
+                print(curr.val)
+                curr = curr._next
+
+        def __init__(self):
+            self._dummy = ListNode()
+            self.size = 0
+            return
+
+        def get(self, index: int) -> int:
+            if index < 0 or index >= self.size:
+                return -1
+            curr = self._dummy
+            for i in range(index+1):
+                curr = curr.val
+            return curr.val
+
+
+        def addAtHead(self, val: int) -> None:
+            newNode = ListNode(val)
+            if self.size == 0:
+                self._dummy._next = newNode
+            else:
+                newNode._next = self._dummy._next
+                self._dummy._next = newNode
+            self.size += 1
+            return
+
+        def addAtTail(self, val: int) -> None:
+            curr = self._dummy
+            for i in range(self.size):
+                curr = curr._next
+            curr._next = ListNode(val)
+            self.size += 1
+            return
+
+        def addAtIndex(self, index: int, val: int) -> None:
+            if index <= 0:
+                self.addAtHead(val)
+            elif index > self.size:
+                return
+            elif index == self.size:
+                self.addAtTail(val)
+            else:
+                # [1...size-1]
+                newNode = ListNode(val)
+                curr = self._dummy
+                for i in range(index):
+                    curr = curr._next
+                newNode._next = curr._next
+                curr._next = newNode
+                self.size += 1
+            return
+
+
+        def deleteAtIndex(self, index: int) -> None:
+            if index < 0 or index >= self.size:
+                return
+
+            if index == 0:
+                self._dummy._next = self._dummy._next._next
+                self.size -= 1
+                return
+            elif index > 0:
+                prev = self._dummy
+                curr = self._dummy._next
+                for i in range(index):
+                    curr = curr._next
+                    prev = prev._next
+                prev._next =  curr._next
+                self.size -= 1
+            return
+
+    myLinkedList = MyLinkedList()
+
+    print(myLinkedList.addAtHead(2))
+    print(myLinkedList.deleteAtIndex(1))
+    print(myLinkedList.addAtHead(2))
+    print(myLinkedList.addAtHead(7))
+    print(myLinkedList.addAtHead(3))
+    print(myLinkedList.addAtHead(2))
+    print(myLinkedList.addAtHead(5))
+    print(myLinkedList.addAtTail(5))
+    print(myLinkedList.get(5))
+    print(myLinkedList.deleteAtIndex(6))
+    print(myLinkedList.deleteAtIndex(4))
+
+    print("list")
+    myLinkedList.printLinkedList()
 
 if __name__ == "__main__":
-    lc_0059()
+    lc_0707()
