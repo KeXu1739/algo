@@ -14,6 +14,26 @@ def lc_0001():
             dic[ele] = True
         return
 
+
+def lc_0704():
+    #二分搜索，包含返回floor value的变化
+    def search(nums: List[int], target: int) -> int:
+        l, r = 0, len(nums) - 1
+        while l <= r:
+            m = l + ((r-l) >> 1)
+            if nums[m] == target:
+                return m
+            elif nums[m] > target:
+                r = m - 1
+            elif nums[m] < target:
+                l = m + 1
+        return -1
+        # return r if r >= 0 else r + 1 # 返回小于target的最大值
+    arr = [1,2,3,4]
+    target = 2.0000000000001
+    print(search(arr, target))
+
+
 def lc_0026():
     # 数组中去掉重复数
     def compare(nums):
@@ -53,6 +73,7 @@ def lc_0026():
             print((nums, A, B))
             break
 
+
 def lc_0027():
     def compare(nums, val):
         return len([i for i in nums if i != val])
@@ -80,6 +101,7 @@ def lc_0027():
             print((nums, A, B))
             break
 
+
 def lc_0283():
     def compare(nums):
         left = [i for i in nums if i != 0]
@@ -105,6 +127,7 @@ def lc_0283():
         if not all([x==y for x, y in zip(A, B)]):
             print((nums, A, B))
             break
+
 
 def lc_0034():
     def compare(nums, target):
@@ -160,6 +183,7 @@ def lc_0034():
             print((nums, target))
             break
 
+
 def lc_0035():
     def compare(arr, target):
         if target > arr[-1]:
@@ -182,7 +206,7 @@ def lc_0035():
                 l = m+1
             else:
                 r = m-1
-        return r+1
+        return r+1 # 这里刚开始是标准的二分查找-1，之后可以通过找规律发现返回r + 1
 
     for i in range(50000):
         n = random.randint(1, 1000)
@@ -658,7 +682,17 @@ def lc_0206():
             curr.next = prev
             prev = curr
             curr = next_
-        return prev
+        return
+
+    def reverseList2(head: Optional[ListNode]) -> Optional[ListNode]:
+        def reverse(prev, curr):
+            if not curr:
+                return prev
+
+            next_ = curr.next
+            curr.next = prev
+            return reverse(curr, next_)
+        return reverse(None, head)
 
 def lc_0707():
     # 链表设计
@@ -862,5 +896,91 @@ def lc_0707():
     print("list")
     myLinkedList.printLinkedList()
 
+def lc_0024():
+    def swapPairs(head: Optional[ListNode]) -> Optional[ListNode]:
+        if not head:
+            return
+        if not head.next:
+            return head
+        _dummy = ListNode(None, head)
+        p0, p1, p2 = _dummy, head, head.next
+        while p1 and p2:
+            p0.next = p2
+            p1.next = p2.next
+            p2.next = p1
+
+            p0 = p0.next.next
+            if p2.next and p2.next.next:
+                p1 = p2.next.next
+            else:
+                break
+            if p1.next:
+                p2 = p1.next
+            else:
+                break
+        return _dummy.next
+
+    def swapPairsClean(head: Optional[ListNode]) -> Optional[ListNode]:
+        _dummy = ListNode(None, head)
+        prev = _dummy
+        while head and head.next:
+            first = head
+            second = head.next
+
+            prev.next = second
+            first.next = second.next
+            second.next = first
+
+            prev = head
+            head = first.next
+        return _dummy.next
+
+
+    lst = [1,2,3,4,5,6]
+    head = ListNode(lst[0])
+    curr = head
+    for i in range(1, len(lst)):
+        node = ListNode(lst[i])
+        curr.next = node
+        curr = curr.next
+    newHead = swapPairsClean(head)
+    while newHead:
+        print(newHead.val)
+        newHead = newHead.next
+
+def lc_0019():
+    def removeNthFromEnd(head: Optional[ListNode], n: int) -> Optional[ListNode]:
+        _dummy = ListNode(None, head)
+        p1 = head
+        while n > 0 and p1:
+            p1 = p1.next
+            n -= 1
+        p2 = _dummy.next
+        p3 = _dummy
+        while p1: # p1会走到最后一个节点的下一个，which is 空，所以p2位置就是要删掉的点
+            p1 = p1.next
+            p2 = p2.next
+            p3 = p3.next
+
+        p3.next = p2.next
+        del p2 # 手动释放p2
+        ret = _dummy.next
+        del _dummy # 手动释放掉_dummy
+        return ret
+
+    lst = [1,2,3,4,5,6]
+    rm=6
+    head = ListNode(lst[0])
+    curr = head
+    for i in range(1, len(lst)):
+        node = ListNode(lst[i])
+        curr.next = node
+        curr = curr.next
+    head = removeNthFromEnd(head, rm)
+    while head:
+        print(head.val)
+        head = head.next
+
+
 if __name__ == "__main__":
-    lc_0707()
+    lc_0019()
