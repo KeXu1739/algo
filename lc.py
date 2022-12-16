@@ -982,5 +982,71 @@ def lc_0019():
         head = head.next
 
 
+def lc_0160():
+    def getIntersectionNode(headA: ListNode, headB: ListNode) -> Optional[ListNode]:
+        p1 = headA
+        p2 = headB
+        n1, n2 = 1, 1
+        while p1.next:
+            n1 += 1
+            p1 = p1.next
+        while p2.next:
+            n2 += 1
+            p2 = p2.next
+        if p1 != p2:
+            return
+        diff = abs(n1 - n2)
+
+        p1 = headA
+        p2 = headB
+        if n1 >= n2:
+            while diff > 0:
+                p1 = p1.next
+                diff -= 1
+        elif n1 < n2:
+            while diff > 0:
+                p2 = p2.next
+                diff -= 1
+        while p1 != p2:
+            p1 = p1.next
+            p2 = p2.next
+        return p1
+
+    lst = [4,1,8,4,5]
+    headA = ListNode(lst[0])
+    curr = headA
+    for i in range(1, len(lst)):
+        node = ListNode(lst[i])
+        curr.next = node
+        curr = curr.next
+    headB = ListNode(5)
+    headB.next = ListNode(6)
+    headB.next.next = ListNode(1)
+    headB.next.next.next = headA.next.next
+    Inter = getIntersectionNode(headA, headB)
+    print(Inter.val)
+
+def lc_0142():
+    def detectCycle(head: Optional[ListNode]) -> Optional[ListNode]:
+        if not head:
+            return None
+        first = True
+        f, s = head, head
+        while f.next and f.next.next and (first or f != s):
+            s = s.next
+            f = f.next.next
+            first = False
+
+        if f != s or first:
+            return None
+
+        f = head
+        while f != s:
+            f = f.next
+            s = s.next
+        return f
+
+
+
 if __name__ == "__main__":
-    lc_0019()
+    lc_0160()

@@ -27,7 +27,6 @@ class ListNode:
         self.val = val
         self.next = next_
 
-
 class BinaryTree:
     def __init__(self, value, left=None, right=None, parent=None):
         '''
