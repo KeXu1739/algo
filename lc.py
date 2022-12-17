@@ -1047,6 +1047,63 @@ def lc_0142():
         return f
 
 
+def lc_0242():
+    from collections import Counter
+    def isAnagram(s: str, t: str) -> bool:
+        # 同分异构词
+        if len(s) != len(t):
+            return False
+        sC = Counter(s)
+        tC = Counter(t)
+        for k, v in sC.items():
+            if k not in tC or tC[k] != v:
+                return False
+        return True
+
+
+def lc_0349():
+    def intersection(nums1: List[int], nums2: List[int]) -> List[int]:
+        # 两个数组的交集
+        # 和350是一个题，350需要考虑重复
+        # s1 = set(nums1)
+        # s2 = set(nums2)
+        # return list(s1.intersection(s2))
+        s1 = {}
+        ret = []
+        for num in nums1:
+            s1[num] = 1
+        for num in nums2:
+            if num in s1 and s1[num] == 1:
+                ret.append(num)
+                s1[num] = 0
+                # 350: s1[num] -= 1
+        return ret
+
+
+def lc_0202():
+    def isHappy(n: int) -> bool:
+        # 快乐数
+        s = set()
+        ssum = 0
+        while n:
+            nr = n % 10
+            ssum += nr ** 2
+            n = n // 10
+
+        while ssum not in s and ssum != 1:
+            s.add(ssum)
+            n = ssum
+            ssum = 0
+            while n:
+                nr = n % 10
+                ssum += nr ** 2
+                n = n // 10
+
+        return ssum == 1
+
+    for i in range(1000):
+        if isHappy(i):
+            print(i)
 
 if __name__ == "__main__":
-    lc_0160()
+    lc_0202()
