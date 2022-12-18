@@ -1105,5 +1105,135 @@ def lc_0202():
         if isHappy(i):
             print(i)
 
+def lc_0454():
+    def fourSumCount(nums1: List[int], nums2: List[int], nums3: List[int], nums4: List[int]) -> int:
+        # 四个数组的四和问题
+        count = 0
+        AB = {}
+        for a in nums1:
+            for b in nums2:
+                if a+b in AB:
+                    AB[a+b] += 1
+                else:
+                    AB[a+b] = 1
+        for c in nums3:
+            for d in nums4:
+                if 0-c-d in AB:
+                    count += AB[0-c-d]
+
+        return count
+
+
+def lc_0383():
+    from collections import Counter
+    def canConstruct(self, ransomNote: str, magazine: str) -> bool:
+        #杂志选字母拼字问题，可以使用数组实现因为题目规定了只有小写字母
+        cmag = Counter(magazine)
+        for c in ransomNote:
+            if c not in cmag or cmag[c] == 0:
+                return False
+            cmag[c] -= 1
+        return True
+
+
+def lc_0015():
+    def threeSum(nums: List[int]) -> List[List[int]]:
+        # 三和
+        # s双指针法，加一些去重的逻辑会显著快于使用哈希结构的解法
+        res = []
+        n = len(nums)
+        nums.sort()
+        for i in range(n):
+            if nums[i] > 0:
+                break
+            if i > 0 and nums[i] == nums[i-1]:
+                continue
+
+            l = i + 1
+            r = n - 1
+            while l < r:
+                if nums[i] + nums[l] + nums[r] == 0:
+                    res.append([nums[i], nums[l], nums[r]])
+                    while l != r and nums[l+1] == nums[l]: l += 1
+                    while l != r and nums[r-1] == nums[r]: r -= 1
+                    l += 1
+                    r -= 1
+                elif nums[i] + nums[l] + nums[r] > 0:
+                    r -= 1
+                else:
+                    l += 1
+            return res
+
+        return res
+
+
+def lc_0018():
+    def fourSum(nums: List[int], target: int) -> List[List[int]]:
+        # 四和，本质和三和一样，要额外考虑合理的去重方法
+        n = len(nums)
+        nums.sort()
+        res = []
+        for i in range(n):
+            if nums[i] > target and nums[i] >= 0:
+                # >=0是因为如果小于0且target也是小于0的数的话光靠nums[i]>target就break掉会漏解，因为后面可能有负树数把整体和继续变小
+                break
+            if i > 0 and nums[i] == nums[i-1]:
+                continue
+            for j in range(i+1, n):
+                if nums[i] + nums[j] > target and (nums[i] + nums[j] >= 0):
+                    # >=0是因为如果小于0且target也是小于0的数的话光靠nums[i]>target就break掉会漏解，因为后面可能有负树数把整体和继续变小
+                    break
+                if j > i+1 and nums[j] == nums[j-1]:
+                    continue
+                l = j + 1
+                r = n - 1
+                while l < r:
+                    if nums[i] + nums[j] + nums[l] + nums[r] == target:
+                        res.append([nums[i], nums[j], nums[l], nums[r]])
+                        while l != r and nums[l] == nums[l+1]: l += 1
+                        while l != r and nums[r] == nums[r-1]: r -= 1
+                        l += 1
+                        r -= 1
+                    elif nums[i] + nums[j] + nums[l] + nums[r] > target:
+                        r -= 1
+                    else:
+                        l += 1
+        return res
+
+
+def lc_0344():
+    def reverseString(s: List[str]) -> None:
+        # inplace 反转字符数组
+        """
+        Do not return anything, modify s in-place instead.
+        """
+        i, j = 0, len(s) - 1
+        while i < j:
+            s[i], s[j] = s[j], s[i]
+            i += 1
+            j -= 1
+        return
+
+
+def lc_0541():
+    def reverseStr(s: str, k: int) -> str:
+        # 字符串每隔2k个元素反转前k个字符， 若str长度小于k则全部反转
+        def reverse(lst, start, end):
+            # helper function to revert the element in lst [start...end]
+            if end >= len(lst):
+                end = len(lst) - 1
+            while start < end:
+                lst[start], lst[end] = lst[end], lst[start]
+                start += 1
+                end -= 1
+            return
+        n = len(s)
+        charLst = list(s)
+        for i in range(0, n, 2*k):
+            start = i
+            end = i + k - 1
+            reverse(charLst, start, end)
+        return "".join(charLst)
+
 if __name__ == "__main__":
     lc_0202()
