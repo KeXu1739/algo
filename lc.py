@@ -6,7 +6,7 @@ import numpy as np
 
 def lc_0001():
     # 2和
-    def sol(arr, t):
+    def _2Sum(arr, t):
         dic = {}
         for i, ele in enumerate(arr):
             if t - ele in dic:
@@ -206,7 +206,8 @@ def lc_0035():
                 l = m+1
             else:
                 r = m-1
-        return r+1 # 这里刚开始是标准的二分查找-1，之后可以通过找规律发现返回r + 1
+        return r+1 # 这里刚开始是标准的二分查找-1，之后可以通过找规律发现返回r + 1,第二次刷的时候发现返回0 if l < 0 else l也可以
+        # 说明二分查找找不到元素的时候，最终l会跑到r的下一个位置
 
     for i in range(50000):
         n = random.randint(1, 1000)
@@ -477,6 +478,7 @@ def lc_0209():
     nums = [1,2,3,4,5]
     target=15
     print(minSubArrayLen(target, nums))
+
 
 def lc_0904():
     # 水果篮问题
@@ -1235,5 +1237,97 @@ def lc_0541():
             reverse(charLst, start, end)
         return "".join(charLst)
 
+
+def lc_cn_offer05():
+    def replaceString(s):
+        # 把字符串中的空格替换成%20，返回新字符串
+        sList = list(s)
+        n = 0
+        for ele in sList:
+            if ele == " ":
+                n += 1
+        sList += [None] * 2 * n
+        p1, p2 = len(s) - 1, len(sList) - 1
+        while p1 >= 0:
+            if s[p1] == " ":
+                sList[p2] = "0"
+                sList[p2-1] = "2"
+                sList[p2-2] = "%"
+                p1 -= 1
+                p2 -= 3
+            else:
+                sList[p2] = s[p1]
+                p1 -= 1
+                p2 -= 1
+        return "".join(sList)
+    print(replaceString("We are cham pion."))
+
+
+def lc_0151():
+    # 这个题目用python的reverse函数效率很高，应该用c++从头实现一下，问到这个问题大概率需要从头实现
+    def reverseWords(s: str) -> str:
+        def removeExtraSpace(charList):
+            idx, i = 0, 0
+            while i < len(charList):
+                if charList[i] != " ":
+                    if idx != 0:
+                        # 最前面的空格不需要，只有中间的单词之间需要一个空格
+                        charList[idx] = " "
+                        idx += 1
+                    while i < len(charList) and charList[i] != " ":
+                        # 最后面位置的空格不需要，快慢指针停在最后一个非空的位置
+                        charList[idx] = charList[i]
+                        i += 1
+                        idx += 1
+                else:
+                    i += 1
+            return charList[:idx]
+
+
+        def reverseCharList(charList, start, end):
+            i, j = start, end
+            if end > len(charList):
+                end = len(charList)-1
+            while i < j:
+                charList[i], charList[j] = charList[j], charList[i]
+                i += 1
+                j -= 1
+            return
+
+        cList = list(s)
+        cList = removeExtraSpace(cList)
+        s,e = 0,0
+        while e < len(cList):
+            while e < len(cList) and cList[e] != " ":
+                e += 1
+            reverseCharList(cList, s, e-1)
+            e += 1
+            s = e
+        reverseCharList(cList, 0, len(cList)-1)
+        return "".join(cList)
+
+    print(reverseWords("a good   example  "))
+
+
+def lc_cn_offer58():
+    def leftRotate(charList, num):
+        def reverseCharList(start, end, charList):
+            i, j = start, end
+            while i < j:
+                charList[i], charList[j] = charList[j], charList[i]
+                i += 1
+                j -= 1
+            return
+
+
+        reverseCharList(0, num-1, charList)
+        reverseCharList(num, len(charList)-1, charList)
+        reverseCharList(0, len(charList)-1, charList)
+        return
+    input_str = list("astringtoberotated")
+    leftRotate(input_str, 3)
+    print("".join(input_str))
+
+
 if __name__ == "__main__":
-    lc_0202()
+    lc_cn_offer58()
