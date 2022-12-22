@@ -1328,6 +1328,92 @@ def lc_cn_offer58():
     leftRotate(input_str, 3)
     print("".join(input_str))
 
+def lc_0028():
+    def getNext(str2):
+        res = [None for _ in range(len(str2))]
+        if len(res) == 1:
+            res[0] = -1
+            return
+
+        res[0] = -1
+        res[1] = 0
+        cn = 0
+        i = 2
+        while i < len(str2):
+            if str2[cn] == str2[i - 1]:
+                cn += 1
+                res[i] = cn
+                i += 1
+            elif cn > 0:
+                cn = res[cn]
+            else:
+                res[i] = 0
+                i += 1
+        return res
+
+
+    def strStr(haystack: str, needle: str) -> int:
+        if haystack is None or needle is None or len(needle) > len(haystack):
+            return -1
+        next_ = getNext(needle)
+        i1, i2 = 0, 0
+        while i1 < len(haystack) and i2 < len(needle):
+            if haystack[i1] == needle[i2]:
+                i1 += 1
+                i2 +=1
+            elif i2 != 0:
+                i2 = next_[i2]
+            else:
+                i1 += 1
+        return i1 - i2 if i2 == len(needle) else -1
+
+    print(strStr("abababa", "bab"))
+
+
+def lc_0459():
+    def kmp(str1):
+        def getNext(str2):
+            res = [None for _ in range(len(str2))]
+            if len(res) == 1:
+                res[0] = -1
+                return res
+            res[0] = -1
+            res[1] = 0
+            i = 2
+            cn = 0
+            while i < len(str2):
+                if str2[cn] == str2[i-1]:
+                    cn += 1
+                    res[i] = cn
+                    i += 1
+                elif cn > 0:
+                    cn = res[cn]
+                else:
+                    res[i] = 0
+                    i += 1
+            return res
+
+
+        if str1 is None:
+            return -1
+
+        next_arr = getNext(str1)
+        str1_ = 2*str1[1:-1]
+        i1, i2 = 0, 0
+        while i1 < len(str1_) and i2 < len(str1):
+            if str1_[i1] == str1[i2]:
+                i1 += 1
+                i2 += 1
+            elif i2 != 0:
+                i2 = next_arr[i2]
+            else:
+                i1 += 1
+        return True if i2 == len(str1) else False
+
+    def repeatedSubstringPattern(s: str) -> bool:
+        return (s+s)[1:-1].find(s) != -1
+
+    print(kmp("abababa"))
 
 if __name__ == "__main__":
-    lc_cn_offer58()
+    lc_0459()

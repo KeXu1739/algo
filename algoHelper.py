@@ -3006,7 +3006,7 @@ def KMPfind(q: str, m: str) -> int:
             # 字符match上的时候同时往后移动
             i1 += 1
             i2 += 1
-        elif nextArr[i2] == -1:
+        elif i2 == 0: # next[i2]==-1
             # i2 == 0,因为只有这个位置的nextArr是-1，此时i2没有办法再在str2中向前跳，这时str1需要往后走一个
             i1 += 1
         else:
@@ -3031,7 +3031,7 @@ def getNextArr(str2: List[str]) -> List[int]:
     res[1] = 0
     # 0 和 1位置根据定义是固定的数字，从2开始
     i = 2
-    cn = res[i - 1]  # 用哪个位置的字符和i-1位置字符比较,同时也是i-1位置最长缀的信息 # cn初始化= 0
+    cn = res[1]  # 用哪个位置的字符和i-1位置字符比较,同时也是i-1位置最长缀的信息 # cn初始化= 0
     while i < len(str2):
         # 前一个位置最长前缀的下一个字符如果等于当前位置前一个位置的字符，则当前位置最长前缀为前一个位置最长前缀加1
         # eg: abc[] ... abcd, 若[]==d则最长等长前后缀为4
@@ -5971,14 +5971,7 @@ def getTransformedLength(word, t):
     # return len(new_word) % (100000007)
 
 if __name__ == "__main__":
-    from sortedcontainers import sorteddict
-    sdic = sorteddict.SortedDict()
-    sdic[10] = 10
-    sdic[1] = 1
-    sdic[4] = 5
-    for k, v in sdic.items():
-        print(k)
-
+    print(getNextArr(""))
     # print("Hi")
     # print(equalizeTeamSize([1,2,2,3,4], 3))
 
