@@ -1275,12 +1275,13 @@ def lc_0151():
                         charList[idx] = " "
                         idx += 1
                     while i < len(charList) and charList[i] != " ":
-                        # 最后面位置的空格不需要，快慢指针停在最后一个非空的位置
+                        # 最后面位置的空格不需要，快慢指针停在最后一个非空的位置的下一个位置
                         charList[idx] = charList[i]
                         i += 1
                         idx += 1
                 else:
                     i += 1
+            # 返回[:idx],不会包含idx位置字符
             return charList[:idx]
 
 
@@ -1415,5 +1416,121 @@ def lc_0459():
 
     print(kmp("abababa"))
 
+
+def lc_0232():
+    # 用栈实现队列
+    class MyQueue:
+        def __init__(self):
+            self.cs = deque([])
+            self.ps = deque([])
+
+
+        def push(self, x: int) -> None:
+            self.cs.append(x)
+            return
+
+
+        def pop(self) -> int:
+            self._move()
+            return self.ps.pop()
+
+
+
+        def peek(self) -> int:
+            self._move()
+            return self.ps[-1]
+
+
+        def empty(self) -> bool:
+            return len(self.cs) == 0 and len(self.ps) == 0
+
+        def _move(self):
+            if len(self.ps) == 0:
+                while self.cs:
+                    self.ps.append(self.cs.pop())
+            return
+
+
+def lc_0225():
+    # 用队列实现栈
+    class MyStack:
+
+        def __init__(self):
+            self.main = deque([])
+            self.bu = deque([])
+            return
+
+        def push(self, x: int) -> None:
+            self.main.append(x)
+
+
+        def pop(self) -> int:
+            while len(self.main) > 1:
+                self.bu.append(self.main.popleft())
+            ret = self.main.popleft()
+            while self.bu:
+                self.main.append(self.bu.popleft())
+            return ret
+
+        def top(self) -> int:
+            return self.main[-1]
+
+
+        def empty(self) -> bool:
+            return len(self.main) == 0 and len(self.bu) == 0
+
+
+def lc_0020():
+    # 字符串中括号是否正确匹配
+    def isValid(s: str) -> bool:
+        def match(a, b):
+            if a + b in {"()", "{}", "[]"}:
+                return True
+            else:
+                return False
+
+        stack = deque([])
+        for e in s:
+            if e in {"[", "{", "("}:
+                stack.append(e)
+            elif e in {"]", "}", ")"}:
+                if len(stack) == 0 or not match(stack.pop(), e):
+                    return False
+        return len(stack) == 0
+
+def lc_1047():
+    # 字符消消乐
+    def removeDuplicates(s: str) -> str:
+        stack = []
+        for e in s:
+            if len(stack) == 0 or stack[-1] != e:
+                stack.append(e)
+            else:
+                stack.pop()
+        return "".join(stack)
+
+
+def lc_0150():
+    # 逆波兰表达式求值
+    def evalRPN(tokens: List[str]) -> int:
+        stack = []
+        for token in tokens:
+            if token not in {"+", "-", "*", "/"}:
+                stack.append(int(token))
+            else:
+                if len(stack) < 2:
+                    return None
+                n2 = stack.pop()
+                n1 = stack.pop()
+                if token == "+":
+                    stack.append(n1 + n2)
+                elif token == "-":
+                    stack.append(n1 - n2)
+                if token == "*":
+                    stack.append(n1 * n2)
+                if token == "/":
+                    stack.append(int(n1 / n2))
+        return stack[0]
+
 if __name__ == "__main__":
-    lc_0459()
+    pass

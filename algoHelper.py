@@ -413,6 +413,7 @@ class MinHeap:
         return self.data_[0]
 
 from collections import deque
+
 class MinValueFuncStack:
     def __init__(self) -> None:
         self._stack = deque([])
@@ -642,6 +643,30 @@ class queueConstructedStack:
         else:
             self._q1.append(ele)
         return
+
+class MonoQueue:
+    '''
+    单调队列实现,用一个双向队列当内部容器，假设最左到最右是降序排列
+    '''
+    def __init__(self):
+        self.q = deque([])
+
+    def pop(self, val):
+        # 要删掉的元素如果大于当前单调队列里的最大值，则单调队列里删掉最大值(最左边)
+        while self.q and val == self.q[0]:
+            self.q.popleft()
+        return
+
+    def push(self, val):
+        # 要push进来的值如果大于单调队列里的最小值（最右），需要把单调队列里的值删掉，直到单调队列里的值都是大于新push进来的值为止，然后才能把
+        # 新值push进来
+        while self.q and val > self.q[-1]:
+            self.q.pop()
+        self.q.append(val)
+        return
+
+    def front(self):
+        return self.q[0]
 
 # 二叉树打印code
 def printBinaryTree(root: BinaryTree):
