@@ -1644,6 +1644,294 @@ def lc_0145():
         return vec
 
 
+def lc_0102():
+    '''
+    102.二叉树的层序遍历
+    :return:
+    '''
+
+    from collections import deque
+    def levelOrder(root: Optional[BinaryTree]) -> List[List[int]]:
+        ret = []
+        if not root:
+            return ret
+        q = deque([root])
+        while q:
+            l = len(q)
+            curlevel = []
+            for i in range(l):
+                cur = q.popleft()
+                curlevel.append(cur.val)
+                if cur.left:
+                    q.append(cur.left)
+                if cur.right:
+                    q.append(cur.right)
+            ret.append(curlevel)
+        return ret
+
+
+def lc_0107():
+    '''
+    107.二叉树的层次遍历II
+    :return:
+    '''
+    from collections import deque
+    def levelOrderBottom(root: Optional[BinaryTree]) -> List[List[int]]:
+        ret = []
+        if not root:
+            return ret
+        q = deque([root])
+        while q:
+            l = len(q)
+            curlevel = []
+            for i in range(l):
+                cur = q.popleft()
+                curlevel.append(cur.val)
+                if cur.left:
+                    q.append(cur.left)
+                if cur.right:
+                    q.append(cur.right)
+            ret.append(curlevel)
+        return reversed(ret) # 可以骗过leetcode OJ但是返回的是个iterator不是list
+
+
+def lc_0199():
+    '''
+    199.二叉树的右视图
+    :return:
+    '''
+    def rightSideView(root: Optional[BinaryTree]) -> List[int]:
+        ret = []
+        if not root:
+            return ret
+        q = deque([root])
+        while q:
+            l = len(q)
+            for i in range(l):
+                cur = q.popleft()
+                if i == l - 1:
+                    ret.append(cur.val)
+                if cur.left:
+                    q.append(cur.left)
+                if cur.right:
+                    q.append(cur.right)
+        return ret
+
+
+def lc_0637():
+    '''
+    637.二叉树的层平均值
+    :return:
+    '''
+    def averageOfLevels(root: Optional[BinaryTree]) -> List[float]:
+        ret = []
+        if not root:
+            return ret
+        q = deque([root])
+        while q:
+            l = len(q)
+            acc = 0
+            ct = 0
+            for i in range(l):
+                cur = q.popleft()
+                acc += cur.val
+                ct += 1
+                if cur.left: q.append(cur.left)
+                if cur.right: q.append(cur.right)
+            ret.append(acc/ct)
+        return ret
+
+
+def lc_0429():
+    '''
+    429.N叉树的层序遍历
+    :return:
+    '''
+    class Node:
+        def __init__(self, val=None, children=None):
+            self.val = val
+            self.children = children
+
+    def levelOrder(root: Node) -> List[List[int]]:
+        ret = []
+        if not root:
+            return ret
+        q = deque([root])
+        while q:
+            l = len(q)
+            curlevel = []
+            for i in range(l):
+                cur = q.popleft()
+                curlevel.append(cur.val)
+
+                if cur.children:
+                    for child in cur.children:
+                        if child: q.append(child)
+            ret.append(curlevel)
+        return ret
+
+
+def lc_0515():
+    '''
+    515.在每个树行中找最大值
+    :return:
+    '''
+    def largestValues(root: Optional[BinaryTree]) -> List[int]:
+        ret = []
+        if not root:
+            return ret
+
+        q = deque([root])
+        while q:
+            l = len(q)
+            mx = float('-inf')
+            for i in range(l):
+                cur = q.popleft()
+                mx = max(mx, cur.val)
+                if cur.left: q.append(cur.left)
+                if cur.right: q.append(cur.right)
+            ret.append(mx)
+        return ret
+
+
+def lc_0116():
+    '''
+    116.填充每个节点的下一个右侧节点指针
+    117.填充每个节点的下一个右侧节点指针II
+    代码是一样的但是题目有些许不一样，116假设树是完美的，117是一般的
+    :return:
+    '''
+    class Node:
+        def __init__(self, val: int = 0, left: 'Node' = None, right: 'Node' = None, next: 'Node' = None):
+            self.val = val
+            self.left = left
+            self.right = right
+            self.next = next
+
+    def connect(root: Optional[Node]) -> Optional[Node]:
+        if not root:
+            return
+        q = deque([root])
+        while q:
+            l = len(q)
+            _dummy = Node(None, None, None, None)
+            prev = _dummy
+            for i in range(l):
+                cur = q.popleft()
+                prev.next = cur
+                if cur.left: q.append(cur.left)
+                if cur.right: q.append(cur.right)
+                prev = cur
+            del _dummy
+        return root
+
+
+def lc_0104():
+    '''
+    104.二叉树的最大深度
+    :return:
+    '''
+    def maxDepth(self, root: Optional[BinaryTree]) -> int:
+        maxDepth = 0
+        if not root:
+            return maxDepth
+        q = deque([root])
+        while q:
+            l = len(q)
+            for i in range(l):
+                cur = q.popleft()
+                if cur.left: q.append(cur.left)
+                if cur.right: q.append(cur.right)
+            maxDepth += 1
+        return maxDepth
+
+
+def lc_0111():
+    '''
+    111.二叉树的最小深度
+    :return:
+    '''
+    def minDepthTemplate(root: Optional[BinaryTree]) -> int:
+        # 树形dp解法，需要考虑特殊的链表形式的树，不是太直观但是也能work，而且实际观测到的时间比层序遍历要慢一些
+        class Info:
+            def __init__(self, depth):
+                self.depth = depth
+        def md(node):
+            if not node:
+                return Info(0)
+            l = md(node.left)
+            r = md(node.right)
+            # 防止出现只有一个branch时某一侧树深度为0的情况
+            if l.depth == 0:
+                return Info(1+r.depth)
+            if r.depth == 0:
+                return Info(1+l.depth)
+            return Info(1+min(r.depth, l.depth))
+
+        return md(root).depth
+
+
+    def minDepth(self, root: Optional[BinaryTree]) -> int:
+        ret = 0
+        if not root:
+            return ret
+
+        q = deque([root])
+        while q:
+            l = len(q)
+            ret += 1
+            for i in range(l):
+                cur = q.popleft()
+                if (not cur.left) and (not cur.right):
+                    return ret
+                if cur.left:
+                    q.append(cur.left)
+                if cur.right:
+                    q.append(cur.right)
+        return ret
+
+
+def lc_0226():
+    '''
+    226.翻转二叉树
+    :return:
+    '''
+    def invertTreeRecursive(self, root: Optional[BinaryTree]) -> Optional[BinaryTree]:
+        def inv(node):
+            # 前序后序
+            if not node:
+                return
+            # node.left, node.right = node.right, node.left # 或这里
+            inv(node.left)
+            inv(node.right)
+            node.left, node.right = node.right, node.left
+            return
+
+        def inv2(node):
+            # 中序
+            if not node:
+                return
+            inv2(node.left)
+            node.left, node.right = node.right, node.left
+            inv2(node.left)
+            return
+
+        inv(root)
+        return root
+
+    def invertTreeIterative(self, root: Optional[BinaryTree]) -> Optional[BinaryTree]:
+        if not root:
+            return
+
+        s = deque([root])
+        while s:
+            cur = s.pop()
+            cur.left, cur.right = cur.right, cur.left
+            if cur.right: s.append(cur.right)
+            if cur.left: s.append(cur.left)
+        return root
+
 # TODO: lc 0071
+
 if __name__ == "__main__":
     lc_0347()
