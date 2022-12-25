@@ -1532,5 +1532,118 @@ def lc_0150():
                     stack.append(int(n1 / n2))
         return stack[0]
 
+
+def lc_0239():
+    def maxSlidingWindow(nums: List[int], k: int) -> List[int]:
+        class monoQueue:
+            def __init__(self):
+                self.q = deque([])
+                return
+            def pop(self, val):
+                while self.q and val == self.q[0]:
+                    self.q.popleft()
+                return
+            def push(self, val):
+                while self.q and self.q[-1] < val:
+                    self.q.pop()
+                self.q.append(val)
+                return
+            def front(self):
+                return self.q[0]
+
+        mq = monoQueue()
+        ret = [None for _ in range(len(nums)-k+1)]
+
+        for i, ele in enumerate(nums):
+            if i < k-1:
+                mq.push(ele)
+            elif i == k-1:
+                mq.push(ele)
+                ret[i-k+1] = mq.front()
+            else:
+                mq.pop(nums[i-k])
+                mq.push(ele)
+                ret[i-k+1] = mq.front()
+        return ret
+
+
+def lc_0347():
+    from collections import Counter
+    def topKFrequent(nums: List[int], k: int) -> List[int]:
+        # 前K个最经常出现的字符
+        mp = Counter(nums)
+        topK = []
+        heapq.heapify(topK)
+        for val, fr in mp.items():
+            # 根据freq进行heap的组织排序， 默认小根堆
+            heapq.heappush(topK, (fr, val))
+            if len(topK) > k:
+                # 长度只要超过k就pop掉频率最低的， 这里len最多比k多1个，把这个东西当成是stack就好了
+                heapq.heappop(topK)
+        res = [val for fr, val in topK]
+        return res
+    topKFrequent([5,3,1,1,1,3,73,1], 2)
+
+
+def lc_0144():
+    def preorderTraversal(root: Optional[BinaryTree]) -> List[int]:
+        vec = []
+        if not root:
+            return vec
+        s = deque([root])
+        while s:
+            cur = s.pop()
+            vec.append(cur.val)
+            if cur.right:
+                s.append(cur.right)
+            if cur.left:
+                s.append(cur.left)
+
+        return vec
+
+
+def lc_0094():
+    def inorderTraversal(root: Optional[BinaryTree]) -> List[int]:
+        vec = []
+        if not root:
+            return vec
+
+        s = deque([])
+        while root:
+            s.append(root)
+            root = root.left
+
+        while s:
+            cur = s.pop()
+            vec.append(cur.val)
+            cur_R = cur.right
+            while cur_R:
+                s.append(cur_R)
+                cur_R = cur_R.left
+
+        return vec
+
+
+def lc_0145():
+    def postorderTraversal(root: Optional[BinaryTree]) -> List[int]:
+        vec = []
+        if not root:
+            return vec
+
+        cs = deque([root])
+        ps = deque([])
+        while cs:
+            cur = cs.pop()
+            ps.append(cur.val)
+            if cur.left:
+                cs.append(cur.left)
+            if cur.right:
+                cs.append(cur.right)
+        while ps:
+            vec.append(ps.pop())
+        return vec
+
+
+# TODO: lc 0071
 if __name__ == "__main__":
-    pass
+    lc_0347()
