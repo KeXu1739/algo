@@ -1931,6 +1931,279 @@ def lc_0226():
             if cur.left: s.append(cur.left)
         return root
 
+
+def lc_0101():
+    '''
+    验证轴对称的二叉树
+    :return:
+    '''
+    def isSymmetric(root: Optional[BinaryTree]) -> bool:
+        def isValid(n1, n2):
+            if (not n1) and (not n2):
+                return True
+            elif n1 and (not n2):
+                return False
+            elif n2 and (not n1):
+                return False
+            else:
+                return (n1.val == n2.val) and isValid(n1.left, n2.right) and isValid(n1.right, n2.left)
+
+        return isValid(root, root)
+
+
+def lc_0100():
+    '''
+    100: 验证相同二叉树
+    :return:
+    '''
+    def isSameTree(p: Optional[BinaryTree], q: Optional[BinaryTree]) -> bool:
+        def valid(n1, n2):
+            if (not n1) and (not n2):
+                return True
+            elif n1 and (not n2):
+                return False
+            elif n2 and (not n1):
+                return False
+            else:
+                return (n1.val == n2.val) and valid(n1.left, n2.left) and valid(n1.right, n2.right)
+        return valid(p, q)
+
+
+def lc_0572():
+    '''
+    572.另一个树的子树,给根节点a，b查看b是不是a的一个子树
+    :return:
+    '''
+    def isSubtree(root: Optional[BinaryTree], subRoot: Optional[BinaryTree]) -> bool:
+
+        def same(n1, n2):
+            if (not n1) and (not n2): return True
+            elif n1 and (not n2): return False
+            elif n2 and (not n1): return False
+            else:
+                return (n1.val == n2.val) and same(n1.left, n2.left) and same(n1.right, n2.right)
+
+        if not root:
+            return False
+        # 前序遍历每一个点看是不是子树
+        if same(root, subRoot): return True
+        if isSubtree(root.left, subRoot): return True
+        if isSubtree(root.right, subRoot): return True
+        return False
+
+
+def lc_0559():
+    '''
+    559.n叉树的最大深度
+    :return:
+    '''
+    class Node:
+        def __init__(self, val=None, children=None):
+            self.val = val
+            self.children = children
+
+    def maxDepth(root: Node) -> int:
+        mxd = 0
+        if not root: return mxd
+        q = deque([root])
+        while q:
+            l = len(q)
+            for i in range(l):
+                cur = q.popleft()
+                for c in cur.children:
+                    if c: q.append(c)
+            mxd += 1
+        return mxd
+
+
+def lc_0222():
+    '''
+    222.完全二叉树的节点个数,时间复杂度小于o(n)的解法
+    :return:
+    '''
+    def countNodes(root: Optional[BinaryTree]) -> int:
+        if not root:
+            return 0
+
+        ld, rd = 1, 1
+        l = root.left
+        r = root.right
+        # 这里在找当前节点左右最大深度，如果相等，说明这个节点的树是满的，那么就不用遍历累加有几个点了，直接用公式算
+        while l:
+            ld += 1
+            l = l.left
+        while r:
+            rd += 1
+            r = r.right
+        if ld == rd: return 2 ** ld - 1
+        return countNodes(root.left) + countNodes(root.right) + 1
+
+
+def lc_0110():
+    '''
+    验证平衡二叉树：任意一个点为头的树，左树右树高度相差最多为1即为平衡二叉树
+    A height-balanced binary tree is a binary tree in which the depth of the two subtrees of every node never differs by
+    more than one.
+    :return:
+    '''
+    def isBalanced(root):
+        """
+        :type root: TreeNode
+        :rtype: bool
+        """
+        class Info:
+            def __init__(self, isB, H):
+                self.isB = isB
+                self.H = H
+
+        def isBal(node):
+            if not node:
+                return Info(True, 0)
+
+            li = isBal(node.left)
+            ri = isBal(node.right)
+
+            isB = li.isB and ri.isB and abs(li.H - ri.H) <= 1
+            H = max(li.H, ri.H) + 1
+            return Info(isB, H)
+
+        return isBal(root).isB
+
+
+def lc_0257():
+    '''
+    257. 二叉树的所有路径
+    :return:
+    '''
+    def binaryTreePaths(root: Optional[BinaryTree]) -> List[str]:
+        """
+        :type root: TreeNode
+        :rtype: List[str]
+        """
+        def binaryTP(node, cur, res):
+            if (not node.left) and (not node.right):
+                cur += str(node.val)
+                res.append(cur)
+                return
+            if node.left:
+                binaryTP(node.left, cur + f"{node.val}->", res)
+            if node.right:
+                binaryTP(node.right, cur + f"{node.val}->", res)
+            return
+
+        res = []
+        binaryTP(root, "", res)
+        return res
+
+def lc_0404():
+    '''
+    404.左叶子之和
+    :return:
+    '''
+    def sumOfLeftLeaves(root: Optional[BinaryTree]) -> int:
+        if not root:
+            return 0
+        if (not root.left) and (not root.right):
+            # 叶节点没有左叶节点和
+            return 0
+        l, r = 0, 0
+        l = sumOfLeftLeaves(root.left)
+        if root.left and (not root.left.left) and (not root.left.right):
+            # 找到左叶子节点的处理
+            l = root.left.val
+        # 右侧的值
+        r = sumOfLeftLeaves(root.right)
+        # 没找到左叶子的话就往下一层找左叶子，找到了左叶子的话l2根据定义下面会返回0
+
+        return l + r
+
+
+def lc_0513():
+    '''
+    513.找树左下角的值
+    :return:
+    '''
+    def findBottomLeftValueRecursive(self, root: Optional[BinaryTree]) -> int:
+        # 没这个必要，这个题用层序遍历很好理解
+        mx = float("-inf")
+        lm = 0
+        def depth(node, dept):
+            nonlocal mx, lm
+            if (not node.left) and (not node.right):
+                if dept > mx:
+                    mx = dept
+                    lm = node.val
+            if node.left:
+                depth(node.left, dept + 1)
+            if node.right:
+                depth(node.right, dept + 1)
+
+        depth(root, 0)
+        return lm
+
+    def findBottomLeftValue(root: Optional[BinaryTree]) -> int:
+        ret = 0
+        if not root:
+            return ret
+        q = deque([root])
+        while q:
+            l = len(q)
+            for i in range(l):
+                cur = q.popleft()
+                if i == 0:
+                    ret = cur.val
+                if cur.left:
+                    q.append(cur.left)
+                if cur.right:
+                    q.append(cur.right)
+        return ret
+
+
+def lc_0112():
+    '''
+    112. 返回二叉树中是否有一条路径沿途总和等于target
+    :return:
+    '''
+    def hasPathSum(root: Optional[BinaryTree], targetSum: int) -> bool:
+        if not root:
+            return False
+        if (not root.left) and (not root.right):
+            return root.val == targetSum
+        if (not root.left) and (not root.right):
+            return False
+        elif not root.left:
+            return hasPathSum(root.right, targetSum - root.val)
+        elif not root.right:
+            return hasPathSum(root.left, targetSum - root.val)
+        else:
+            return hasPathSum(root.left, targetSum - root.val) or hasPathSum(root.right, targetSum - root.val)
+
+
+def lc_0113():
+    '''
+    113. 返回所有二叉树中路径总和等于target的路径
+    :return:
+    '''
+    def pathSum(root: Optional[BinaryTree], targetSum: int) -> List[List[int]]:
+        def pS(node, targetSum, curpath, res):
+            # if not node:
+            #     return
+            if (not node.left) and (not node.right):
+                if node.val == targetSum:
+                    curpath += [node.val]
+                    res.append(curpath)
+            else:
+                if node.left:
+                    pS(node.left, targetSum - node.val, curpath + [node.val], res)
+                if node.right:
+                    pS(node.right, targetSum - node.val, curpath + [node.val], res)
+            return
+        res = []
+        if not root:
+            return res
+        pS(root, targetSum, [], res)
+        return res
+
 # TODO: lc 0071
 
 if __name__ == "__main__":

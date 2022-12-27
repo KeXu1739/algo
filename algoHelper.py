@@ -4877,7 +4877,6 @@ def josephRing(head: ListNode, m):
     return head
 
 
-
 def maxLengthSubArraySumBelowTarget(arr, target):
     # 给一个数组arr，无序，每个值可能正负0，再给另一个正数target，求arr所有子数组中元素和相加小于等于target的最长子数组长度，需要时间复杂度O(N),空间O(1) 
     minSum = [None for _ in range(len(arr))]
