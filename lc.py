@@ -1593,7 +1593,7 @@ def lc_0144():
         s = deque([root])
         while s:
             cur = s.pop()
-            vec.append(cur.val)
+            vec.append(cur.value)
             if cur.right:
                 s.append(cur.right)
             if cur.left:
@@ -1615,7 +1615,7 @@ def lc_0094():
 
         while s:
             cur = s.pop()
-            vec.append(cur.val)
+            vec.append(cur.value)
             cur_R = cur.right
             while cur_R:
                 s.append(cur_R)
@@ -1634,7 +1634,7 @@ def lc_0145():
         ps = deque([])
         while cs:
             cur = cs.pop()
-            ps.append(cur.val)
+            ps.append(cur.value)
             if cur.left:
                 cs.append(cur.left)
             if cur.right:
@@ -1661,7 +1661,7 @@ def lc_0102():
             curlevel = []
             for i in range(l):
                 cur = q.popleft()
-                curlevel.append(cur.val)
+                curlevel.append(cur.value)
                 if cur.left:
                     q.append(cur.left)
                 if cur.right:
@@ -1686,7 +1686,7 @@ def lc_0107():
             curlevel = []
             for i in range(l):
                 cur = q.popleft()
-                curlevel.append(cur.val)
+                curlevel.append(cur.value)
                 if cur.left:
                     q.append(cur.left)
                 if cur.right:
@@ -1710,7 +1710,7 @@ def lc_0199():
             for i in range(l):
                 cur = q.popleft()
                 if i == l - 1:
-                    ret.append(cur.val)
+                    ret.append(cur.value)
                 if cur.left:
                     q.append(cur.left)
                 if cur.right:
@@ -1734,7 +1734,7 @@ def lc_0637():
             ct = 0
             for i in range(l):
                 cur = q.popleft()
-                acc += cur.val
+                acc += cur.value
                 ct += 1
                 if cur.left: q.append(cur.left)
                 if cur.right: q.append(cur.right)
@@ -1787,7 +1787,7 @@ def lc_0515():
             mx = float('-inf')
             for i in range(l):
                 cur = q.popleft()
-                mx = max(mx, cur.val)
+                mx = max(mx, cur.value)
                 if cur.left: q.append(cur.left)
                 if cur.right: q.append(cur.right)
             ret.append(mx)
@@ -1946,7 +1946,7 @@ def lc_0101():
             elif n2 and (not n1):
                 return False
             else:
-                return (n1.val == n2.val) and isValid(n1.left, n2.right) and isValid(n1.right, n2.left)
+                return (n1.value == n2.value) and isValid(n1.left, n2.right) and isValid(n1.right, n2.left)
 
         return isValid(root, root)
 
@@ -1965,7 +1965,7 @@ def lc_0100():
             elif n2 and (not n1):
                 return False
             else:
-                return (n1.val == n2.val) and valid(n1.left, n2.left) and valid(n1.right, n2.right)
+                return (n1.value == n2.value) and valid(n1.left, n2.left) and valid(n1.right, n2.right)
         return valid(p, q)
 
 
@@ -1981,7 +1981,7 @@ def lc_0572():
             elif n1 and (not n2): return False
             elif n2 and (not n1): return False
             else:
-                return (n1.val == n2.val) and same(n1.left, n2.left) and same(n1.right, n2.right)
+                return (n1.value == n2.value) and same(n1.left, n2.left) and same(n1.right, n2.right)
 
         if not root:
             return False
@@ -2082,13 +2082,13 @@ def lc_0257():
         """
         def binaryTP(node, cur, res):
             if (not node.left) and (not node.right):
-                cur += str(node.val)
+                cur += str(node.value)
                 res.append(cur)
                 return
             if node.left:
-                binaryTP(node.left, cur + f"{node.val}->", res)
+                binaryTP(node.left, cur + f"{node.value}->", res)
             if node.right:
-                binaryTP(node.right, cur + f"{node.val}->", res)
+                binaryTP(node.right, cur + f"{node.value}->", res)
             return
 
         res = []
@@ -2110,7 +2110,7 @@ def lc_0404():
         l = sumOfLeftLeaves(root.left)
         if root.left and (not root.left.left) and (not root.left.right):
             # 找到左叶子节点的处理
-            l = root.left.val
+            l = root.left.value
         # 右侧的值
         r = sumOfLeftLeaves(root.right)
         # 没找到左叶子的话就往下一层找左叶子，找到了左叶子的话l2根据定义下面会返回0
@@ -2132,7 +2132,7 @@ def lc_0513():
             if (not node.left) and (not node.right):
                 if dept > mx:
                     mx = dept
-                    lm = node.val
+                    lm = node.value
             if node.left:
                 depth(node.left, dept + 1)
             if node.right:
@@ -2151,7 +2151,7 @@ def lc_0513():
             for i in range(l):
                 cur = q.popleft()
                 if i == 0:
-                    ret = cur.val
+                    ret = cur.value
                 if cur.left:
                     q.append(cur.left)
                 if cur.right:
@@ -2168,15 +2168,15 @@ def lc_0112():
         if not root:
             return False
         if (not root.left) and (not root.right):
-            return root.val == targetSum
+            return root.value == targetSum
         if (not root.left) and (not root.right):
             return False
         elif not root.left:
-            return hasPathSum(root.right, targetSum - root.val)
+            return hasPathSum(root.right, targetSum - root.value)
         elif not root.right:
-            return hasPathSum(root.left, targetSum - root.val)
+            return hasPathSum(root.left, targetSum - root.value)
         else:
-            return hasPathSum(root.left, targetSum - root.val) or hasPathSum(root.right, targetSum - root.val)
+            return hasPathSum(root.left, targetSum - root.value) or hasPathSum(root.right, targetSum - root.value)
 
 
 def lc_0113():
@@ -2189,14 +2189,14 @@ def lc_0113():
             # if not node:
             #     return
             if (not node.left) and (not node.right):
-                if node.val == targetSum:
+                if node.value == targetSum:
                     curpath += [node.val]
                     res.append(curpath)
             else:
                 if node.left:
-                    pS(node.left, targetSum - node.val, curpath + [node.val], res)
+                    pS(node.left, targetSum - node.value, curpath + [node.value], res)
                 if node.right:
-                    pS(node.right, targetSum - node.val, curpath + [node.val], res)
+                    pS(node.right, targetSum - node.value, curpath + [node.value], res)
             return
         res = []
         if not root:
@@ -2204,7 +2204,339 @@ def lc_0113():
         pS(root, targetSum, [], res)
         return res
 
+
+def lc_0106():
+    '''
+    106.中序后序数组构建二叉树
+    :return:
+    '''
+    def buildTree(inorder: List[int], postorder: List[int]) -> Optional[BinaryTree]:
+        if len(postorder) == 0: return None
+        rootVal = postorder[-1]
+        root = BinaryTree(rootVal)
+        if len(postorder) == 1: return root
+
+        i = 0
+        while i < len(inorder):
+            if inorder[i] == rootVal:
+                break
+            i += 1
+
+        # 这里切割时假设[start:end)
+        lin = inorder[0:i]
+        rin = inorder[i+1:]
+        lpost = postorder[0:i]
+        rpost = postorder[i:-1]
+
+        root.left = buildTree(lin, lpost)
+        root.right = buildTree(rin, rpost)
+        return root
+
+    def buildTreePtr(inorder, postorder, inl, inr, pol, por):
+        # 根据我的习惯使用左闭右闭区间
+        # 当前处理的中序部分为inorder[inl:inr]包含两个边界点， 后续部分postorder[pol:por]包含两个边界点
+        if pol > por: return None
+        rootVal = postorder[por]
+        root = BinaryTree(rootVal)
+        if por == pol: return root
+
+
+        dist = 0 # 定义这个距离来计算从当前中序部分起点到找到中序root要经过几个元素， 后面的index都是根据这个距离退出来的
+        while inl + dist < inr:
+            if inorder[inl + dist] == rootVal:
+                break
+            dist += 1
+
+        linl, linr = inl, inl + dist - 1
+        rinl, rinr = inl + dist + 1, inr
+        lpol, lpor = pol, pol + dist - 1
+        rpol, rpor = pol + dist, por - 1
+
+        # print(inorder[linl:linr+1])
+        # print(inorder[rinl:rinr+1])
+        # print(postorder[lpol:lpor+1])
+        # print(postorder[rpol:rpor+1])
+
+        root.left = buildTreePtr(inorder, postorder, linl, linr, lpol, lpor)
+        root.right = buildTreePtr(inorder, postorder, rinl, rinr, rpol, rpor)
+        return root
+
+
+    inorder = [9,3,15,20,7]
+    postorder = [9,15,7,20,3]
+    root = buildTreePtr(inorder, postorder, 0, len(inorder)-1, 0, len(postorder)-1)
+    printBinaryTree(root)
+
+
+def lc_0105():
+    '''
+    105.前序中序数组构建二叉树
+    :return:
+    '''
+    def buildTree(self, preorder: List[int], inorder: List[int]) -> Optional[BinaryTree]:
+        def buildTreePtr(inorder, preorder, lin, rin, lpre, rpre):
+            if lpre > rpre: return None
+            rootVal = preorder[lpre]
+            root = BinaryTree(rootVal)
+            if lpre == rpre: return root
+
+            dist = 0
+            while lin + dist <= rin:
+                if inorder[lin + dist] == rootVal:
+                    break
+                dist += 1
+            linl, linr = lin, lin + dist - 1
+            rinl, rinr = lin + dist + 1, rin
+            lprel, lprer = 1 + lpre, 1 + lpre + dist - 1
+            rprel, rprer = 1 + lpre + dist, rpre
+
+            root.left = buildTreePtr(inorder, preorder, linl, linr, lprel, lprer)
+            root.right = buildTreePtr(inorder, preorder, rinl, rinr, rprel, rprer)
+            return root
+
+        return buildTreePtr(inorder, preorder, 0, len(inorder)-1, 0, len(preorder)-1)
+
+def lc_0654():
+    '''
+    654.最大二叉树:给定一个不含重复元素的整数数组。返回一个以此数组构建的最大二叉树的根节点
+    :return:
+    '''
+    def constructMaximumBinaryTree(nums: List[int]) -> Optional[BinaryTree]:
+        def construct(nums, l, r):
+            if l > r: return None
+            rootVal = max(nums[l: r+1])
+            root = BinaryTree(rootVal)
+            if l == r: return root
+            idx = l
+            for idx in range(l, r+1):
+                if nums[idx] == rootVal:
+                    break
+
+            root.left = construct(nums, l, idx-1)
+            root.right = construct(nums, idx + 1, r)
+            return root
+
+        return construct(nums, 0, len(nums)-1)
+
+    printBinaryTree(constructMaximumBinaryTree([6,8,5,9,0,11,10,3,4,2,-1]))
+
+
+def lc_0617():
+    '''
+    617.合并二叉树,尽量利用已有的点不要创新的点
+    给定两个二叉树，想象当你将它们中的一个覆盖到另一个上时，两个二叉树的一些节点便会重叠。
+    你需要将他们合并为一个新的二叉树。合并的规则是如果两个节点重叠，那么将他们的值相加作为节点合并后的新值，否则不为 NULL 的节点将直接作为新二叉树的节点。
+    :return:
+    '''
+    def mergeTrees(root1: Optional[BinaryTree], root2: Optional[BinaryTree]) -> Optional[BinaryTree]:
+
+        if (not root1) and (not root2): return None
+        elif not root1:
+            return root2
+        elif not root2:
+            return root1
+        else:
+            root1.value += root2.value
+
+            root1.left = mergeTrees(root1.left, root2.left)
+            root1.right = mergeTrees(root1.right, root2.right)
+            return root1
+
+def lc_0700():
+    def searchBST(root: Optional[BinaryTree], val: int) -> Optional[BinaryTree]:
+        while root:
+            if val == root.value:
+                return root
+            elif val < root.value:
+                root = root.left
+            else:
+                root = root.right
+        return root
+
+def lc_0530():
+    '''
+    530.二叉搜索树的最小绝对差,利用中序遍历记录前一个节点值并每次更新最小绝对差
+    :return:
+    '''
+    def getMinimumDifference(root: Optional[BinaryTree]) -> int:
+        diff = float("inf")
+        prev = float("-inf")
+        def getDiff(root):
+            nonlocal diff, prev
+            if not root: return None
+            getDiff(root.left)
+            diff = min(diff, abs(root.value - prev))
+            prev = root.value
+            getDiff(root.right)
+            return
+
+        getDiff(root)
+        return diff
+
+
+def lc_0501():
+    def findModeExtraSpace(root: Optional[BinaryTree]) -> List[int]:
+        mode = {}
+        res = []
+        if not root:
+            return res
+        s = deque([])
+        while root:
+            s.append(root)
+            root = root.left
+        while s:
+            cur = s.pop()
+            if cur.value not in mode:
+                mode[cur.value] = 1
+            else:
+                mode[cur.value] += 1
+            cur_R = cur.right
+            while cur_R:
+                s.append(cur_R)
+                cur_R = cur_R.left
+        mxVal = max(mode.values())
+        for k, v in mode.items():
+            if v == mxVal:
+                res.append(k)
+        return res
+
+    def findMode(self, root: Optional[BinaryTree]) -> List[int]:
+        # 中序遍历并使用有限个变量，clear的时间复杂度取决于原树中重复数字的多少以及对应频率是否一致，频率越一致则代价越小
+        maxCount = 0
+        count = 0
+        preval = None
+        res = []
+        if not root:
+            return res
+        s = deque([])
+        while root:
+            s.append(root)
+            root = root.left
+        while s:
+            cur = s.pop()
+            if preval is None:
+                count = 1
+            elif preval == cur.value:
+                count += 1
+            else:
+                count = 1
+            preval = cur.value
+            if count > maxCount:
+                maxCount = count
+                res.clear()
+                res.append(cur.value)
+            elif count == maxCount:
+                res.append(cur.value)
+
+
+def lc_0236():
+    '''
+    236. 二叉树的最近公共祖先
+    :return:
+    '''
+
+    def lowestCommonAncestor(self, root: BinaryTree, p: BinaryTree, q: BinaryTree) -> BinaryTree:
+        if root == p or root == q or (not root):
+            # 当前根节点是p或q，或者根节点为空
+            return root
+        # 找左右子树的LCA
+        l = self.lowestCommonAncestor(root.left, p, q)
+        r = self.lowestCommonAncestor(root.right, p, q)
+
+        # 如果左右子树LCA均为非空则说明要找的p和q分别在左右子树中，此时当前根节点为LCA
+        if l and r: return root
+        # 如果当前任何一个子树根LCA为空，说明p，q均在另一棵子树中，对应子树根为LCA
+        return l if l else r
+
+
+def lc_0235():
+    '''
+    235. BST的最低公共祖先：题目给出p和q都是BST中的点所以不需要考虑空的或者p,q不属于BST的情况，
+    由于BST，所以可以根据p,q,root的值的大小关系判断根的往哪个方向递归寻找LCA
+    思路：BST值搜索，找第一个节点值使得其在p,q点的值之间，则找到的节点为LCA
+    :return:
+    '''
+    def lowestCommonAncestor(root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
+        if p.val < root.val and q.val < root.val:
+            return lowestCommonAncestor(root.left, p, q)
+        elif p.val > root.val and q.val > root.val:
+            return lowestCommonAncestor(root.right, p, q)
+        else:
+            return root
+
+    def lowestCommonAncestorIterative(root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
+        while True:
+            if root.val < p.val and root.val <  q.val:
+                root = root.right
+            elif root.val > p.val and root.val > q.val:
+                root = root.left
+            else:
+                return root
+
+def lc_0701():
+    '''
+    701.二叉搜索树中的插入操作
+    :return:
+    '''
+    def insertIntoBST(self, root: Optional[BinaryTree], val: int) -> Optional[BinaryTree]:
+        # 原来树里啥都没有，直接创一个节点返回
+        if not root: return BinaryTree(val)
+        cur = root
+        prev = None
+        # 寻找插入位置记录前面一个节点，找到位置之后创新节点并加在前一个节点的孩子上， 插入的位置一定在最后一层
+        while cur:
+            prev = cur
+            if val > cur.value:
+                cur = cur.right
+            elif val < cur.value:
+                cur = cur.left
+
+        if prev.value > val: prev.left = BinaryTree(val)
+        else: prev.right = BinaryTree(val)
+        return root
+
+def deleteNode(root: Optional[BinaryTree], key: int) -> Optional[BinaryTree]:
+    parent = None
+    cur = root
+    while cur:
+        if cur.value == key:
+            if (not cur.left) and (not cur.right):
+                if parent:
+                    if cur == parent.left:
+                        parent.left = None
+                    elif cur == parent.right:
+                        parent.right = None
+                else:
+                    return None
+
+            elif not cur.left:
+                parent.right = cur.right
+            elif not cur.right:
+                parent.left = cur.left
+            else:
+                leftChild = cur.left
+                rightChild = cur.right
+                rightLM = cur.right
+                while rightLM.left:
+                    rightLM = rightLM.left
+                rightLM.left = leftChild
+                if parent:
+                    parent.left = rightChild
+                else:
+                    root = cur.right
+                del cur
+            break
+        else:
+            parent = cur
+            if cur.value < key:
+                cur = cur.right
+            else:
+                cur = cur.left
+    return root
+
 # TODO: lc 0071
 
 if __name__ == "__main__":
-    lc_0347()
+    root = treeLevelOrderDeSerialization("5_3_6_2_4_#_7_#_#_#_#_#_#_")
+    root = deleteNode(root, 7)
+    printBinaryTree(root)

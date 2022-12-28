@@ -1,11 +1,11 @@
 # sql 语法和模板总结
 ## 基础函数
-- SELECT * FROM
-- WHERE/HAVING
-- COUNT/SUM/AVG/MAX/MIN (aggregation function)
-- GROUP BY: 原表格根据某一些列进行分组并在组内进行计算和统计
-- CASE WHEN
-- JOIN
+- SELECT * FROM: 从表格内选择列的语句
+- WHERE/HAVING: 条件语句
+- COUNT/SUM/AVG/MAX/MIN (aggregation function) 组内统计函数
+- GROUP BY: 原表格根据某一些列进行分组并在组内进行计算和统计,在select语句的位置除了选择的列，统计的计数 COUNT(*)也要写上
+- CASE WHEN:用于根据几列值的条件创造新的列
+- JOIN: 连接两个表格
 - WINDOW FUNCTION
 - 其他算子 DATE,LIKE,DIFFDATE ...
 
