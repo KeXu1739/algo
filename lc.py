@@ -2495,48 +2495,117 @@ def lc_0701():
         else: prev.right = BinaryTree(val)
         return root
 
-def deleteNode(root: Optional[BinaryTree], key: int) -> Optional[BinaryTree]:
-    parent = None
-    cur = root
-    while cur:
-        if cur.value == key:
-            if (not cur.left) and (not cur.right):
-                if parent:
-                    if cur == parent.left:
-                        parent.left = None
-                    elif cur == parent.right:
-                        parent.right = None
-                else:
-                    return None
-
-            elif not cur.left:
-                parent.right = cur.right
-            elif not cur.right:
-                parent.left = cur.left
-            else:
-                leftChild = cur.left
-                rightChild = cur.right
-                rightLM = cur.right
-                while rightLM.left:
-                    rightLM = rightLM.left
-                rightLM.left = leftChild
-                if parent:
-                    parent.left = rightChild
-                else:
-                    root = cur.right
-                del cur
-            break
-        else:
-            parent = cur
-            if cur.value < key:
-                cur = cur.right
-            else:
+def lc_0450():
+    '''
+    450.删除二叉搜索树中的节点
+    没找到点，找到点：叶子，root，只有左，只有右，有左也有右（inordersuccessor）
+    :return:
+    '''
+    def deleteNode(root: Optional[BinaryTree], key: int) -> Optional[BinaryTree]:
+        def delete(root):
+            if not root: return root
+            if not root.right: return root.left
+            cur = root.right
+            while cur.left:
                 cur = cur.left
-    return root
+            cur.left = root.left
+            return root
+        if not root: return root
+        prev = None
+        cur = root
+        while cur:
+            if cur.value == key: break
+            prev = cur
+            if cur.value > key: cur = cur.left
+            else: cur = cur.right
+
+        # 没找到符合key的点
+        if not cur: return root
+
+        # 找到了符合key的点，但是prev节点为空，说明找到了头
+        if not prev: return delete(root)
+        if prev.left and prev.left.value == key:
+            prev.left = delete(cur)
+        if prev.right and prev.right.value == key:
+            prev.right = delete(cur)
+        return root
+
+
+def lc_0669():
+    '''
+    669. 修剪二叉搜索树
+    :return:
+    '''
+    def trimBST(root: Optional[BinaryTree], low: int, high: int) -> Optional[BinaryTree]:
+        if not root: return root
+        if root.value < low:
+            # 说明root的左树已经完全不符合条件，这时我们trim右边，直接返回trim完之后右边的根节点，隐含删除了当前节点
+            return trimBST(root.right, low, high)
+        if root.value > high:
+            # 说明root的右树已经完全不符合条件，这时我们trim左边，直接返回trim完之后左边的根节点， 隐含删除了当前节点
+            return trimBST(root.left, low, high)
+
+        # 到这里为止，当前节点value在low和high之间，则当前节点保留，分别递归trim左右树并将根节点传给当前树的左右孩子
+        root.left = trimBST(root.left, low, high)
+        root.right = trimBST(root.right, low, high)
+        return root
+
+
+def lc_0108():
+    '''
+    108.将有序数组转换为二叉搜索树
+    :return:
+    '''
+    def sortedArrayToBST(nums: List[int]) -> Optional[BinaryTree]:
+        def arr2BST(nums, l, r):
+            if l > r:
+                return None
+            elif l == r:
+                val = nums[l]
+                return BinaryTree(val)
+            else:
+                m = l + ((r-l) >> 1)
+                val = nums[m]
+                root = BinaryTree(val)
+                root.left = arr2BST(nums, l, m-1)
+                root.right = arr2BST(nums, m+1, r)
+                return root
+        return arr2BST(nums, 0, len(nums)-1)
+
+    def sortedArrayToBSTClean(self, nums: List[int]) -> Optional[BinaryTree]:
+        def arr2BST(nums, l, r):
+            if l > r: return None
+
+            m = l + ((r-l) >> 1)
+            val = nums[m]
+            root = BinaryTree(val)
+            root.left = arr2BST(nums, l, m-1)
+            root.right = arr2BST(nums, m+1, r)
+            return root
+        return arr2BST(nums, 0, len(nums)-1)
+
+def lc_0538():
+    '''
+    538.把二叉搜索树转换为累加树:二叉树双指针，中序遍历反过来就是右左中，符合累加的顺序，然后用全局变量记录前一个节点和累加和
+    :return:
+    '''
+    def convertBST(self, root: Optional[BinaryTree]) -> Optional[BinaryTree]:
+        pre = None
+        cumsum = 0
+        def traverse(root):
+            nonlocal pre, cumsum
+            if not root: return
+            traverse(root.right)
+            if pre is None: cumsum = root.value
+            else: cumsum += root.value
+            root.value = cumsum
+            pre = root
+            traverse(root.left)
+
+        traverse(root)
+        return root
 
 # TODO: lc 0071
 
 if __name__ == "__main__":
-    root = treeLevelOrderDeSerialization("5_3_6_2_4_#_7_#_#_#_#_#_#_")
-    root = deleteNode(root, 7)
-    printBinaryTree(root)
+    lc_0108()
