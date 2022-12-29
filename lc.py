@@ -2605,7 +2605,119 @@ def lc_0538():
         traverse(root)
         return root
 
+def lc_0077():
+    def combine(n: int, k: int) -> List[List[int]]:
+        res = []
+        cur = []
+        def bt(n, k, start):
+            if len(cur) == k:
+                res.append(cur[:])
+                return
+            nd = k - len(cur)
+            end = n-nd+1
+            for i in range(start, end+1):
+                cur.append(i)
+                bt(n, k, i + 1)
+                cur.pop()
+            return
+
+        bt(n,k,1)
+        return res
+
+    n=4
+    k=2
+    print(combine(n, k))
+
+
+def lc_0216():
+    '''
+    216.组合总和III
+    :return:
+    '''
+    res = []
+    cur = []
+    def combinationSum3(k: int, n: int) -> List[List[int]]:
+        res = []
+        cur = []
+        def bt(k, n, summ, start):
+            if k == len(cur) :
+                if summ == n:
+                    res.append(cur[:])
+                return
+
+            # 剪枝1
+            if summ > n:
+                return
+            nd = k - len(cur)
+            end = 9 - nd + 1
+            # 剪枝2
+            for i in range(start, end + 1):
+                cur.append(i)
+                bt(k, n, summ + i, i + 1)
+                cur.pop()
+
+            return
+        bt(k, n, 0, 1)
+        return res
+
+
+def lc_0017():
+    def letterCombinations(digits: str) -> List[str]:
+        mp ={
+            "2":['a', 'b', 'c'],
+            "3":['d', 'e', 'f'],
+            "4":['g', 'h', 'i'],
+            "5":['j', 'k', 'l'],
+            "6":['m', 'n', 'o'],
+            "7":['p', 'q', 'r', 's'],
+            "8":['t', 'u', 'v'],
+            "9":['w', 'x', 'y', 'z'],
+        }
+
+        res = []
+
+        def comb(digits, cur, di):
+            if len(cur) == len(digits):
+                res.append(cur)
+                return
+
+            for i in range(di, len(digits)):
+                for l in mp[digits[i]]:
+                    comb(digits, cur + l, i + 1)
+
+            return
+        if len(digits) == 0: return res
+        comb(digits, "", 0)
+        return res
+
+def lc_0039():
+    '''
+    39. 组合总和: 给定一个无重复元素的数组 candidates 和一个目标数 target ，找出 candidates 中所有可以使数字和为 target 的组合。
+    可重复使用元素
+    :return:
+    '''
+    def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
+        res = []
+        cur = [] # append copy
+        def bt(candidates, target, idx):
+            if target < 0: return
+            if target == 0:
+                res.append(cur[:])
+                return
+            for i in range(idx,len(candidates)):
+                cur.append(candidates[i])
+                target -= candidates[i]
+                bt(candidates, target, i) # 这里留在原始i位置则意味着可以重复选相同的元素，下一层递归进这里之后还是从i开始
+                target += candidates[i]
+                cur.pop()
+            return
+
+        bt(candidates, target, 0)
+        return res
+
+
 # TODO: lc 0071
 
+
 if __name__ == "__main__":
-    lc_0108()
+    combinationSum([2,3,6,7], 7)

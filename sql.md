@@ -1,4 +1,7 @@
 # sql 语法和模板总结
+[https://github.com/ABZ-Aaron/CheatSheets/blob/main/SQL-V2-Dark.pdf]
+
+![img_1.png](img_1.png)
 ## 基础函数
 - SELECT * FROM: 从表格内选择列的语句
 - WHERE/HAVING: 条件语句
