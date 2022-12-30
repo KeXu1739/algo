@@ -2715,9 +2715,234 @@ def lc_0039():
         bt(candidates, target, 0)
         return res
 
+def lc_0040():
+    '''
+    40.组合总和II, 每一个candidate只能用一次，且candidates中有重复数字，最后的组合不能有重复的组合结果
+    :return:
+    '''
+    def combinationSum2(candidates: List[int], target: int) -> List[List[int]]:
+        res = []
+        cur = []
+        def bt(candidates, target, idx):
+            if target < 0: return
+            if target == 0:
+                res.append(cur[:])
+                return
+            i = idx
+            while i <= len(candidates)-1:
+                if i > idx and candidates[i] == candidates[i-1]:
+                    i += 1
+                    continue
+                cur.append(candidates[i])
+                bt(candidates, target - candidates[i], i + 1)
+                cur.pop()
+                i += 1
+            return
+        candidates.sort()
+        bt(candidates, target, 0)
+        return res
 
-# TODO: lc 0071
+    print(combinationSum2([1,1,1,1,1,1,1,1,2,2,2,2,2], 5))
+
+def lc_0131():
+    '''
+    131.分割回文串
+    :return:
+    '''
+    def partition(s: str) -> List[List[str]]:
+        def check(s, i, j):
+            while i < j:
+                if s[i] != s[j]:
+                    return False
+                i += 1
+                j -= 1
+            return True
+
+        res=[]
+        cur=[]
+        def bt(s, idx):
+            if idx == len(s):
+                res.append(cur[:])
+                return
+
+            for i in range(idx, len(s)):
+                if check(s, idx, i):
+                    cur.append(s[idx:i+1])
+                    bt(s, i + 1)
+                    cur.pop()
+                else: continue
+            return
+        bt(s, 0)
+        return res
+
+def lc_0093():
+    '''
+    93.复原IP地址:有效的 IP 地址 正好由四个整数（每个整数位于 0 到 255 之间组成，且不能含有前导 0, eg:025，000不合法，但是0合法），
+    整数之间用 '.' 分隔
+    :return:
+    '''
+    def restoreIpAddresses( s: str) -> List[str]:
+        res = []
+        cur = []
+        def bt(s, n, idx):
+            if n < 0: return
+            if n == 0 and idx == len(s):
+                res.append(".".join(cur))
+                return
+            for i in range(idx, len(s)):
+                if 0 <= int(s[idx:i+1]) <= 255:
+                    if i > idx and s[idx] == "0":
+                        continue
+                    cur.append(s[idx:i+1])
+                    bt(s, n - 1, i + 1)
+                    cur.pop()
+            return
+        bt(s, 4, 0)
+        return res
+
+def lc_0078():
+    '''
+    78.子集: 给定一组不含重复元素的整数数组 nums，返回该数组所有可能的子集（幂集）。说明：解集不能包含重复的子集。
+    :return:
+    '''
+    def subsets(nums: List[int]) -> List[List[int]]:
+        res = []
+        cur = []
+        def bt(nums, idx):
+            # 注意理解这里和之前求组合的不同，从递归树的角度考虑，子集是在搜集树的每一个节点，而组合是在搜集固定长度的从根到叶节点的路径
+            res.append(cur[:])
+
+            if idx == len(nums):
+                # res.append(cur[:])
+                return
+
+            for i in range(idx, len(nums)):
+                cur.append(nums[i])
+                bt(nums, i+1)
+                cur.pop()
+            return
+
+        bt(nums, 0)
+        return res
+    print(subsets([1,2,3,4]))
+
+def lc_0090():
+    '''
+    子集问题，原数组有重复元素的
+    :return: 
+    '''
+    def subsetsWithDup(nums: List[int]) -> List[List[int]]:
+        res = []
+        cur = []
+        used = [False for i in range(len(nums))]
+        def bt(nums, idx):
+            res.append(cur[:])
+            if idx == len(nums):
+                return
+
+            for i in range(idx, len(nums)):
+                if i != idx and nums[i] == nums[i-1] and used[i-1]:
+                    continue
+                cur.append(nums[i])
+                used[i]=True
+                bt(nums, i + 1)
+                cur.pop()
+                used[i]=False
+            return
+
+        nums.sort()
+        bt(nums, 0)
+        return res
+    print(subsetsWithDup([1,1,2,3,4]))
+
+def lc_0491():
+    '''
+    491.递增子序列:无序有重复数的数组中找递增子序列（不连续），这里注意去重技巧：set在全局定义则代表在每个子序列中都不可以重复
+    在bt函数里每次定义代表每个bt函数内不可使用重复的元素，即递归树中每一层去遍历nums可能性的时候不能重复递归用过的元素的case
+    本题求自增子序列，所以不能改变原数组顺序
+    :return:
+    '''
+    def findSubsequences(self, nums: List[int]) -> List[List[int]]:
+        res = []
+        cur = []
+
+        def bt(nums, idx):
+            if len(cur) > 1:
+                res.append(cur[:])
+            if idx == len(nums):
+                return
+            used = set()
+            for i in range(idx,len(nums)):
+                if nums[i] in used:
+                    continue
+                if (len(cur)>0 and nums[i] < cur[-1]):
+                    continue
+                used.add(nums[i])
+                cur.append(nums[i])
+                bt(nums, i + 1)
+                cur.pop()
+            return
+
+        bt(nums, 0)
+        return res
+
+def lc_0046():
+    '''
+    46.全排列: 给定一个 没有重复 数字的序列，返回其所有可能的全排列。used数组放在全局，保证每个permutation不取重复元素，每个排列顺序不同，
+    所以可能遍历到之前的元素，不用idx
+    :return:
+    '''
+    def permute(nums: List[int]) -> List[List[int]]:
+        res = []
+        cur = []
+        used = [False for _ in range(len(nums))]
+        def bt(nums):
+            if len(cur) == len(nums):
+                res.append(cur[:])
+                return
+
+            for i in range(0, len(nums)):
+                if used[i]: continue
+                used[i] = True
+                cur.append(nums[i])
+                bt(nums)
+                cur.pop()
+                used[i] = False
+            return
+
+        bt(nums)
+        return res
+
+def lc_0047():
+    '''
+    47.全排列: 给定一个 有重复数字的序列，返回没有重复的全排列
+    :return:
+    '''
+    def permuteUnique(self, nums: List[int]) -> List[List[int]]:
+        res = []
+        cur = []
+        used = [False for _ in range(len(nums))]
+        def bt(nums):
+            if len(cur) == len(nums):
+                res.append(cur[:])
+                return
+
+            for i in range(len(nums)):
+                # not used[i-1]表明同树层用了第二个重复元素，这里进行剪枝
+                if i != 0 and nums[i] == nums[i-1] and not used[i-1]:
+                    continue
+                if used[i]: continue
+                used[i] = True
+                cur.append(nums[i])
+                bt(nums)
+                cur.pop()
+                used[i] = False
+            return
+        nums.sort()
+        bt(nums)
+        return res
 
 
 if __name__ == "__main__":
-    combinationSum([2,3,6,7], 7)
+    # TODO: lc 0071
+    print("")
