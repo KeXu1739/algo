@@ -3151,6 +3151,174 @@ def lc_0055():
             i += 1
         return False
 
+def lc_0045():
+    '''
+    45. 跳跃游戏： 给定一个非负整数数组，你最初位于数组的第一个位置。数组中的每个元素代表你在该位置可以跳跃的最大长度。
+    判断你最少跳几次可以跳到最后一个位置。
+    :return:
+    '''
+    def jump(nums: List[int]) -> int:
+        j = 0
+        crm = 0
+        nrm = 0
+        for i, num in enumerate(nums):
+            nrm = max(nrm, i+nums)
+            if i == crm and i != len(nums)-1:
+                j += 1
+                crm = nrm
+        return j
+
+
+def lc_1005():
+    '''
+    1005.K次取反后最大化的数组和
+    :return:
+    '''
+    def largestSumAfterKNegations(nums: List[int], k: int) -> int:
+        # sort()
+        # try to flip every negative val
+        # if # of neg > k, then thats it, sum and return
+        # if # of neg < k and after some flips all nums are positive, then flip only element with smallest abs value
+        idx = 0
+        cneg = 0
+        dist = float("inf")
+        nums.sort()
+        for i, num in enumerate(nums):
+            if num < 0:
+                cneg += 1
+            if abs(num) < dist:
+                dist = abs(num)
+                idx = i
+        res = 0
+        if cneg < k:
+            t = k - cneg
+            for num in nums:
+                if num < 0:
+                    res -= num
+                else:
+                    res += num
+            if t % 2 == 1:
+                res -= 2 * abs(nums[idx])
+        else:
+            for num in nums:
+                if num < 0 and k > 0:
+                    res -= num
+                    k -= 1
+                else:
+                    res += num
+        return res
+
+    def largestSumAfterKNegations(nums, k):
+        # 空间复杂度高但是时间最优, 如果能改原数组且k远小于len(nums)则这个最优，lc里面k和len(nums)数量级一致则复杂度一致
+        import heapq
+        hp = [e for e in nums]
+        heapq.heapify(hp)
+        s = 0
+        while k > 0:
+            ele = heapq.heappop(hp)
+            k -= 1
+            heapq.heappush(hp, -1 * ele)
+        return sum(hp)
+
+
+def lc_0134():
+    '''
+    134. 加油站
+    :return:
+    '''
+    def canCompleteCircuit(gas: List[int], cost: List[int]) -> int:
+        if sum(gas) < sum(cost): return -1
+        rest = [g - c for g,c in zip(gas, cost)]
+        cumSum = 0
+        s = 0
+        for i, r in enumerate(rest):
+            cumSum += r
+            if cumSum < 0:
+                cumSum = 0
+                s = i + 1
+        return s
+
+
+def lc_0135():
+    '''
+    根据rating分糖果，高rating糖果数高于邻居们
+    :return:
+    '''
+    def candy(ratings: List[int]) -> int:
+        res = [1 for r in ratings]
+        if len(res) == 1: return sum(res)
+        for i in range(1, len(ratings)):
+            if ratings[i] > ratings[i-1] and res[i] <= res[i-1]:
+                res[i] = res[i-1] + 1
+        for i in range(len(ratings)-2, -1, -1):
+            if ratings[i] > ratings[i+1] and res[i] <= res[i+1]:
+                res[i] = res[i+1] + 1
+        return sum(res)
+def lc_0806():
+    '''
+    860.柠檬水找零， 5,10,20
+    :return:
+    '''
+    def lemonadeChange(bills: List[int]) -> bool:
+        fv = 0
+        tn = 0
+        for num in bills:
+            if num == 5:
+                fv += 1
+            elif num == 10:
+                fv -= 1
+                tn += 1
+            elif num == 20:
+                if tn >= 1:
+                    tn -= 1
+                    fv -= 1
+                else:
+                    fv -= 3
+            if fv < 0 or tn < 0: return False
+        return True
+
+def lc_0406():
+    '''
+    406.根据身高重建队列：根据身高和队列中前面有多少个高于自己的人重建队列
+    :return:
+    '''
+    def lcfastest(people: List[List[int]]) -> List[List[int]]:
+        people.sort(key=lambda x:(x[0], -x[1]), reverse=True)
+        ls = []
+        for ele in people:
+            ls.insert(ele[1], ele)
+        return ls
+
+    def reconstructQueue(people: List[List[int]]) -> List[List[int]]:
+        class Node:
+            def __init__(self, val, n=None):
+                self.val = val
+                self.n = n
+
+        people.sort(key=lambda x: (x[0], -x[1]), reverse=True)
+
+        head = Node(people[0])
+        _dummy = Node(None, head)
+        for i in range(1, len(people)):
+            cur = _dummy
+            count = 0
+
+            while (cur.n and count < people[i][1]):
+                count += 1
+                cur = cur.n
+            if not cur.n:
+                cur.n = Node(people[i])
+            else:
+                tmp = Node(people[i], cur.n)
+                cur.n = tmp
+
+        res = []
+        cur = _dummy.n
+        while cur:
+            res.append(cur.val)
+            cur = cur.n
+        return res
+
 if __name__ == "__main__":
+    pass
     # TODO: lc 0071
-    lc_0053()
