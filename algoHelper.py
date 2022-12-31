@@ -5994,6 +5994,8 @@ def getTransformedLength(word, t):
     #     new_word = "".join([mp[item] for item in new_word])
     # return len(new_word) % (100000007)
 
+
+
 if __name__ == "__main__":
     print(getNextArr(""))
     # print("Hi")

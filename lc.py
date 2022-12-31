@@ -2942,7 +2942,215 @@ def lc_0047():
         bt(nums)
         return res
 
+def lc_0455():
+    '''
+    455.分发饼干
+    :return:
+    '''
+    def findContentChildren(g: List[int], s: List[int]) -> int:
+        g.sort(reverse=True)
+        s.sort(reverse=True)
+        i, j = 0, 0
+        ret = 0
+        while i < len(g) and j < len(s):
+            if s[j] >= g[i]:
+                ret += 1
+                i += 1
+                j += 1
+            else:
+                i += 1
+        return ret
+
+
+def lc_0332():
+    '''
+    332.重新安排行程:每条航线都必须走且只走一次，返回字典序最小的航线，python这里要注意因为没有treemap所以targets里面记录终点的数据结构使用
+    list，而且需要排序，每次删掉前面的，回溯完append到最后面
+    :return:
+    '''
+    from collections import defaultdict
+    def findItinerary(tickets: List[List[str]]) -> List[str]:
+        res = ["JFK"]
+        targets = defaultdict(list)
+        for s, e in tickets: targets[s].append(e)
+        for s in targets: targets[s].sort()
+
+        def bt(start):
+            if len(res) == len(tickets) + 1: return True
+            for _ in targets[start]:
+                dest = targets[start].pop(0)
+                res.append(dest)
+                if bt(dest): return True
+                res.pop()
+                targets[start].append(dest)
+
+        bt("JFK")
+        return res
+
+    print(findItinerary([["JFK","KUL"],["JFK","NRT"],["NRT","JFK"]]))
+
+def lc_0051():
+    '''
+    51. N-Queens,返回棋盘形状，以行递归，以列遍历
+    :return:
+    '''
+    def solveNQueens(n: int) -> List[List[str]]:
+        res = []
+        cb = [["." for i in range(n)] for j in range(n)]
+        def valid(r, c, cb):
+            for i in range(len(cb)):
+                if cb[i][c] == "Q":
+                    return False
+
+            i, j = r - 1, c - 1
+            while i >=0 and j >=0:
+                if cb[i][j] == "Q":
+                    return False
+                i -= 1
+                j -= 1
+
+            i, j = r - 1, c + 1
+            while i >= 0 and j < n:
+                if cb[i][j] == "Q":
+                    return False
+                i -= 1
+                j += 1
+            return True
+
+        def bt(r, cb):
+            n = cb
+            if r == n:
+                tmp = []
+                for row in cb: tmp.append("".join(row))
+                res.append(tmp)
+                return
+            for c in range(len(cb)):
+                if valid(r, c, cb):
+                    cb[r][c] = "Q"
+                    bt(r + 1, cb)
+                    cb[r][c] = "."
+
+        bt(0, cb)
+        return res
+
+
+def lc_0037():
+    '''
+    37. 解数独
+    :return:
+    '''
+    def solveSudoku(board: List[List[str]]) -> None:
+        digits = "123456789"
+        def valid(r, c, val, board):
+            for i in range(len(board)):
+                if board[i][c] == val:
+                    return False
+            for j in range(len(board)):
+                if board[r][j] == val:
+                    return False
+            uli, ulj = r // 3 * 3, c // 3 * 3
+            for i in range(uli, uli + 3):
+                for j in range(ulj, ulj + 3):
+                    if board[i][j] == val:
+                        return False
+            return True
+
+        def bt(board):
+            for i in range(len(board)):
+                for j in range(len(board)):
+                    if board[i][j] != ".": continue
+                    for k in digits:
+                        # 找到了一个可以填数字的地方，遍历尝试所有9个数
+                        if valid(i, j, k, board):
+                            # 填一个数，判断是不是填完了，没完的话递归填下一个位置的数字，填完了返回True
+                            board[i][j] = k
+                            if bt(board): return True
+                            # board还没填满，并且填这个数这条路走不通，需要回溯然后尝试别的数
+                            board[i][j] = "."
+                    return False
+            # 棋盘满了，所有位置都不是'.'直接返回true
+            return True
+
+        return bt(board)
+
+def lc_0376():
+    def wiggleMaxLength(nums: List[int]) -> int:
+        n = len(nums)
+        if n == 0 or n == 1: return n
+
+        res = 1
+        prevdiff = 0
+
+        for i in range(1,n):
+            curdiff = nums[i] - nums[i-1]
+            if (curdiff > 0 and prevdiff <= 0) or (curdiff < 0 and prevdiff >= 0):
+                res += 1
+                prevdiff = curdiff
+        return res
+
+def lc_0053():
+    '''
+    最大连续子序列和以及对应起止位置的下标
+    :return:
+    '''
+    def maxSubArray(nums: List[int]) -> int:
+        cur, mx = 0, float("-inf")
+        for num in nums:
+            cur += num # 当前位置累加上
+            mx = max(mx, cur) # 更新最大值
+            cur = max(0, cur) # 如果累加完当前元素的cur小于0了，说明当前这个value会把面的累加和变为负数，那么就需要从下一个元素
+            # 开始重新累加 （cur
+        return mx
+
+    def maxSubArrayRange(nums: List[int]) -> int:
+        cur, mx = 0, float("-inf")
+        l, r = 0, 0
+        for i, num in enumerate(nums):
+            cur += num # 当前位置累加上
+            if cur > mx:
+                mx = cur # 更新最大值
+                r = i
+            if cur < 0:
+                cur = 0 # 如果累加完当前元素的cur小于0了，说明当前这个value会把面的累加和变为负数，那么就需要从下一个元素开始重新累加
+                l = i+1
+
+        if l > r:
+            # 如果元素全是负的，前面的逻辑会有问题，这里强行找到最大的负数然后返回index
+            l, r = nums.index(mx), nums.index(mx)
+        return mx, l, r
+
+    print(maxSubArrayRange([]))
+
+def lc_0122():
+    '''
+    122.买卖股票的最佳时机II
+    :return:
+    '''
+    def maxProfit(prices: List[int]) -> int:
+        if len(prices) == 1: return 0
+        diff = []
+        su = 0
+        for i in range(1, len(prices)):
+            if prices[i] > prices[i-1]:
+                su += prices[i] - prices[i-1]
+        return su
+
+def lc_0055():
+    '''
+    55. 跳跃游戏： 给定一个非负整数数组，你最初位于数组的第一个位置。数组中的每个元素代表你在该位置可以跳跃的最大长度。
+    判断你是否能够到达最后一个位置。
+    :return:
+    '''
+    def canJump(nums: List[int]) -> bool:
+        if len(nums) == 1: return True
+        rg = 0
+        i = 0
+        while i <= rg:
+            rg = max(rg, i + nums[i]) # 每个元素看能不能让range变大
+            if rg >= len(nums)-1: return True
+            i += 1
+        return False
 
 if __name__ == "__main__":
     # TODO: lc 0071
-    print("")
+    lc_0053()

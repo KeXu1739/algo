@@ -724,5 +724,24 @@ def note():
 
 
 if __name__ == "__main__":
-    dailyCheck()
+    n = 3
+    idd = ""
+    log = [
+        "20:47 3494 1",
+        "20:49 123 0",
+        "21:03 344 1"
+    ]
+    for i in range(n):
+        log_entry = log[i]
+
+        # Write an answer using print
+        # To debug: print("Debug messages...", file=sys.stderr, flush=True)
+        t, ii, st = log_entry.split(" ")
+        h, m = t.split(":")
+        hh, mm = int(h), int(m)
+        if (((20 <= hh <= 23) and (0 <= mm <= 59)) or ((0 <= hh <= 7) and (0 <= mm <= 59))) and st == "0":
+            idd = ii
+
+
+    print(idd)
 
