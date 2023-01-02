@@ -3282,7 +3282,7 @@ def lc_0406():
     406.根据身高重建队列：根据身高和队列中前面有多少个高于自己的人重建队列
     :return:
     '''
-    def lcfastest(people: List[List[int]]) -> List[List[int]]:
+    def lcOptimal(people: List[List[int]]) -> List[List[int]]:
         people.sort(key=lambda x:(x[0], -x[1]), reverse=True)
         ls = []
         for ele in people:
@@ -3318,7 +3318,183 @@ def lc_0406():
             res.append(cur.val)
             cur = cur.n
         return res
+def lc_0452():
+    '''
+    452. 用最少数量的箭引爆气球
+    :return:
+    '''
+    def lcOptimal(self, points: List[List[int]]) -> int:
+        points.sort(key=lambda x: x[1])
+        lastIdx = float("-inf")
+        res = 0
+        for l, r in points:
+            if l > lastIdx:
+                res += 1
+                lastIdx = r
+        return res
+
+    def findMinArrowShots(points: List[List[int]]) -> int:
+        points.sort()
+        curInterval = [float("-inf"), float("inf")]
+        res = 1
+        for ele in points:
+            # 取交集，如果没交集就更新curInterval并增加结果集，相交的气球集合用一只箭可以射爆
+            curInterval[0] = max(curInterval[0], ele[0])
+            curInterval[1] = min(curInterval[1],ele[1])
+            if curInterval[0] > curInterval[1]:
+                res += 1
+                curInterval = ele
+        return res
+
+def lc_0435():
+    '''
+    435. 无重叠区间
+    :return: 返回需要删掉几个区间
+    '''
+    def eraseOverlapIntervals(intervals: List[List[int]]) -> int:
+        if len(intervals) == 1: return 0
+        intervals.sort(key=lambda x: x[1])
+        res = 0
+        cur = intervals[0]
+        for i in range(1, len(intervals)):
+            if intervals[i][0] < cur[1]:
+                # 重叠就res+1，这时cur不发生变化，下一轮还可能和下一个区间继续重叠
+                res += 1
+            else:
+                # 不重叠，就把cur移到当前的interval，这样还有跟下面interval重叠的可能
+                cur = intervals[i]
+        return res
+
+def lc_0763():
+    '''
+    763.划分字母区间
+    统计每一个字符最后出现的位置
+    从头遍历字符，并更新字符的最远出现下标，如果找到字符最远出现位置下标和当前下标相等了，则找到了分割点
+    :return:
+    '''
+    def partitionLabels(s: str) -> List[int]:
+        b = {}
+        for i,e in enumerate(s):
+            b[e] = i
+
+        res = []
+        lg = 0
+        cnt = 0
+        for i in range(len(s)):
+            cnt += 1
+            lg = max(lg, b[s[i]])
+            if i == lg:
+                res.append(cnt)
+                cnt = 0
+
+        return res
+
+def lc_0056():
+    '''
+    56. 合并区间
+    :return:
+    '''
+    def merge(intervals: List[List[int]]) -> List[List[int]]:
+        intervals.sort()
+        res = []
+        cur = intervals[0]
+        for i in range(1, len(intervals)):
+            if cur[1] >= intervals[i][0]:
+                # 如果集合相交，取并集，否则更新cur集合并把之前的集合放入结果集
+                cur[0] = min(cur[0], intervals[i][0])
+                cur[1] = max(cur[1], intervals[i][1])
+            else:
+                res.append(cur[:])
+                cur = intervals[i]
+        res.append(cur)
+        return res
+def lc_0738():
+    '''
+    738.单调递增的数字
+    :return:
+    '''
+    def lcOptimal(n: int) -> int:
+        cL = list(str(n))
+        for i in range(len(cL)-1, 0, -1):
+            if cL[i] < cL[i-1]:
+                cL[i:] = ['9']*(len(cL)-i)
+                cL[i-1] = str(int(cL[i-1]-1))
+        return int("".join(cL))
+
+    def monotoneIncreasingDigits(n: int) -> int:
+        charList = [int(i) for i in str(n)] # 常数空间
+        start = -1
+        for i in range(len(charList)-1, 0, -1):
+            if charList[i-1] > charList[i]:
+                start = i
+                charList[i] = 9
+                charList[i-1] -= 1
+        if start != -1:
+            for i in range(start, len(charList)):
+                charList[i] = 9
+        return int("".join([str(i) for i in charList]))
+
+def lc_0714():
+    '''
+    714. 买卖股票的最佳时机含手续费,
+    Greedy:最重要的地方是连续递增的股价时如何只计算一次交易费用，这个处理非常的巧妙
+    :return:
+    '''
+    def maxProfitGreedy(prices: List[int], fee: int) -> int:
+        p = 0
+        mp = prices[0]
+        for i in range(1, len(prices)):
+            if prices[i] < mp:
+                mp = prices[i]
+            elif prices[i] - mp - fee < 0: continue
+            elif prices[i] - mp - fee >= 0:
+                p += prices[i] - mp - fee
+                mp = prices[i] - fee # 这里模拟一下就可以看出来这样设置之后
+        return p
+    maxProfitGreedy([1,5,10,9,13], 3)
+
+def lc_0968():
+    '''
+    968.监控二叉树:二叉树节点上摆放监控相机的最优策略
+    :return:
+    '''
+    def minCameraCover(root: Optional[BinaryTree]) -> int:
+        # 3 status: 0. no cover, 1. has camera 2. has cover
+        # for empty node: needs to be status 2 to prevent leaf-setting-camera
+        # 贪心策略：在叶子节点安排相机效率低，因为一个相机只能覆盖这个叶子节点和他的父节点，而一个父节点可以覆盖两个叶子（或两个孩子）以及
+        # 自己的父节点，所以我们在叶子节点上不安排相机
+        res = 0
+        def rc(root):
+            nonlocal res
+            # 因为叶子节点不能安排相机，那么空节点要设计成被覆盖状态，这样可以保证叶子节点不放相机同时叶子节点也不被覆盖
+            if not root: return 2
+            l = rc(root.left)
+            r = rc(root.right)
+            # 左和右孩子同时为被覆盖状态，则当前节点在本层递归是不被覆盖状态
+            if l == 2 and r == 2: return 0
+            # 左或者右边有一个没覆盖，那么当前节点需要有一个照相机
+            # left == 0 && right == 0 左右节点无覆盖
+            # left == 1 && right == 0 左节点有摄像头，右节点无覆盖
+            # left == 0 && right == 1 左节点有无覆盖，右节点摄像头
+            # left == 0 && right == 2 左节点无覆盖，右节点覆盖
+            # left == 2 && right == 0 左节点覆盖，右节点无覆盖
+            elif l == 0 or r == 0:
+
+                res += 1
+                return 1
+            # 剩下的状态是：左右孩子一个覆盖一个有相机，或者同时有相机（不可能同时有覆盖因为第一个case排除掉了），那么
+            # 当前一定是被覆盖状态
+            # left == 1 && right == 2 左节点有摄像头，右节点有覆盖
+            # left == 2 && right == 1 左节点有覆盖，右节点有摄像头
+            # left == 1 && right == 1 左右节点都有摄像头
+            else: return 2
+
+        status = rc(root)
+        if status == 0: res += 1
+        return res
 
 if __name__ == "__main__":
-    pass
+    lc_0714()
+
+
     # TODO: lc 0071

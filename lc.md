@@ -1,9 +1,14 @@
 # LC刷题笔记 [https://programmercarl.com/]
 - 数组:[https://programmercarl.com/%E6%95%B0%E7%BB%84%E6%80%BB%E7%BB%93%E7%AF%87.html#%E4%BA%8C%E5%88%86%E6%B3%95]
+  - ![img_5.png](img_5.png)
 - 链表:[https://programmercarl.com/%E9%93%BE%E8%A1%A8%E6%80%BB%E7%BB%93%E7%AF%87.html#%E9%93%BE%E8%A1%A8%E7%9A%84%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80]
+  - ![img_6.png](img_6.png)
 - hashtable: [https://programmercarl.com/%E5%93%88%E5%B8%8C%E8%A1%A8%E6%80%BB%E7%BB%93.html#%E6%95%B0%E7%BB%84%E4%BD%9C%E4%B8%BA%E5%93%88%E5%B8%8C%E8%A1%A8]
+  - hashtable经常是作为一个辅助结构，考虑使用数组还是哈希表进行hash，能用数组就用数组
 - 字符串: [https://programmercarl.com/%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%80%BB%E7%BB%93.html]
+  - 双指针，kmp算法是重点，要多练多理解跳跃的逻辑
 - 双指针方法: [https://programmercarl.com/%E5%8F%8C%E6%8C%87%E9%92%88%E6%80%BB%E7%BB%93.html]
+  - 
 - stack和queue: [https://programmercarl.com/%E6%A0%88%E4%B8%8E%E9%98%9F%E5%88%97%E6%80%BB%E7%BB%93.html#%E6%A0%88%E5%9C%A8%E7%B3%BB%E7%BB%9F%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8]
 - 二叉树: [https://programmercarl.com/%E4%BA%8C%E5%8F%89%E6%A0%91%E6%80%BB%E7%BB%93%E7%AF%87.html]
   - 搜索树中序遍历是有序数组
@@ -23,3 +28,5 @@
   - 皇后问题是一个对行递归，对列遍历的一维递归问题
 - 贪心：
   - 先跟着直觉走，找不到反例的话贪心策略就能成功
+  - 思考方向：排序，简单尝试优先满足明显条件的case，整个数组从左到右从右到左，或者从左到右一次然后从右到左一次
+  - ![img_4.png](img_4.png)
