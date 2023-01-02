@@ -3408,6 +3408,7 @@ def lc_0056():
                 cur = intervals[i]
         res.append(cur)
         return res
+
 def lc_0738():
     '''
     738.单调递增的数字
@@ -3493,8 +3494,129 @@ def lc_0968():
         if status == 0: res += 1
         return res
 
+def lc_0509():
+    '''
+    509. 斐波那契数
+    :return:
+    '''
+    def fibdp(n):
+        if n == 0: return 0
+        if n == 1: return 1
+        dp = [None for i in range(n+1)]
+        # dp[i]: n=i时的fib数
+        dp[0] = 0
+        dp[1] = 1
+        for i in range(2, len(dp)):
+            dp[i] = dp[i-1] + dp[i-2]
+
+        return dp[-1]
+
+
+    def fib(n: int) -> int:
+        if n == 0: return 0
+        if n == 1: return 1
+        f,s = 0,1
+        for i in range(n-1):
+            f,s = s, f+s
+        return s
+    print(fibdp(3))
+
+def lc_0070():
+    '''
+    70. 爬楼梯的方法数
+    :return:
+    '''
+    def climbStairsDP(n: int) -> int:
+        if n == 1: return 1
+        if n == 2: return 2
+        dp = [None for i in range(n+1)]
+        # 爬到第i层楼梯，有dp[i]种方法
+        dp[1] = 1
+        dp[2] = 2
+        for i in range(3, len(dp)):
+            dp[i] = dp[i-1] + dp[i-2]
+        return dp[-1]
+
+    def climbStairs(n):
+        if n == 1: return 1
+        if n == 2: return 2
+        f,s = 1, 2
+        for i in range(3, n+1):
+            f,s = s, f+s
+        return s
+
+def lc_0746():
+    '''
+    746. 使用最小花费爬楼梯:每个位置有个cost，代表从这个台阶爬出去需要的cost
+    :return:
+    '''
+    def minCostClimbingStairs(self, cost: List[int]) -> int:
+        dp = [0 for i in range(len(cost)+1)]
+        # dp[i]: 到达cost[i]位置需要的cost，这里多申请一个位置，最后一个位置代表cost最后一个元素的下一个位置即为顶部
+        # 第一步从dp[0]或dp[1]开始，所以没有cost，从这两个位置跳出去到下一个位置才开始产生cost
+        for i in range(2, len(cost)+1):
+            dp[i] = min(dp[i - 2] + cost[i - 2], dp[i - 1] + cost[i - 1])
+        return dp[-1]
+    def minCostClimbingStairsOptimal(self, cost: List[int]) -> int:
+        # 带空间优化的版本，按照之前的定义，每一个位置只依赖其前面一个和两个位置，所以不用申请数组，只需要申请两个变量存数就可以了
+        f,s = 0, 0
+        for i in range(2, len(cost) + 1):
+            f,s = s,min(f+cost[i-2], s+cost[i-1])
+        return s
+
+def lc_0062():
+    '''
+    62.不同路径:从左上角出发到右下角
+    :return:
+    '''
+    def uniquePaths(m: int, n: int) -> int:
+        # dp[i][j]:从左上角到达坐标(i,j)位置有几种方法
+        dp = [[None for _ in range(n)] for __ in range(m)]
+        dp[0][0] = 1
+        for j in range(1, n): dp[0][j] = 1
+        for i in range(1, m): dp[i][0] = 1
+        for i in range(1, m):
+            for j in range(1, n):
+                dp[i][j] = dp[i-1][j] + dp[i][j-1]
+        return dp[-1][-1]
+
+    def uniquePathsOptimal(m: int, n: int) -> int:
+        # 当前位置只依赖自己左方和上方的位置，空间优化，用更短的那个维度维持dp数组
+        dp = [1 for i in range(m)] if m < n else [1 for i in range(n)]
+        if m < n:
+            for j in range(1, n):
+                for i in range(1, m):
+                    dp[i] = dp[i] + dp[i-1]
+        else:
+            for i in range(1, m):
+                for j in range(1, n):
+                    dp[j] = dp[j] + dp[j - 1]
+        return dp[-1]
+
+def lc_0063():
+    '''
+    63. 不同路径 II:从左上角出发到右下角带障碍物
+    :return:
+    '''
+    def uniquePathsWithObstacles(obstacleGrid: List[List[int]]) -> int:
+        m,n = len(obstacleGrid), len(obstacleGrid[0])
+        dp = [[None for _ in range(n)] for __ in range(m)]
+        val = 1
+        for j in range(n):
+            if obstacleGrid[0][j]: val = 0
+            dp[0][j] = val
+        val = 1
+        for i in range(m):
+            if obstacleGrid[i][0]: val = 0
+            dp[i][0] = val
+        for i in range(1, m):
+            for j in range(1, n):
+                if obstacleGrid[i][j]:
+                    dp[i][j] = 0
+                else:
+                    dp[i][j] = dp[i-1][j] + dp[i][j-1]
+        return dp[-1][-1]
+
 if __name__ == "__main__":
-    lc_0714()
-
-
+    lc_0509()
     # TODO: lc 0071
