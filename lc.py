@@ -3617,6 +3617,233 @@ def lc_0063():
                     dp[i][j] = dp[i-1][j] + dp[i][j-1]
         return dp[-1][-1]
 
+def lc_0033():
+    '''
+    在旋转过的有序数组中二分搜索，重点在于需要找到有序的部分然后在有序的部分正常二分
+    :return:
+    '''
+    def search(nums: List[int], target: int) -> int:
+        l, r = 0, len(nums)-1
+        while l <= r:
+            m = l + ((r-l)>>1)
+            if nums[m] == target: return m
+            if nums[m] < nums[r]:
+                # m...r部分有序
+                if nums[m] < target <= nums[r]:
+                    l = m + 1
+                else:
+                    r = m - 1
+            elif nums[m] >= nums[r]:
+                # m...r部分无序，则l...m部分有序
+                if nums[l] <= target < nums[m]:
+                    r = m - 1
+                else:
+                    l = m + 1
+        return -1
+
+def lc_0343():
+    '''
+    343. 整数拆分:凑出最大的连乘积
+    注意递归式里取max的时候还要加上当前位置因为你是在遍历j的可能性更新i位置
+    这个题目还有个很妙的贪心，尽量把正整数拆成3的连乘，如果不行就拆成2的连乘
+    可以用函数求导证明 x = ed的时候取极大值，f(x) = x ** (n/x)
+    :return:
+    '''
+    def integerBreak(n: int) -> int:
+        # dp[i]:和为i的几个正整数的最大乘积
+        dp = [0 for i in range(n+1)]
+        for i in range(2, len(dp)):
+            for j in range(i):
+                dp[i] = max(dp[i], dp[i-j]*j, (i-j)*j)
+        return dp[-1]
+
+    print(integerBreak(50))
+
+def lc_0096():
+    '''
+    96. Unique Binary Search Trees：给一个正整数n，共n个节点的二叉树每个节点数字从1到n，问有几种不同的二叉树结构
+    卡特兰数: F(n) = F(0)*F(n-1) + F(1)*F(n-2) + ... + F(n-1)*F(0)
+    :return:
+    '''
+    def numTrees(n: int) -> int:
+        # dp[i]:1到i为节点组成的二叉搜索树的个数为dp[i]
+        if n == 0: return 1
+        if n == 1: return 1
+        if n == 2: return 2
+        dp = [0 for i in range(n + 1)]
+        dp[0] = 1
+        dp[1] = 1
+        dp[2] = 2
+        for i in range(3, n+1):
+            for j in range(i):
+                dp[i] += dp[j] * dp[i-1-j]
+        return dp[-1]
+
+def lc_0081():
+    def search(nums: List[int], target: int) -> bool:
+        l, r = 0, len(nums)-1
+        while l <= r:
+            m = l + ((r-l)>>1)
+            if target == nums[m]: return True
+
+            if nums[m] < nums[r]:
+                if nums[m] < target <= nums[r]:
+                    l = m + 1
+                else:
+                    r = m - 1
+            elif nums[m] > nums[r]:
+                if nums[l] <= target < nums[m]:
+                    r = m - 1
+                else:
+                    l = m + 1
+            else:
+                l += 1 # 或者r-=1这两个是等价的，就是为了让loop跳出m和l或r相等的情况
+        return False
+    print(search([1,0,1,1,1,1,1], 0))
+
+def ln_0092():
+    '''
+    0-1背包问题
+    :return:
+    '''
+    def bp(weights, values, limit):
+        res = []
+        cur = []
+        def bt(weights, values, idx, limit):
+            if idx == len(weights) and limit >= 0:
+                res.append(sum(cur))
+                return
+            if idx > len(weights) or limit < 0:
+                return
+
+            cur.append(values[idx])
+            bt(weights, values, idx +1, limit-weights[idx])
+            cur.pop()
+            bt(weights, values, idx +1, limit)
+            return
+        bt(weights, values, 0, limit)
+        return max(res)
+
+
+    def backpack(weights, values, limit):
+        dp = [[0 for _ in range(limit+1)] for __ in range(len(weights))]
+        for j in range(limit+1):
+            if j >= weights[0]:
+                dp[0][j] = values[0]
+
+        for i in range(1, len(weights)):
+            for j in range(1, limit+1):
+                if weights[i] > j:
+                    dp[i][j] = dp[i-1][j]
+                else:
+                    dp[i][j] = max(dp[i-1][j], dp[i-1][j-weights[i]]+values[i])
+        return dp[-1][-1]
+
+
+    def backpackOptimal(weights, values, limit):
+        dp = [0 for i in range(limit + 1)]
+        for i in range(len(dp)):
+            if i >= weights[0]:
+                dp[i] = weights[0]
+
+        for i in range(1, len(weights)):
+            for j in range(limit, 0, -1):
+                if j >= weights[i]:
+                    dp[j] = max(dp[j], dp[j-weights[i]] + values[i])
+        return dp[-1]
+
+
+
+    weights = [1,4,2,3,4]
+    values = [5,6,7,8,9]
+    limit = 5
+    print(backpackOptimal(weights, values, limit))
+
+def lc_0416():
+    '''
+    416. 分割等和子集：把一个集合分成两个子集，使两个子集的和相等，返回能否实现
+    :return:
+    '''
+    def canPartition(nums: List[int]) -> bool:
+        su = sum(nums)
+        if su % 2 == 1: return False
+        hf = su // 2
+        dp = [0 for i in range(hf+1)]
+        for j in range(nums[0], len(dp)+1):
+            dp[j] = nums[0]
+        for i in range(1,len(nums)):
+            for j in range(hf+1, nums[i]-1, -1):
+                dp[j] = max(dp[j], dp[j-nums[i]]+nums[i])
+
+        return dp[hf] == hf
+
+
+def lc_1049():
+    '''
+    1049. 最后一块石头的重量 II:从一堆石头中每次挑两个，如果两个重量相等，那么两个石头都碎掉，如果一个比另一个重，轻的那个碎掉，剩下的那个重量
+    变成两个石头重量的差，最后至多剩一块石头，问这个石头重量的最小值，题目等同于将所有石头分成两组使得两组的重量和尽量接近，则这两组石头分别加和后
+    的重量之差为最后剩下的石头的重量
+    :return:
+    '''
+    def lastStoneWeightII(stones: List[int]) -> int:
+        sm = sum(stones)
+        hf = sm // 2
+        dp = [0 for i in range(hf+1)]
+        # [0...i] stones combined, the weight of the smallest resultant stone
+
+        for i in range(len(stones)):
+            for j in range(hf, stones[i]-1, -1):
+                dp[j] = max(dp[j], dp[j-stones[i]]+stones[i])
+        return sm - 2 * dp[-1]
+
+
+def lc_0494():
+    '''
+    494. 目标和:给非负整数组，在每个元素前面添加正或者负号，凑出target，问一共有多少种凑法
+    这个问题转化成0-1背包的思路很巧，我们把数组分成假想的两部分，其中一部分前面加正号，另一部分加负号，最后正-负得到target正+负得到数组和
+    这样可以转化为：选背包里的数正好凑成(target + sum)//2的方法有几种，即为0-1背包问题
+    :return:
+    '''
+    def findTargetSumWays(nums: List[int], target: int) -> int:
+        l = (sum(nums) + target) // 2
+        if 2 * l != sum(nums) + target: return 0
+        if abs(target) > sum(nums): return 0
+        r = sum(nums) - l
+        # 转化为背包能不能凑出和为l有几种方法
+        dp = [0 for i in range(l+1)]
+        # dp[j]: 只用[0...i]上的元素求和为j，有几种求法
+        dp[0] = 1
+
+        for i in range(len(nums)):
+            for j in range(l, -1, -1):
+                if j < nums[i]: dp[j] = dp[j]
+                else: dp[j] = dp[j-nums[i]] + dp[j]
+            print(dp)
+        return dp[-1]
+
+    print(findTargetSumWays([1,1,1,1,1], 3))
+
+def lc_0474():
+    '''
+    474.一和零: binary string array,求最大子集的大小，限制为0的个数最多为m,1的个数最多为n
+    :return: 最大子集的大小
+    '''
+
+    def findMaxForm(strs: List[str], m: int, n: int) -> int:
+        dp = [[0 for j in range(n+1)] for i in range(m+1)]
+        for s in strs:
+            n_0, n_1 = 0, 0
+            for e in s:
+                if e == "0": n_0 += 1
+                if e == "1": n_1 += 1
+            for i in range(m, n_0 - 1, -1):
+                for j in range(n, n_1 - 1, -1):
+                    dp[i][j] = max(dp[i][j], dp[i-n_0][j-n_1]+1)
+        return dp[-1][-1]
+
+    print(findMaxForm(["10","0001","111001","1","0"],4 ,3))
+
+
 if __name__ == "__main__":
-    lc_0509()
     # TODO: lc 0071
+    lc_0474()

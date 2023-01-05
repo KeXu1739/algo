@@ -37,8 +37,8 @@
   - https://leetcode.com/
 - 说明：每个大类按重要性递减，最优先为A
 - [A： 各类型题目的典型模板题，基本需要刷十几遍，做到迷迷糊糊半昏迷状态也能熟练默写的肌肉记忆状态，任何情况下都要一遍写出来]: 
-  - LC0074: Binary Search LC704
-  - LC0033: Search in Rotated Sorted Array　
+  - [2] LC0704: Binary Search LC704
+  - [1] LC0033: Search in Rotated Sorted Array　
   - LC0081: Search in Rotated Sorted Array II
   - LC0912: Sort an Array (Quick Sort and Merge Sort)
   - LC0075: Sort an Array (Quick Sort and Merge Sort)
@@ -50,7 +50,7 @@
   - LC0297: Serialize and Deserialize Binary Tree
   - LN0127: Topological Sorting
   - LC0200: Number of Islands (DFS/UnionFind)
-  - LC0133:Clone Graph
+  - LC0133: Clone Graph
   - LC0094: Binary Tree Inorder Traversal
   - LC0144: Binary Tree Preorder Traversal
   - LC0145: Binary Tree Postorder Traversal
@@ -73,7 +73,7 @@
   - LC0307: Range Sum Query - Mutable
   - LC0146: LRU Cache
   - LC0460: LFU Cache
-  - LN0092: Backpack
+  - [1] LN0092: Backpack
   - LC0062: Unique Paths
   - LC0063: Unique Paths II 
 - [B： 主要是各种高频题和经典题，基本在5~8遍以上，需要做到最优解，medium难度10分钟以内，hard难度15分钟以内，无错一遍过，同时要能解释清楚思路。另外有多重解法的也要掌握，知道不同解法间的优缺点和trade off原因，任何情况下都要一遍写出来]
@@ -220,7 +220,7 @@
   - LC0588: Design In-Memory File System
   - LC0981: Time Based Key-Value Store
   - LC1396: Design Underground System
-  - LN0125: Backpack II
+  - [1] LN0125: Backpack II
   - LN0440: Backpack III
   - LC0139: Word Break
   - LC0121: Best Time to Buy and Sell Stock
