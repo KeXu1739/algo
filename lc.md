@@ -30,6 +30,8 @@
   - 先跟着直觉走，找不到反例的话贪心策略就能成功
   - 思考方向：排序，简单尝试优先满足明显条件的case，整个数组从左到右从右到左，或者从左到右一次然后从右到左一次
   - ![img_4.png](img_4.png)
+### 动态规划: []
+  -  
 
 ## LC 题目集合 [https://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=678970&page=1&authorid=682747]
 - Website:
@@ -221,7 +223,7 @@
   - LC0981: Time Based Key-Value Store
   - LC1396: Design Underground System
   - [1] LN0125: Backpack II
-  - LN0440: Backpack III
+  - [1] LN0440: Backpack III
   - LC0139: Word Break
   - LC0121: Best Time to Buy and Sell Stock
   - LC0010: Regular Expression Matching

@@ -3,9 +3,11 @@ from typing import Optional
 
 from algoHelper import *
 import numpy as np
+from numba import jit
 
 def lc_0001():
     # 2和
+    @jit(nopython=True)
     def _2Sum(arr, t):
         dic = {}
         for i, ele in enumerate(arr):
@@ -17,6 +19,7 @@ def lc_0001():
 
 def lc_0704():
     #二分搜索，包含返回floor value的变化
+    @jit(nopython=True)
     def search(nums: List[int], target: int) -> int:
         l, r = 0, len(nums) - 1
         while l <= r:
@@ -36,10 +39,11 @@ def lc_0704():
 
 def lc_0026():
     # 数组中去掉重复数
+    @jit(nopython=True)
     def compare(nums):
         return len(sorted(list(np.unique(nums))))
 
-
+    @jit(nopython=True)
     def removeDuplicates(nums: List[int]):
         # 双指针占0，1位，快指针和当前慢指针位置比较，如果不等，慢指针+1并交换快慢值;快指针每次都向右挪一个，直到快指针走完
         # o(N), O(1)
@@ -75,9 +79,11 @@ def lc_0026():
 
 
 def lc_0027():
+    @jit(nopython=True)
     def compare(nums, val):
         return len([i for i in nums if i != val])
 
+    @jit(nopython=True)
     def removeElement(nums: List[int], val: int) -> int:
         # 快指针只9要不是target value就填到慢指针上，然后两个指针都往右走
         k = 0
@@ -103,10 +109,11 @@ def lc_0027():
 
 
 def lc_0283():
+    @jit(nopython=True)
     def compare(nums):
         left = [i for i in nums if i != 0]
         return left + [0] * (len(nums)-len(left))
-
+    @jit(nopython=True)
     def moveZeroes(nums: List[int]) -> None:
         i, j = 0, 0
         for i in range(len(nums)):
@@ -130,6 +137,7 @@ def lc_0283():
 
 
 def lc_0034():
+    @jit(nopython=True)
     def compare(nums, target):
         lb, rb = -1, -1
         found = False
@@ -140,6 +148,7 @@ def lc_0034():
             elif ele == target:
                 rb = i
         return [lb, rb]
+    @jit(nopython=True)
     def searchRange(nums, target):
         # 查找target在有序数组sums上的范围，返回范围的左右边界，没有的话返回[-1,-1]
         def lb(nums, target):
@@ -185,6 +194,7 @@ def lc_0034():
 
 
 def lc_0035():
+    @jit(nopython=True)
     def compare(arr, target):
         if target > arr[-1]:
             return len(arr)
@@ -193,6 +203,7 @@ def lc_0035():
         for i, ele in enumerate(arr):
             if ele >= target:
                 return i
+    @jit(nopython=True)
     def searchInsert(nums: List[int], target: int) -> int:
         # 找在有序数组中target的位置或者插入target的位置
         # 使用对数器检查出这个二分搜索不适合有重复值的arr
@@ -238,7 +249,7 @@ def lc_0844():
             if sL[i] != tL[i]:
                 return False
         return True
-
+    @jit(nopython=True)
     def backspaceCompare(s: str, t: str) -> bool:
         def modStr(string):
             res = []
@@ -268,7 +279,7 @@ def lc_0709():
             if ele == target:
                 return i
         return -1
-
+    @jit(nopython=True)
     def search(nums: List[int], target: int) -> int:
         # 二分搜索，请习惯使用闭区间，比较好解释
         l, r = 0, len(nums)-1
@@ -296,6 +307,7 @@ def lc_0069():
     def compare(x):
         return int(np.sqrt(x))
 
+    @jit(nopython=True)
     def mySqrt1(x: int) -> int:
         # 二分搜索方法
         l,r = 0, x
@@ -306,6 +318,7 @@ def lc_0069():
             else:
                 r = m-1
         return r
+    @jit(nopython=True)
     def mySqrt(x: int) -> int:
         # 牛顿法万岁，这玩意比二分查找快多了
         x0 = x
@@ -326,6 +339,8 @@ def lc_0367():
     def compare(x):
         return abs(int(np.sqrt(x)) - np.sqrt(x)) < 1e-9
 
+
+    @jit(nopython=True)
     def isPerfectSquare(num: int) -> bool:
         def newton(num):
             x0 = num
@@ -348,6 +363,7 @@ def lc_0066():
         num = int("".join([str(i) for i in digits])) + 1
         return list([int(i) for i in num])
 
+    @jit(nopython=True)
     def plusOne(digits: List[int]) -> List[int]:
         n = len(digits)
         nextdig = 0
@@ -363,6 +379,7 @@ def lc_0066():
             digits.insert(0, 1)
         return digits
 
+    @jit(nopython=True)
     def plusOneOptimized(digits):
         n = len(digits)
         for i in range(n-1, -1, -1):
@@ -381,10 +398,12 @@ def lc_0066():
 
 
 def lc_0088():
+    @jit(nopython=True)
     def compare(nums1, nums2, m, n):
         nums1[m:m+n] = nums2
         return sorted(nums1)
 
+    @jit(nopython=True)
     def merge(nums1, m, nums2, n):
         # 给两个有序数组inplace merge成一个有序数组，其中nums1数组末尾处刚开始时有占位元素
         """
@@ -432,6 +451,7 @@ def lc_0088():
 
 
 def lc_0209():
+    @jit(nopython=True)
     def minSubArrayLen(target: int, nums: List[int]) -> int:
         if sum(nums) < target:
             return 0
@@ -457,6 +477,7 @@ def lc_0209():
                 i += 1
         return le
 
+    @jit(nopython=True)
     def minSubArrayLenClean(target: int, nums: List[int]) -> int:
         # start:end: range, curr: subarray sum, l: 长度
         start, end, curr, l = 0, 0, 0, float("inf")
@@ -3527,13 +3548,10 @@ def lc_0070():
     :return:
     '''
     def climbStairsDP(n: int) -> int:
-        if n == 1: return 1
-        if n == 2: return 2
-        dp = [None for i in range(n+1)]
+        dp = [0 for i in range(n+1)]
         # 爬到第i层楼梯，有dp[i]种方法
-        dp[1] = 1
-        dp[2] = 2
-        for i in range(3, len(dp)):
+        dp[0] = 1
+        for i in range(1, len(dp)):
             dp[i] = dp[i-1] + dp[i-2]
         return dp[-1]
 
@@ -3544,6 +3562,16 @@ def lc_0070():
         for i in range(3, n+1):
             f,s = s, f+s
         return s
+
+    def climbStairs(n, m):
+        # 一次最多可以爬m个台阶，最少一个,变为完全背包问题
+        dp = [0 for j in range(1+n)]
+        dp[0] = 1
+        for j in range(1, n+1):
+            for i in range(1, m+1):
+                if j < i: continue
+                else: dp[j] += dp[j-i]
+        return dp[-1]
 
 def lc_0746():
     '''
@@ -3828,7 +3856,7 @@ def lc_0474():
     474.一和零: binary string array,求最大子集的大小，限制为0的个数最多为m,1的个数最多为n
     :return: 最大子集的大小
     '''
-
+    @jit(nopython=True)
     def findMaxForm(strs: List[str], m: int, n: int) -> int:
         dp = [[0 for j in range(n+1)] for i in range(m+1)]
         for s in strs:
@@ -3844,6 +3872,96 @@ def lc_0474():
     print(findMaxForm(["10","0001","111001","1","0"],4 ,3))
 
 
+def lc_0518():
+    '''
+    518. 零钱兑换 II:给定不同面额的硬币和一个总金额。写出函数来计算可以凑成总金额的硬币组合数。假设每一种面额的硬币有无限个。
+    [1,2,5], 5 => 4种组合
+    [1, 1, 0, 0, 0, 0]
+    [1, 1, 2, 0, 0, 0]
+    [1, 1, 2, 3, 0, 0]
+    [1, 1, 2, 3, 5, 0]
+    [1, 1, 2, 3, 5, 9]
+    :return:
+    '''
+    @jit(nopython=True)
+    def change(amount: int, coins: List[int]) -> int:
+        dp = [0 for j in range(1+amount)]
+        dp[0] = 1
+        for coin in coins:
+            for j in range(coin, 1+amount):
+                dp[j] = dp[j] + dp[j-coin]
+        return dp[-1]
+
+def lc_0518_2():
+    '''
+    518. 零钱兑换 II:给定不同面额的硬币和一个总金额。写出函数来计算可以凑成总金额的硬币排列数，{1，5}和{5，1}是两种排列。
+    假设每一种面额的硬币有无限个。
+    [1,2,5], 5 => 9种排列
+    [1, 1, 0, 0, 0, 0]
+    [1, 1, 2, 0, 0, 0]
+    [1, 1, 2, 3, 0, 0]
+    [1, 1, 2, 3, 5, 0]
+    [1, 1, 2, 3, 5, 9]
+    9
+    :return:
+    '''
+    @jit(nopython=True)
+    def changePermutation(amount, coins):
+        dp = [0 for i in range(amount + 1)]
+        for j in range(amount + 1):
+            for i in range(len(coins)):
+                if j < coins[i]: continue
+                else: dp[j] += dp[j-coins[i]]
+        return dp[-1]
+
+
+def lc_0322():
+    '''
+    322. 零钱兑换：给定不同面额的硬币和一个总金额，返回需要最少多少个coin能凑出需要的钱
+    完全背包组合问题求最小硬币数，注意初始化和最后返回的判断
+    :return:
+    '''
+    @jit(nopython=True)
+    def coinChange(self, coins: List[int], amount: int):
+        dp = [2**31-1 for i in range(amount + 1)]
+        dp[0] = 0
+        for i in range(len(coins)):
+            for j in range(coins[i], amount + 1):
+                dp[j] = min(dp[j], dp[j-coins[i]]+1)
+        return -1 if dp[-1] == 2**31-1 else dp[-1]
+
+
+def lc_0377():
+    '''
+    377. 组合总和 Ⅳ
+    :return:
+    '''
+    # 和硬币找零的排列数一样的问题
+    @jit(nopython=True)
+    def combinationSum4(nums: List[int], target: int) -> int:
+        dp = [0 for j in range(target+1)]
+        dp[0] = 1
+        for j in range(target + 1):
+            for i in range(len(nums)):
+                if j < nums[i]: continue
+                else: dp[j] += dp[j-nums[i]]
+        return dp[-1]
+
+
+def lc_0279():
+    @jit(nopython=True)
+    def numSquares(n: int) -> int:
+        dp = [n for i in range(n+1)]
+        dp[0] = 0
+        for i in range(n+1):
+            for j in range(i*i,n+1):
+                dp[j] = min(dp[j], dp[j-i*i]+1)
+        return dp[-1]
+    t1 = time.perf_counter()
+    res = [numSquares(i) for i in range(1, 2000)]
+    t2 = time.perf_counter()
+    print(t2-t1)
+
 if __name__ == "__main__":
     # TODO: lc 0071
-    lc_0474()
+    lc_0279()
