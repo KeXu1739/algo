@@ -3144,10 +3144,11 @@ def lc_0053():
 
 def lc_0122():
     '''
-    122.买卖股票的最佳时机II
+    122.买卖股票的最佳时机II:可以买卖多次，但是每天最多只能持一股
     :return:
     '''
-    def maxProfit(prices: List[int]) -> int:
+    @jit(nopython=True)
+    def maxProfitGreedy(prices: List[int]) -> int:
         if len(prices) == 1: return 0
         diff = []
         su = 0
@@ -3155,6 +3156,20 @@ def lc_0122():
             if prices[i] > prices[i-1]:
                 su += prices[i] - prices[i-1]
         return su
+
+    @jit(nopython=True)
+    def maxProfitDP(prices: List[int]) -> int:
+        dp = [[0 for __ in prices] for _ in range(2)]
+        # dp[0][i]: 第i天持有股票获得的最大利润
+        # dp[1][i]: 第i天不持有股票获得的最大利润
+        # -prices[i]代表今天买了股票
+        # prices[i]代表今天卖了股票
+        dp[0][0] = -prices[0]
+        dp[1][0] = 0
+        for i in range(1, len(prices)):
+            dp[0][i] = max(dp[0][i-1], dp[1][i-1]-prices[i])
+            dp[1][i] = max(dp[1][i-1], dp[0][i-1]+prices[i])
+        return dp[-1][-1]
 
 def lc_0055():
     '''
@@ -3949,6 +3964,10 @@ def lc_0377():
 
 
 def lc_0279():
+    '''
+    将一个数表示成完全平方数的和，一共有几个完全平方数
+    :return:
+    '''
     @jit(nopython=True)
     def numSquares(n: int) -> int:
         dp = [n for i in range(n+1)]
@@ -3962,6 +3981,113 @@ def lc_0279():
     t2 = time.perf_counter()
     print(t2-t1)
 
+def lc_0139():
+    '''
+    给一个字符串的列，给一个target字符串，将target字符串拆开，每个小部分对应字符串列中的一个元素，问可否拆成功
+    :return:
+    '''
+    @jit(nopython=True)
+    def wordBreak(s: str, wordDict: List[str]) -> bool:
+        dp = [False for i in range(len(s)+1)]
+        dp[0] = True
+        for j in range(len(s)+1):
+            for word in wordDict:
+                if j < len(word): continue
+                else: dp[j] = dp[j] or (dp[j-len(word) and word == s[j-len(word):j]])
+        return dp[-1]
+
+def lc_0198():
+    '''
+    打家劫舍，相邻两家不能同时偷，问能得到的最大价值
+    :return:
+    '''
+    @jit(nopython=True)
+    def rob(nums: List[int]) -> int:
+        if len(nums)==1: return nums[0]
+        if len(nums) == 2: return max(nums)
+
+        dp = [0 for j in range(len(nums))]
+        dp[0] = nums[0]
+        for j in range(1, len(nums)):
+            dp[j] = max(dp[j-1], nums[j]+dp[j-2])
+        return dp[-1]
+def lc_0213():
+    '''
+    213.打家劫舍 II:环形家
+    :return:
+    '''
+    @jit(nopython=True)
+    def rob(nums: List[int]) -> int:
+        if len(nums) <= 2:
+            return max(nums)
+        def robRange(i, j, nums):
+            dp = [0 for _ in range(len(nums))]
+            dp[i] = nums[i]
+            for k in range(i+1, j+1):
+                dp[k] = max(dp[k-1], nums[k]+dp[k-2])
+            return dp[j]
+
+        a = robRange(0, len(nums)-2, nums)
+        b = robRange(1, len(nums)-1, nums)
+        return max(a, b)
+
+def lc_0337():
+    '''
+    337.打家劫舍 III:二叉树型家，直接相连的node不能同时打劫
+    :return:
+    '''
+    @jit(nopython=True)
+    def rob(self, root: Optional[BinaryTree]) -> int:
+        class Info:
+            def __init__(self,rob, norob):
+                self.r = rob
+                self.nr = norob
+
+        def rc(root):
+            if not root: return Info(0, 0)
+            if (not root.left) and (not root.right): return Info(root.val, 0)
+
+            li = rc(root.left)
+            ri = rc(root.right)
+
+            # 如果当前节点抢了，那么左右孩子节点就只能用没抢的结果相加
+            r = root.value + li.nr + ri.nr
+            # 如果当前节点没抢，那么左右孩子可以选择抢和不抢之间最大的结果相加
+            nr = max(li.nr, li.r) + max(ri.nr, ri.r)
+            return Info(r, nr)
+        i = rc(root)
+        return max(i.r, i.nr)
+
+
+def lc_0121():
+    '''
+    121. 买卖股票的最佳时机:买卖一次
+    :return:
+    '''
+    def maxProfit(self, prices: List[int]) -> int:
+        res = 0
+        low = float("inf")
+        for i in range(len(prices)):
+            low = min(low, prices[i])
+            res = max(res, prices[i]-low)
+        return res
+    def maxProfit(self, prices: List[int]) -> int:
+        dp = [[0 for i in range(len(prices))] for _ in range(2)]
+        for i in range(1, len(prices)):
+            dp[0][i] = max(dp[0][i-1], -prices[i])
+            dp[1][i] = max(dp[1][i-1], dp[0][i-1] + prices[i])
+        return dp[-1][-1]
+
+
+def simplify(a, b):
+    def gcd(a, b):
+        while b:
+            a, b = b, a % b
+        return a
+    d = gcd(a, b)
+    return a // d, b // d
+
+
 if __name__ == "__main__":
     # TODO: lc 0071
-    lc_0279()
+    print(simplify(17, 3))
