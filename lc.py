@@ -3488,6 +3488,15 @@ def lc_0714():
                 p += prices[i] - mp - fee
                 mp = prices[i] - fee # 这里模拟一下就可以看出来这样设置之后
         return p
+
+    def maxProfitDP(prices: List[int], fee: int) -> int:
+        dp = [[0 for j in range(len(prices))] for i in range(2)]
+        dp[0][0] = -prices[0]
+        for j in range(1, len(prices)):
+            dp[0][j] = max(dp[0][j-1], dp[1][j-1]-prices[j])
+            dp[1][j] = max(dp[1][j-1], dp[0][j-1]+prices[j]-fee)
+        return dp[-1][-1]
+
     maxProfitGreedy([1,5,10,9,13], 3)
 
 def lc_0968():
@@ -4078,16 +4087,131 @@ def lc_0121():
             dp[1][i] = max(dp[1][i-1], dp[0][i-1] + prices[i])
         return dp[-1][-1]
 
+def lc_0123():
+    '''
+    122.买卖股票的最佳时机III:可以买卖最多两次，每一天最多持一股
+    5个状态： 0.没操作 1.第一次持有股票状态， 2.第一次不持有股票状态 3.第二次持有股票状态 4.第二次不持有股票状态
+    :return:
+    '''
+    def maxProfit(prices: List[int]) -> int:
+        dp = [[0 for i in range(len(prices))] for _ in range(1+2*2)]
+        dp[0][0] = 0
+        dp[1][0] = -prices[0]
+        dp[2][0] = 0
+        dp[3][0] = -prices[0]
+        dp[4][0] = 0
 
-def simplify(a, b):
-    def gcd(a, b):
-        while b:
-            a, b = b, a % b
-        return a
-    d = gcd(a, b)
-    return a // d, b // d
+        for i in range(1, len(prices)):
+            dp[0][i] = dp[0][i-1]
+            dp[1][i] = max(dp[1][i-1], dp[0][i-1]-prices[i])
+            dp[2][i] = max(dp[2][i-1], dp[1][i-1]+prices[i])
+            dp[3][i] = max(dp[3][i-1], dp[2][i-1]-prices[i])
+            dp[4][i] = max(dp[4][i-1], dp[3][i-1]+prices[i])
 
+        return dp[-1][-1]
+
+def lc_0188():
+    '''
+    188.买卖股票的最佳时机IV:每个时刻最多持一股，可以最多完成k笔交易
+    :return:
+    '''
+    def maxProfit(k: int, prices: List[int]) -> int:
+        dp = [[0 for i in range(len(prices))] for _ in range(2*k+1)]
+        for i in range(1, 2*k+1):
+            if i % 2 == 1:
+                dp[i][0] = -prices[0]
+
+        for j in range(1, len(prices)):
+            for i in range(1, 2*k+1):
+                sig = -1 if i % 2 == 1 else 1
+                dp[i][j] = max(dp[i][j-1], dp[i-1][j-1] + prices[j] * sig)
+        mx = 0
+        for i in range(2*k+1):
+            mx = max(dp[i][-1], mx)
+        return mx
+
+def lc_0309():
+    '''
+    309.最佳买卖股票时机含冷冻期
+    :return:
+    '''
+    def maxProfit(prices: List[int]) -> int:
+        '''
+        status 0: no opertaion
+        status 1: current hold stock
+        status 2: sell stock today
+        status 3: current no stock
+        status 4: current cool down
+        2,3 are similar but different status
+        '''
+        dp = [[0 for j in range(len(prices))] for i in range(5)]
+        dp[1][0] = -prices[0]
+        for i in range(1, len(prices)):
+            dp[0][i] = dp[0][i-1]
+            dp[1][i] = max(dp[1][i-1], dp[0][i-1]-prices[i], dp[3][i-1]-prices[i], dp[4][i-1]-prices[i])
+            dp[2][i] = dp[1][i-1]+prices[i]
+            dp[3][i] = max(dp[3][i-1], dp[4][i-1])
+            dp[4][i] = dp[2][i-1]
+        mx = 0
+        for i in range(5):
+            mx = max(dp[i][-1], mx)
+        return mx
+
+def lc_0300():
+    import bisect
+    '''
+    300.最长递增子序列
+    :return:
+    '''
+    def lengthOfLISDP(nums: List[int]) -> int:
+        # dp[i]: 以nums[i]为结尾的最长递增子序列的长度
+        res = 0
+        dp = [1 for num in nums]
+        for i in range(1, len(nums)):
+            for j in range(i):
+                if nums[i]> nums[j]:
+                    dp[i] = max(dp[i], dp[j]+1)
+            res = max(res, dp[i])
+        return res
+    def lengthOfLISGreedy(nums: List[int]) -> int:
+        ans = []
+        for num in nums:
+            idx = bisect.bisect_left(ans, num)
+            if idx == len(ans):
+                ans.append(num)
+            else:
+                ans[idx] = num
+        return len(ans)
+
+def lc_0674():
+    '''
+    674. 最长连续递增序列
+    :return:
+    '''
+    def findLengthOfLCIS(nums: List[int]) -> int:
+        dp = [1 for num in nums]
+        res = 1
+        for i in range(1, len(nums)):
+            # 递增序列一旦断了就得从1重新累加了
+            if nums[i] > nums[i-1]:
+                dp[i] = dp[i-1] + 1
+            res = max(res, dp[i])
+        return res
 
 if __name__ == "__main__":
     # TODO: lc 0071
-    print(simplify(17, 3))
+    def longestBracket(brackets):
+        from collections import deque
+        s = deque([])
+        l = 0
+        for c in brackets:
+            if c in {"(", "[", "{"}:
+                s.append(c)
+            elif c in {")", "}","]"}:
+                cc = s.pop()
+                if cc + c in {"()", "[]", "{}"}:
+                    l += 2
+                else:
+                    l = 0
+        return l
+    print(longestBracket("(()"))

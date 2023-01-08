@@ -70,7 +70,7 @@
   - LC0706: Design HashMap
   - LC0023: Merge k Sorted Lists
   - LC0155: Min Stack
-  - LC0300: Longest Increasing Subsequence (Patience Sort)
+  - [1] LC0300: Longest Increasing Subsequence (Patience Sort)
   - LC0208: Implement Trie (Prefix Tree)
   - LC0307: Range Sum Query - Mutable
   - LC0146: LRU Cache
@@ -348,5 +348,6 @@
   - LC0279: Perfect Squares
   - LC0639: Decode Ways II
   - LN0395: Coins in a Line II
-  - LN0396: Coins in a Line III
+  - LN0396: Coins in a Line III 
 - [D： 上述题之外所有你刷过的题。基本上做过一两遍，有个思路，临场遇见了不会慌]
+  - LC0032: Longest Valid Parentheses
