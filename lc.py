@@ -3114,13 +3114,24 @@ def lc_0053():
     最大连续子序列和以及对应起止位置的下标
     :return:
     '''
-    def maxSubArray(nums: List[int]) -> int:
+    def maxSubArrayGreedy(nums: List[int]) -> int:
+        # 这个贪心和dp很接近
         cur, mx = 0, float("-inf")
         for num in nums:
             cur += num # 当前位置累加上
             mx = max(mx, cur) # 更新最大值
             cur = max(0, cur) # 如果累加完当前元素的cur小于0了，说明当前这个value会把面的累加和变为负数，那么就需要从下一个元素
             # 开始重新累加 （cur
+        return mx
+
+    def maxSubArrayDP(self, nums: List[int]) -> int:
+        # dp[i]: nums以nums[i]元素结尾的最大连续子序列和
+        dp = [0 for i in range(len(nums))]
+        dp[0] = nums[0]
+        mx = nums[0]
+        for i in range(1, len(nums)):
+            dp[i] = max(dp[i-1] + nums[i], nums[i])
+            mx = max(mx, dp[i])
         return mx
 
     def maxSubArrayRange(nums: List[int]) -> int:
@@ -4197,6 +4208,135 @@ def lc_0674():
                 dp[i] = dp[i-1] + 1
             res = max(res, dp[i])
         return res
+
+def lc_0718():
+    '''
+    718. 最长重复子数组
+    :return:
+    '''
+    def findLength(nums1: List[int], nums2: List[int]) -> int:
+        # dp[i][j]:nums1中以nums1[i-1],nums2中以nums2[j-1]结尾的串最长公共子串长度
+        # 这样第一行和第一列不需要单独初始化
+        dp = [[0 for j in range(len(nums2)+1)] for i in range(len(nums1)+1)]
+        mx = 0
+        for i in range(1, len(nums1)+1):
+            for j in range(1, len(nums2)+1):
+                if nums1[i-1] == nums2[j-1]:
+                    dp[i][j] = dp[i-1][j-1]+1
+                mx = max(mx, dp[i][j])
+        return mx
+
+    def findLength2(nums1: List[int], nums2: List[int]) -> int:
+        # dp[i][j]:nums1中以nums1[i],nums2中以nums2[j]结尾的串最长公共子串长度
+        # 第一行和第一列需要单独初始化（在主循环中有单独的逻辑）
+        mx = 0
+        dp = [[0 for j in range(len(nums2))] for i in range(len(nums1))]
+        for i in range(len(nums1)):
+            for j in range(len(nums2)):
+                if nums1[i] == nums2[j]:
+                    if i != 0 and j != 0: dp[i][j] = dp[i-1][j-1] + 1
+                    else: dp[i][j] = 1
+                mx = max(mx, dp[i][j])
+        return mx
+
+
+def lc_1143():
+    def longestCommonSubsequence(self, text1: str, text2: str) -> int:
+        # dp[i][j]:nums1中以nums1[i-1],nums2中以nums2[j-1]结尾的串最长公共子序列长度
+        # 第一行和第一列不需要单独的处理逻辑
+        dp = [[0 for j in range(len(text2)+1)] for i in range(len(text1)+1)]
+        for i in range(1, len(text1)+1):
+            for j in range(1, len(text2)+1):
+                if text1[i-1] == text2[j-1]:
+                    dp[i][j] = 1 + dp[i-1][j-1]
+                else:
+                    dp[i][j] = max(dp[i-1][j], dp[i][j-1])
+        return dp[-1][-1]
+
+    def longestCommonSubsequence2(self, text1: str, text2: str) -> int:
+        # dp[i][j]:nums1中以nums1[i],nums2中以nums2[j]结尾的串最长公共子序列长度
+        # 第一行和第一列需要单独的处理逻辑
+        dp = [[0 for j in range(len(text2))] for i in range(len(text1))]
+        for i in range(len(text1)):
+            for j in range(len(text2)):
+                if text1[i] == text2[j]:
+                    if i != 0 and j != 0: dp[i][j] = dp[i-1][j-1] + 1
+                    elif i != 0: dp[i][j] = 1
+                    elif j != 0: dp[i][j] = 1
+                    else: dp[i][j] = 1
+                else:
+                    if i != 0 and j != 0: dp[i][j] = max(dp[i][j-1], dp[i-1][j])
+                    elif i != 0: dp[i][j] = dp[i-1][j]
+                    elif j != 0: dp[i][j] = dp[i][j-1]
+
+        return dp[-1][-1]
+
+def lc_1035():
+    '''
+    1035.不相交的线
+    :return:
+    '''
+    def maxUncrossedLines(nums1: List[int], nums2: List[int]) -> int:
+        # same problem as longest length common subsequence
+        dp = [[0 for j in range(len(nums2)+1)] for i in range(len(nums1)+1)]
+        # dp[i][j]: llcs for nums1 ending with nums[i-1] and nums2 ending with nums[j-1]
+        for i in range(1, len(nums1)+1):
+            for j in range(1, len(nums2)+1):
+                if nums1[i-1] == nums2[j-1]:
+                    dp[i][j] = dp[i-1][j-1] + 1
+                else:
+                    dp[i][j] = max(dp[i][j-1], dp[i-1][j])
+        return dp[-1][-1]
+
+def lc_0392():
+    '''
+    392.判断子序列
+    :return:
+    '''
+    def isSubsequence2P(s: str, t: str) -> bool:
+        # 双指针法
+        i, j  = 0, 0
+        while i < len(s) and j < len(t):
+            if s[i] == t[j]:
+                i += 1
+                j += 1
+            else:
+                j += 1
+        return i == len(s)
+
+    def isSubsequence(self, s: str, t: str) -> bool:
+        dp = [[0 for j in range(len(t)+1)] for i in range(len(s)+1)]
+        # dp[i][j]：以下标i-1为结尾的字符串s，和以下标j-1为结尾的字符串t，相同子序列的长度为
+        for i in range(1, len(s)+1):
+            for j in range(1, len(t)+1):
+                if s[i-1] == t[j-1]:
+                    dp[i][j] = 1+dp[i-1][j-1]
+                else:
+                    dp[i][j] = dp[i][j-1]
+
+        return dp[-1][-1] == len(s)
+
+
+def lc_0115():
+    '''
+    115.不同的子序列
+    :return:
+    '''
+    def numDistinct(s: str, t: str) -> int:
+        # dp[i][j]: s以s[i-1]结尾，其子序列有多少个t以t[j-1]结尾的序列
+        dp = [[0 for j in range(1+len(t))] for i in range(1+len(s))]
+        for i in range(0, len(s)+1): dp[i][0] = 1
+        for j in range(0, len(t)+1): dp[0][j] = 0
+        dp[0][0] = 1
+
+        # 在s的子序列里找t
+        for i in range(1, len(s)+1):
+            for j in range(1, len(t)+1):
+                if s[i-1] == t[j-1]:
+                    dp[i][j] = dp[i-1][j-1] + dp[i-1][j] # s去掉一个字符和s，t分别去掉一个字符
+                else:
+                    dp[i][j] = dp[i-1][j] # s去掉一个字符
+        return dp[-1][-1]
 
 if __name__ == "__main__":
     # TODO: lc 0071

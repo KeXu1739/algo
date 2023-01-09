@@ -47,15 +47,15 @@
   - LC0021: Merge Two Sorted Lists
   - LN0391: Number of Airplanes in the Sky
   - LC0003: Longest Substring Without Repeating Characters
-  - LC0053: Maximum Subarray
-  - LC0001: Two Sum
+  - [1] LC0053: Maximum Subarray
+  - [1] LC0001: Two Sum
   - LC0297: Serialize and Deserialize Binary Tree
   - LN0127: Topological Sorting
   - LC0200: Number of Islands (DFS/UnionFind)
   - LC0133: Clone Graph
-  - LC0094: Binary Tree Inorder Traversal
-  - LC0144: Binary Tree Preorder Traversal
-  - LC0145: Binary Tree Postorder Traversal
+  - [1] LC0094: Binary Tree Inorder Traversal
+  - [1] LC0144: Binary Tree Preorder Traversal
+  - [1] LC0145: Binary Tree Postorder Traversal
   - LC0105: Construct Binary Tree from Preorder and Inorder Traversal
   - LC0173: Binary Search Tree Iterator
   - LC0039: Combination Sum
