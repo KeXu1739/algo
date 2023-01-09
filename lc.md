@@ -224,8 +224,8 @@
   - LC1396: Design Underground System
   - [1] LN0125: Backpack II
   - [1] LN0440: Backpack III
-  - LC0139: Word Break
-  - LC0121: Best Time to Buy and Sell Stock
+  - [1] LC0139: Word Break
+  - [1] LC0121: Best Time to Buy and Sell Stock
   - LC0010: Regular Expression Matching
   - LC0312: Burst Balloons
   - LC0516: Longest Palindromic Subsequence
@@ -331,23 +331,33 @@
   - LN0564: Backpack VI (Combination Sum IV)
   - LN0971: Surplus Value Backpack
   - LC0474. Ones and Zeroes
-  - LC0122: Best Time to Buy and Sell Stock II
-  - LC0123: Best Time to Buy and Sell Stock III
-  - LC0188: Best Time to Buy and Sell Stock IV
+  - [1] LC0122: Best Time to Buy and Sell Stock II
+  - [1] LC0123: Best Time to Buy and Sell Stock III
+  - [1] LC0188: Best Time to Buy and Sell Stock IV
   - LC0256: Paint House
   - LC0265: Paint House II
   - LC0843: Digital Flip
   - LC0044: Wildcard Matching
   - LC0072: Edit Distance
   - LC0097: Interleaving String
-  - LC0115: Distinct Subsequences
-  - LC1143: Longest Common Subsequence
+  - [1] LC0115: Distinct Subsequences
+  - [1] LC1143: Longest Common Subsequence
   - LC0087: Scramble String
   - LC0361: Bomb Enemy
   - LC0132: Palindrome Partitioning II
-  - LC0279: Perfect Squares
+  - [1] LC0279: Perfect Squares
   - LC0639: Decode Ways II
   - LN0395: Coins in a Line II
   - LN0396: Coins in a Line III 
 - [D： 上述题之外所有你刷过的题。基本上做过一两遍，有个思路，临场遇见了不会慌]
-  - LC0032: Longest Valid Parentheses
+  - [1] LC0032: Longest Valid Parentheses 
+  - [1] LC0583: Delete Operation for Two Strings 
+  - [1] LC0392: Is Subsequence 
+  - [1] LC1035: Uncrossed Lines
+  - [1] LC0718: Maximum Length of Repeated Subarray
+  - [1] LC0674: Longest Continuous Increasing Subsequence
+  - [1] LC0309: Best Time to Buy and Sell Stock with Cooldown
+  - [1] LC0337: House Robber III
+  - [1] LC0213: House Robber II
+  - [1] LC0198: House Robber I
+  - [1] LC0377: Combination Sum IV

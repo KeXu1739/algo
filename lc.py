@@ -4338,6 +4338,28 @@ def lc_0115():
                     dp[i][j] = dp[i-1][j] # s去掉一个字符
         return dp[-1][-1]
 
+def lc_0583():
+    '''
+    583. 两个字符串的删除操作
+    :return:
+    '''
+    def minDistance(self, word1: str, word2: str) -> int:
+        dp = [[0 for j in range(len(word2)+1)] for i in range(len(word1)+1)]
+        for i in range(len(word1)+1):
+            dp[i][0] = i
+        for j in range(len(word2)+1):
+            dp[0][j] = j
+
+        for i in range(1, len(word1)+1):
+            for j in range(1, len(word2)+1):
+                if word1[i-1] == word2[j-1]:
+                    # 最后一个字符相同，直接搬来左斜上方的值，因为当前这个值不需要任何一方删除
+                    dp[i][j] = dp[i-1][j-1]
+                else:
+                    # 最后一个字符不一样，那么有三个方法删除，左斜上方的操作基础上再删掉两个，或上方和左方基础上再删掉一个
+                    dp[i][j] = min(dp[i-1][j-1]+2, dp[i-1][j]+1, dp[i][j-1]+1)
+        return dp[-1][-1]
+
 if __name__ == "__main__":
     # TODO: lc 0071
     def longestBracket(brackets):
