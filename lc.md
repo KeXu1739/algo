@@ -30,8 +30,8 @@
   - 先跟着直觉走，找不到反例的话贪心策略就能成功
   - 思考方向：排序，简单尝试优先满足明显条件的case，整个数组从左到右从右到左，或者从左到右一次然后从右到左一次
   - ![img_4.png](img_4.png)
-### 动态规划: []
-  -  
+### 动态规划: [https://programmercarl.com/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E6%80%BB%E7%BB%93%E7%AF%87.html#%E5%8A%A8%E8%A7%84%E7%BB%93%E6%9D%9F%E8%AF%AD]
+  - ![img_7.png](img_7.png)
 
 ## LC 题目集合 [https://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=678970&page=1&authorid=682747]
 - Website:
@@ -338,7 +338,7 @@
   - LC0265: Paint House II
   - LC0843: Digital Flip
   - LC0044: Wildcard Matching
-  - LC0072: Edit Distance
+  - [1] LC0072: Edit Distance
   - LC0097: Interleaving String
   - [1] LC0115: Distinct Subsequences
   - [1] LC1143: Longest Common Subsequence

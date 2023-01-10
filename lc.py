@@ -4360,6 +4360,107 @@ def lc_0583():
                     dp[i][j] = min(dp[i-1][j-1]+2, dp[i-1][j]+1, dp[i][j-1]+1)
         return dp[-1][-1]
 
+def lc_0072():
+    '''
+    72. 编辑距离问题，有个trick是删除和增加是对称的操作，所以不需要考虑增加，只需要考虑删除即可
+    :return:
+    '''
+    def minDistance(word1: str, word2: str) -> int:
+        dp = [[0 for j in range(len(word2)+1)] for i in range(len(word1)+1)]
+        for i in range(len(word1)+1): dp[i][0] = i
+        for j in range(len(word2)+1): dp[0][j] = j
+        for i in range(1, len(word1)+1):
+            for j in range(1, len(word2)+1):
+                if word1[i-1] == word2[j-1]:
+                    dp[i][j] = dp[i-1][j-1]
+                else:
+                    dp[i][j] = min(2+dp[i-1][j-1], 1+dp[i][j-1], 1+dp[i-1][j])
+                    dp[i][j] = min(dp[i][j], 1+dp[i-1][j-1])
+        return dp[-1][-1]
+
+    def minDistanceMergeCase(word1: str, word2: str) -> int:
+        dp = [[0 for j in range(len(word2)+1)] for i in range(len(word1)+1)]
+        for i in range(len(word1)+1): dp[i][0] = i
+        for j in range(len(word2)+1): dp[0][j] = j
+        for i in range(1, len(word1)+1):
+            for j in range(1, len(word2)+1):
+                if word1[i-1] == word2[j-1]:
+                    dp[i][j] = dp[i-1][j-1]
+                else:
+                    dp[i][j] = 1 + min(dp[i-1][j-1], dp[i][j-1], dp[i-1][j])
+                    # dp[i][j] = min(2+dp[i-1][j-1], 1+dp[i][j-1], 1+dp[i-1][j])
+                    # dp[i][j] = min(dp[i][j], 1+dp[i-1][j-1])
+        return dp[-1][-1]
+
+def lc_0161():
+    '''
+    161: 检查两个str编辑距离是否为1，不能用编辑距离的dp方法， 会超时
+    :return:
+    '''
+    def isOneEditDistance(s: str, t: str) -> bool:
+        if s == t: return False
+        if abs(len(s) - len(t)) > 1: return False
+        i, j = 0, 0
+        c = 0
+        while i < len(s) and j < len(t):
+            if s[i] != t[j] and c == 0:
+                c += 1
+                if len(s) > len(t):
+                    i +=1
+                elif len(t) > len(s):
+                    j += 1
+                else:
+                    i += 1
+                    j += 1
+            elif s[i] != t[j] and c != 0:
+                return False
+            else:
+                i += 1
+                j += 1
+        return True
+
+def lc_0674():
+    '''
+    回文子串的个数
+    :return: 
+    '''
+    def countSubstrings(s: str) -> int:
+        dp = [[False for j in s] for i in s]
+        res = 0
+        for i in range(len(s)):
+            dp[i][i] = True
+            res += 1
+        for i in range(len(s)-2, -1, -1):
+            for j in range(i+1, len(s)):
+                if s[i] == s[j]:
+                    if j - i <= 1:
+                        dp[i][j] = True
+                    else:
+                        dp[i][j] = dp[i+1][j-1]
+                else:
+                    dp[i][j] = False
+                if dp[i][j]: res +=1
+        return res
+
+def lc_0516():
+    '''
+    516.最长回文子序列
+    :return:
+    '''
+    def longestPalindromeSubseq(self, s: str) -> int:
+        dp = [[0 for j in s] for i in s]
+        mx = 1
+        for i in range(len(s)): dp[i][i] = 1
+        for i in range(len(s)-2, -1, -1):
+            for j in range(i+1, len(s)):
+                if s[i] == s[j]:
+                    dp[i][j] = dp[i+1][j-1] + 2
+                else:
+                    dp[i][j] = max(dp[i+1][j], dp[i][j-1])
+                mx = max(mx, dp[i][j])
+        return mx
+
+
 if __name__ == "__main__":
     # TODO: lc 0071
     def longestBracket(brackets):
