@@ -95,7 +95,7 @@
   - LC0349: Intersection of Two Arrays
   - LC0350: Intersection of Two Arrays
   - LC0845: Longest Mountain in Array
-  - LC0042: Trapping Rain Water
+  - [1] LC0042: Trapping Rain Water
   - LC0043: Multiply Strings
   - LC0086: Partition List
   - LC0141: Linked List Cycle
@@ -209,7 +209,7 @@
   - LC0227: Basic Calculator II
   - LC0394: Decode String 
   - LC1249: Minimum Remove to Make Valid Parentheses
-  - LC0084: Largest Rectangle in Histogram
+  - [1] LC0084: Largest Rectangle in Histogram
   - LC0239: Sliding Window Maximum
   - LC1019: Next Greater Node In Linked List
   - LC0211: Design Add and Search Words Data Structure
@@ -361,3 +361,4 @@
   - [1] LC0213: House Robber II
   - [1] LC0198: House Robber I
   - [1] LC0377: Combination Sum IV
+  - [1] LC0739: Daily Temperatures

@@ -4460,6 +4460,108 @@ def lc_0516():
                 mx = max(mx, dp[i][j])
         return mx
 
+def lc_0739():
+    '''
+    739. 每日温度：单调栈经典问题，注意维护的单调栈是从栈口到栈底递增的栈
+    :return:
+    '''
+    def dailyTemperatures(temperatures: List[int]) -> List[int]:
+        ret = [0 for tmp in temperatures]
+        st = [0]
+        for i in range(1, len(temperatures)):
+            while st and temperatures[i] > temperatures[st[-1]]:
+                j = st.pop()
+                ret[j] = i - j
+            st.append(i)
+        return ret
+
+def lc_0496():
+    '''
+    496.下一个更大元素 I: nums1 is a subset of nums2. find for each element in nums1,
+    the next larger element to the right of it in nums2
+    :return:
+    '''
+    def nextGreaterElement(nums1: List[int], nums2: List[int]) -> List[int]:
+        '''
+        nums1 is a subset of nums2. find for each element in nums1, the next larger element to the right of it in nums2
+        :param nums1:
+        :param nums2:
+        :return:
+        '''
+        res = [-1 for n in nums1]
+        mp = {nums1[i]:i for i in range(len(nums1))}
+        st = [0]
+        for i in range(1, len(nums2)):
+            while st and nums2[i] > nums2[st[-1]]:
+                if nums2[st[-1]] in mp:
+                    j = st[-1]
+                    idx = mp[nums2[j]]
+                    res[idx] = nums2[i]
+                st.pop()
+            st.append(i)
+        return res
+
+
+def lc_0503():
+    '''
+    503.下一个更大元素II
+    :return:
+    '''
+    def nextGreaterElements(self, nums: List[int]) -> List[int]:
+        '''
+
+        :param self:
+        :param nums:
+        :return:
+        '''
+        n = len(nums)
+        res = [-1 for i in range(n)]
+        st = [0]
+        for i in range(1, n*2):
+            while st and nums[i % n] > nums[st[-1] % n]:
+                j = st.pop()
+                res[j % n] = nums[i % n]
+            st.append(i)
+        return res
+
+def lc_0042():
+    def trap(height: List[int]) -> int:
+        n = len(height)
+        lr = [0 for i in range(n)]
+        rl = [0 for i in range(n)]
+        lr[0] = height[0]
+        rl[-1] = height[-1]
+        water = [0 for i in range(n)]
+        for i in range(1, n): lr[i] = max(lr[i-1], height[i])
+        for i in range(n-2, -1, -1): rl[i] = max(rl[i+1], height[i])
+        for i in range(1, n-1):
+            water[i] = min(lr[i], rl[i]) - height[i]
+        return sum(water)
+
+def lc_0084():
+    '''
+    84.柱状图中最大的矩形
+    :return: 
+    '''
+    def largestRectangleArea(heights: List[int]) -> int:
+        n = len(heights)
+        minLeftIdx = [0 for h in range(n)]
+        minRightIdx = [0 for h in range(n)]
+        minLeftIdx[0] = -1
+        minRightIdx[-1] = n
+        for i in range(1, n):
+            t = i - 1
+            while t >= 0 and heights[t] >= heights[i]: t = minLeftIdx[t]
+            minLeftIdx[i] = t
+        for i in range(n-2, -1, -1):
+            t = i + 1
+            while t < n and heights[t] >= heights[i]: t = minRightIdx[t]
+            minRightIdx[i] = t
+        mx = 0
+        for i in range(n):
+            mx = max(mx, heights[i] * (minRightIdx[i] - minLeftIdx[i] - 1))
+        return mx
+
 
 if __name__ == "__main__":
     # TODO: lc 0071
