@@ -261,16 +261,43 @@ def lc_0844():
             return "".join(res)
         return modStr(s) == modStr(t)
 
-    for i in range(50000):
-        n = random.randint(1, 1000)
-        s = sorted(list(set(list(np.random.randint(-10000, 10000, n)))))
-        t = []
-        target = random.randint(-10000, 10000)
-        A = backspaceCompare(s, t)
-        B = backspaceCompare1(s, t)
-        if A != B:
-            print((s, t))
-            break
+    def backspaceCompare2(s: str, t: str) -> bool:
+        i, j = len(s)-1, len(t)-1
+        while i >= 0 or j >=0:
+            c = 0
+            while i >= 0 and (s[i] == "#" or c > 0):
+                if s[i] == "#":
+                    c += 1
+                else:
+                    c -= 1
+                i -= 1
+
+            c = 0
+            while j >= 0 and (t[j] == "#" or c > 0):
+                if t[j] == "#":
+                    c += 1
+                else:
+                    c -= 1
+                j -= 1
+
+
+            if i < 0 or j < 0: return i < 0 and j < 0
+            if s[i] != t[j]: return False
+            i -= 1
+            j -= 1
+        return True
+    
+    backspaceCompare2("ab##", "c#d#")
+    # for i in range(50000):
+    #     n = random.randint(1, 1000)
+    #     s = sorted(list(set(list(np.random.randint(-10000, 10000, n)))))
+    #     t = []
+    #     target = random.randint(-10000, 10000)
+    #     A = backspaceCompare(s, t)
+    #     B = backspaceCompare1(s, t)
+    #     if A != B:
+    #         print((s, t))
+    #         break
 
 
 def lc_0709():
@@ -4564,19 +4591,6 @@ def lc_0084():
 
 
 if __name__ == "__main__":
-    # TODO: lc 0071
-    def longestBracket(brackets):
-        from collections import deque
-        s = deque([])
-        l = 0
-        for c in brackets:
-            if c in {"(", "[", "{"}:
-                s.append(c)
-            elif c in {")", "}","]"}:
-                cc = s.pop()
-                if cc + c in {"()", "[]", "{}"}:
-                    l += 2
-                else:
-                    l = 0
-        return l
-    print(longestBracket("(()"))
+    # TODO: lc 844
+    # TODO: lc 69
+    lc_0844()

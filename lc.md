@@ -39,7 +39,7 @@
   - https://leetcode.com/
 - 说明：每个大类按重要性递减，最优先为A
 - [A： 各类型题目的典型模板题，基本需要刷十几遍，做到迷迷糊糊半昏迷状态也能熟练默写的肌肉记忆状态，任何情况下都要一遍写出来]: 
-  - [2] LC0704: Binary Search LC704
+  - [3] LC0704: Binary Search LC704
   - [1] LC0033: Search in Rotated Sorted Array　
   - LC0081: Search in Rotated Sorted Array II
   - LC0912: Sort an Array (Quick Sort and Merge Sort)
@@ -89,7 +89,7 @@
   - LC0026: Remove Duplicates from Sorted Array
   - LC0080: Remove Duplicates from Sorted Array II
   - LC0088: Merge Sorted Array
-  - LC0283: Move Zeroes
+  - [1] LC0283: Move Zeroes
   - LC0215: Kth Largest Element in an Array
   - LC0347: Top K Frequent Elements
   - LC0349: Intersection of Two Arrays
@@ -244,7 +244,7 @@
   - LC0658: Find K Closest Elements
   - LC0302: Smallest Rectangle Enclosing Black Pixels
   - LC0852: Peak Index in a Mountain Array
-  - LC0069: Sqrt(x)
+  - [1] LC0069: Sqrt(x)
   - LN0183: Wood Cut
   - LN0437: Copy Books
   - LN0438: Copy Books II
@@ -351,6 +351,8 @@
   - LN0396: Coins in a Line III 
 - [D： 上述题之外所有你刷过的题。基本上做过一两遍，有个思路，临场遇见了不会慌]
   - [1] LC0032: Longest Valid Parentheses 
+  - [1] LC0035: Search Insert Position
+  - [1] LC0367: Valid Perfect Square
   - [1] LC0583: Delete Operation for Two Strings 
   - [1] LC0392: Is Subsequence 
   - [1] LC1035: Uncrossed Lines
@@ -362,3 +364,5 @@
   - [1] LC0198: House Robber I
   - [1] LC0377: Combination Sum IV
   - [1] LC0739: Daily Temperatures
+  - [1] LC0027: Remove Element
+  - [1] LC0977: Squares of a Sorted Array
