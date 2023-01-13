@@ -112,7 +112,7 @@
   - LC0680: Valid Palindrome II
   - LC0011: Container With Most Water
   - LC0076: Minimum Window Substring
-  - LC0209: Minimum Size Subarray Sum
+  - [1] LC0209: Minimum Size Subarray Sum
   - LC0239: Sliding Window Maximum
   - LC0713: Subarray Product Less Than K
   - LC0295: Find Median from Data Stream
