@@ -68,6 +68,7 @@
   - LC0002: Add Two Numbers
   - LC0021: Merge Two Sorted Lists
   - LC0706: Design HashMap
+  - [1] LC0707: Design LinkedList
   - LC0023: Merge k Sorted Lists
   - LC0155: Min Stack
   - [1] LC0300: Longest Increasing Subsequence (Patience Sort)
@@ -79,7 +80,7 @@
   - LC0062: Unique Paths
   - LC0063: Unique Paths II 
 - [B： 主要是各种高频题和经典题，基本在5~8遍以上，需要做到最优解，medium难度10分钟以内，hard难度15分钟以内，无错一遍过，同时要能解释清楚思路。另外有多重解法的也要掌握，知道不同解法间的优缺点和trade off原因，任何情况下都要一遍写出来]
-  - LC0034: Find First and Last Position of Element in Sorted Array
+  - [1] LC0034: Find First and Last Position of Element in Sorted Array
   - LC0702: Search in a Sorted Array of Unknown Size
   - LC0004: Median of Two Sorted Arrays
   - LC0074: Search a 2D Matrix
@@ -111,7 +112,7 @@
   - LC0345: Reverse Vowels of a String
   - LC0680: Valid Palindrome II
   - LC0011: Container With Most Water
-  - LC0076: Minimum Window Substring
+  - [1] LC0076: Minimum Window Substring
   - [1] LC0209: Minimum Size Subarray Sum
   - LC0239: Sliding Window Maximum
   - LC0713: Subarray Product Less Than K
@@ -189,8 +190,8 @@
   - LC0141: Linked List Cycle
   - LC0148: Sort List
   - LC0160: Intersection of Two Linked Lists
-  - LC0203: Remove Linked List Elements
-  - LC0206: Reverse Linked List
+  - [1] LC0203: Remove Linked List Elements
+  - [1] LC0206: Reverse Linked List
   - LC0234: Palindrome Linked List
   - LC0328: Odd Even Linked List
   - LC0445: Add Two Numbers II
@@ -366,3 +367,6 @@
   - [1] LC0739: Daily Temperatures
   - [1] LC0027: Remove Element
   - [1] LC0977: Squares of a Sorted Array
+  - [1] LC0904: Fruit Into Baskets
+  - [1] LC0024: Swap Nodes in Pairs
+  - [1] LC0019: Remove Nth Node From End of List

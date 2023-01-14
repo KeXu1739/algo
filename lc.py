@@ -511,11 +511,12 @@ def lc_0209():
         while end < len(nums):
             if curr < target:
                 curr += nums[end]
-                end += 1
+            # 元素加完之后就可能超过target了，所以这里开始缩短子序列
             while curr >= target:
-                l = min(l, end - start) # end 加完range值之后多向后走了一步
+                l = min(l, end - start + 1)
                 curr -= nums[start]
                 start += 1
+            end += 1
         # 循环走完，curr==0的情况只有一种，就是没有碰到第二个while loop，也就是说所有值加起来都不够target
         return 0 if curr == float("inf") else l
 
@@ -531,7 +532,6 @@ def lc_0209():
 def lc_0904():
     # 水果篮问题
     def totalFruit2(fruits: List[int]) -> int:
-
         # 更快一些的解法，记录某种水果最后出现的位置，左指针可以直接跳到合理的位置
         start = 0
         end = 0
@@ -541,7 +541,6 @@ def lc_0904():
         while end < len(fruits):
             d[fruits[end]] = end
             if len(d) >= 3:
-                #print(min(d.values()))
                 minval = min(d.values()) # 直接删掉最靠左的水果记录，然后从下一个index开始当成start
                 del d[fruits[minval]]
                 start = minval+1
@@ -959,7 +958,7 @@ def lc_0024():
             p1.next = p2.next
             p2.next = p1
 
-            p0 = p0.next.next
+            p0 = p1
             if p2.next and p2.next.next:
                 p1 = p2.next.next
             else:
