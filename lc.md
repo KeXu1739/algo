@@ -48,7 +48,7 @@
   - LN0391: Number of Airplanes in the Sky
   - LC0003: Longest Substring Without Repeating Characters
   - [1] LC0053: Maximum Subarray
-  - [1] LC0001: Two Sum
+  - [2] LC0001: Two Sum
   - LC0297: Serialize and Deserialize Binary Tree
   - LN0127: Topological Sorting
   - LC0200: Number of Islands (DFS/UnionFind)
@@ -93,14 +93,14 @@
   - [1] LC0283: Move Zeroes
   - LC0215: Kth Largest Element in an Array
   - LC0347: Top K Frequent Elements
-  - LC0349: Intersection of Two Arrays
-  - LC0350: Intersection of Two Arrays
+  - [1] LC0349: Intersection of Two Arrays
+  - [1] LC0350: Intersection of Two Arrays
   - LC0845: Longest Mountain in Array
   - [1] LC0042: Trapping Rain Water
   - LC0043: Multiply Strings
   - LC0086: Partition List
-  - LC0141: Linked List Cycle
-  - LC0160: Intersection of Two Linked Lists
+  - [1] LC0141: Linked List Cycle
+  - [1] LC0160: Intersection of Two Linked Lists
   - LC0234: Palindrome Linked List
   - LC0328: Odd Even Linked List
   - LC0056: Merge Intervals
@@ -187,7 +187,7 @@
   - LC0086: Partition List
   - LC0092: Reverse Linked List II
   - LC0138: Copy List with Random Pointer
-  - LC0141: Linked List Cycle
+  - [1] LC0141: Linked List Cycle
   - LC0148: Sort List
   - LC0160: Intersection of Two Linked Lists
   - [1] LC0203: Remove Linked List Elements
@@ -195,7 +195,7 @@
   - LC0234: Palindrome Linked List
   - LC0328: Odd Even Linked List
   - LC0445: Add Two Numbers II
-  - LC0049: Group Anagrams
+  - [1] LC0049: Group Anagrams
   - LC0128: Longest Consecutive Sequence
   - LC0560: Subarray Sum Equals K
   - LC0953: Verifying an Alien Dictionary
@@ -255,7 +255,7 @@
   - LN0143: Sort Color II
   - LN0461: Kth Smallest Numbers in Unsorted Array
   - LN0544: Top k Largest Numbers
-  - LC0142: Linked List Cycle II
+  - [1] LC0142: Linked List Cycle II
   - LC0287: Find the Duplicate Number
   - LC0876: Middle of the Linked List
   - LC0125: Valid Palindrome
@@ -370,3 +370,11 @@
   - [1] LC0904: Fruit Into Baskets
   - [1] LC0024: Swap Nodes in Pairs
   - [1] LC0019: Remove Nth Node From End of List
+  - [1] LC0242: 242. Valid Anagram
+  - [1] LC0383: Ransom Note
+  - [1] LC0438: Find All Anagrams in a String
+  - [1] LC0202: Happy Number
+  - [1] LC0454: 4Sum II: Sum to 0
+  - 
+
+

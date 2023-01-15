@@ -1109,6 +1109,17 @@ def lc_0242():
                 return False
         return True
 
+    def isAnagramArr(s: str, t: str) -> bool:
+        sarr = [0 for i in range(26)]
+        tarr = [0 for i in range(26)]
+        for e in s:
+            sarr[ord(e) - ord('a')] +=1
+        for e in t:
+            tarr[ord(e)-ord('a')] += 1
+        for i in range(26):
+            if sarr[i] != tarr[i]:
+                return False
+        return True
 
 def lc_0349():
     def intersection(nums1: List[int], nums2: List[int]) -> List[int]:
@@ -1182,6 +1193,18 @@ def lc_0383():
             if c not in cmag or cmag[c] == 0:
                 return False
             cmag[c] -= 1
+        return True
+
+    def canConstructArr(self, ransomNote: str, magazine: str) -> bool:
+        # use mag to construct note
+        marr = [0 for i in range(26)]
+        for e in magazine:
+            marr[ord(e)-ord('a')] += 1
+        for e in ransomNote:
+            marr[ord(e)-ord('a')] -= 1
+            if marr[ord(e)-ord('a')] == -1:
+                return False
+
         return True
 
 
@@ -4588,8 +4611,59 @@ def lc_0084():
             mx = max(mx, heights[i] * (minRightIdx[i] - minLeftIdx[i] - 1))
         return mx
 
+def lc_0049():
+    '''
+    49.字母异位词分组
+    :return:
+    '''
+    import collections
+    def groupAnagrams(strs: List[str]) -> List[List[str]]:
+        res = collections.defaultdict(list)
+        for s in strs:
+            tmp = [0] * 26
+            for e in s:
+                tmp[ord(e)-ord('a')] += 1
+            res[tuple(tmp)].append(s)
+        return res.values()
+
+def lc_0438():
+    '''
+    438.找到字符串中所有字母异位词
+    :return:
+    '''
+    import collections
+    def findAnagrams(s: str, p: str) -> List[int]:
+        ns, np = len(s), len(p)
+        res = []
+        if ns < np: return res
+        p_count = collections.Counter(p)
+        s_count = collections.Counter()
+        for i in range(ns):
+            s_count[s[i]] +=1
+            if i >= np:
+                if s_count[s[i-np]] == 1:
+                    del s_count[s[i-np]]
+                else:
+                    s_count[s[i-np]] -= 1
+            if s_count == p_count:
+                res.append(i-np+1)
+
+        return res
+
+def lc_0141():
+    def hasCycle(head: Optional[ListNode]) -> bool:
+        if not head: return False
+        p1, p2 = head, head
+
+        while p1.next and p1.next.next:
+            p1 = p1.next.next
+            p2 = p2.next
+            if p1 == p2:
+                return True
+        return False
 
 if __name__ == "__main__":
     # TODO: lc 844
     # TODO: lc 69
+    # TODO: 易错题： 454
     lc_0844()
