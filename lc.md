@@ -48,7 +48,7 @@
   - LN0391: Number of Airplanes in the Sky
   - LC0003: Longest Substring Without Repeating Characters
   - [1] LC0053: Maximum Subarray
-  - [2] LC0001: Two Sum
+  - [3] LC0001: Two Sum
   - LC0297: Serialize and Deserialize Binary Tree
   - LN0127: Topological Sorting
   - LC0200: Number of Islands (DFS/UnionFind)
@@ -122,8 +122,8 @@
   - LC0325: Maximum Size Subarray Sum Equals k 
   - LC0528: Random Pick with Weight
   - LC0560: Subarray Sum Equals K
-  - LC0015: 3Sum
-  - LC0018: 4Sum 
+  - [1] LC0015: 3Sum
+  - [1] LC0018: 4Sum 
   - LN0382: Triangle Count
   - LC0102: Binary Tree Level Order Traversal
   - LC0103: Binary Tree Zigzag Level Order Traversal
@@ -152,7 +152,7 @@
   - LC0112: Path Sum
   - LC0113: Path Sum II
   - LC0124: Binary Tree Maximum Path Sum
-  - LC0236: Lowest Common Ancestor of a Binary Tree
+  - [1] LC0236: Lowest Common Ancestor of a Binary Tree
   - LC0199: Binary Tree Right Side View
   - LC0513: Find Bottom Left Tree Value
   - LC0331: Verify Preorder Serialization of a Binary Tree
@@ -245,7 +245,7 @@
   - LC0658: Find K Closest Elements
   - LC0302: Smallest Rectangle Enclosing Black Pixels
   - LC0852: Peak Index in a Mountain Array
-  - [1] LC0069: Sqrt(x)
+  - [2] LC0069: Sqrt(x)
   - LN0183: Wood Cut
   - LN0437: Copy Books
   - LN0438: Copy Books II
@@ -374,7 +374,14 @@
   - [1] LC0383: Ransom Note
   - [1] LC0438: Find All Anagrams in a String
   - [1] LC0202: Happy Number
-  - [1] LC0454: 4Sum II: Sum to 0
+  - [2] LC0454: 4Sum II: Sum to 0
+  - [1] LC0344: Reverse String
+  - [1] LC0541: Reverse String II
+  - [1] LC1644: Lowest Common Ancestor of a Binary Tree II (not necessarily in tree)
+  - [1] LC1650: Lowest Common Ancestor of a Binary Tree III (with parent, in tree)
+  - [1] LCCN剑指offer05: 替换空格
+  - [1] LC0151: Reverse Words in a String
+  - [1] LCCN剑指Offer58: II. 左旋转字符串
   - 
 
 

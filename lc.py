@@ -1234,12 +1234,12 @@ def lc_0015():
                     r -= 1
                 else:
                     l += 1
-            return res
 
         return res
 
 
 def lc_0018():
+    # @jit(nopython=True)
     def fourSum(nums: List[int], target: int) -> List[List[int]]:
         # 四和，本质和三和一样，要额外考虑合理的去重方法
         n = len(nums)
@@ -1272,6 +1272,8 @@ def lc_0018():
                         l += 1
         return res
 
+
+    print(fourSum([-3,-2,-1,0,0,1,2,3], 0))
 
 def lc_0344():
     def reverseString(s: List[str]) -> None:
@@ -4664,6 +4666,6 @@ def lc_0141():
 
 if __name__ == "__main__":
     # TODO: lc 844
-    # TODO: lc 69
-    # TODO: 易错题： 454
-    lc_0844()
+    # TODO: 易错题： 454， 15， 18
+
+    lc_0018()
