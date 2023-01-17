@@ -122,8 +122,8 @@
   - LC0325: Maximum Size Subarray Sum Equals k 
   - LC0528: Random Pick with Weight
   - LC0560: Subarray Sum Equals K
-  - [1] LC0015: 3Sum
-  - [1] LC0018: 4Sum 
+  - [2] LC0015: 3Sum
+  - [2] LC0018: 4Sum 
   - LN0382: Triangle Count
   - LC0102: Binary Tree Level Order Traversal
   - LC0103: Binary Tree Zigzag Level Order Traversal
@@ -189,9 +189,8 @@
   - LC0138: Copy List with Random Pointer
   - [1] LC0141: Linked List Cycle
   - LC0148: Sort List
-  - LC0160: Intersection of Two Linked Lists
   - [1] LC0203: Remove Linked List Elements
-  - [1] LC0206: Reverse Linked List
+  - [2] LC0206: Reverse Linked List
   - LC0234: Palindrome Linked List
   - LC0328: Odd Even Linked List
   - LC0445: Add Two Numbers II
@@ -204,7 +203,7 @@
   - LC0692: Top K Frequent Words
   - LC0767: Reorganize String
   - LC0973: K Closest Points to Origin
-  - LC0020: Valid Parentheses
+  - [1] LC0020: Valid Parentheses
   - LC0085: Maximal Rectangle
   - LC0224: Basic Calculator
   - LC0227: Basic Calculator II
@@ -255,7 +254,7 @@
   - LN0143: Sort Color II
   - LN0461: Kth Smallest Numbers in Unsorted Array
   - LN0544: Top k Largest Numbers
-  - [1] LC0142: Linked List Cycle II
+  - [2] LC0142: Linked List Cycle II
   - LC0287: Find the Duplicate Number
   - LC0876: Middle of the Linked List
   - LC0125: Valid Palindrome
@@ -365,23 +364,31 @@
   - [1] LC0198: House Robber I
   - [1] LC0377: Combination Sum IV
   - [1] LC0739: Daily Temperatures
-  - [1] LC0027: Remove Element
+  - [2] LC0027: Remove Element
   - [1] LC0977: Squares of a Sorted Array
   - [1] LC0904: Fruit Into Baskets
-  - [1] LC0024: Swap Nodes in Pairs
-  - [1] LC0019: Remove Nth Node From End of List
+  - [2] LC0024: Swap Nodes in Pairs
+  - [2] LC0019: Remove Nth Node From End of List
   - [1] LC0242: 242. Valid Anagram
   - [1] LC0383: Ransom Note
   - [1] LC0438: Find All Anagrams in a String
   - [1] LC0202: Happy Number
-  - [2] LC0454: 4Sum II: Sum to 0
-  - [1] LC0344: Reverse String
+  - [3] LC0454: 4Sum II: Sum to 0
+  - [2] LC0344: Reverse String
   - [1] LC0541: Reverse String II
   - [1] LC1644: Lowest Common Ancestor of a Binary Tree II (not necessarily in tree)
   - [1] LC1650: Lowest Common Ancestor of a Binary Tree III (with parent, in tree)
   - [1] LCCN剑指offer05: 替换空格
-  - [1] LC0151: Reverse Words in a String
+  - [2] LC0151: Reverse Words in a String
   - [1] LCCN剑指Offer58: II. 左旋转字符串
+  - [1] LC0028: Find the Index of the First Occurrence in a String (KMP for strStr)
+  - [1] LC0459: Repeated Substring Pattern
+  - [1] LC0345: Reverse Vowels of a String
+  - [1] LC0232: Implement Queue using Stacks
+  - [1] LC0225: Implement Stack using Queues
   - 
+  - 
+  - 
+
 
 

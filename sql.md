@@ -48,3 +48,5 @@ WHERE ...
 #### Rank
 #### 累计求和
 
+### 4.日常忘掉的syntax
+- 列内没有记录但是需要选中时， WHERE {COL} is NULL    
