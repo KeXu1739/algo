@@ -1624,7 +1624,8 @@ def lc_0239():
                 self.q = deque([])
                 return
             def pop(self, val):
-                while self.q and val == self.q[0]:
+                # 一次pop从左边最多删掉一个
+                if self.q and val == self.q[0]:
                     self.q.popleft()
                 return
             def push(self, val):
@@ -1650,6 +1651,40 @@ def lc_0239():
                 ret[i-k+1] = mq.front()
         return ret
 
+    def maxSlidingWindow(nums: List[int], k: int) -> List[int]:
+        class monoQueue:
+            def __init__(self):
+                self.q = deque([])
+                return
+
+            def pop(self, val):
+                while self.q and val == self.q[0]:
+                    self.q.popleft()
+                return
+
+            def push(self, val):
+                while self.q and self.q[-1] < val:
+                    self.q.pop()
+                self.q.append(val)
+                return
+
+            def front(self):
+                return self.q[0]
+
+        mq = monoQueue()
+        res = [None for _ in range(len(nums)-k+1)]
+        for i, ele in enumerate(nums):
+            if i < k - 1:
+                mq.push(ele)
+            elif i == k - 1:
+                mq.push(ele)
+                res[i-k+1] = mq.front()
+            else:
+                mq.pop(nums[i-k])
+                mq.push(ele)
+                res[i-k+1] = mq.front()
+
+        return res
 
 def lc_0347():
     from collections import Counter
@@ -4998,9 +5033,28 @@ def choice():
     print("C")
     print(np.random.choice(C, 5, replace=False))
 
+def getNext(needle):
+    ret = [0 for e in needle]
+    ret[0] = -1
+    if len(ret) == 1: return ret
+    ret[1] = 0
+    i = 2
+    j = 0
+    while i < len(needle):
+        if needle[i-1] == needle[j]:
+            j += 1
+            ret[i] = j
+            i += 1
+        elif j > 0:
+            j = ret[j]
+        else:
+            ret[i] = 0
+            i += 1
+    return ret
+
 
 if __name__ == "__main__":
     # TODO: lc 844
-    # TODO: 易错题： 454， 15， 18, 28(strstr)
-
-    choice()
+    # TODO: 易错题： 15， 18, 28(strstr), 239(滑动窗口最大值)
+    print(getNext("eetc"))
+    # choice()

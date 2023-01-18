@@ -53,9 +53,9 @@
   - LN0127: Topological Sorting
   - LC0200: Number of Islands (DFS/UnionFind)
   - LC0133: Clone Graph
-  - [1] LC0094: Binary Tree Inorder Traversal
-  - [1] LC0144: Binary Tree Preorder Traversal
-  - [1] LC0145: Binary Tree Postorder Traversal
+  - [2] LC0094: Binary Tree Inorder Traversal
+  - [2] LC0144: Binary Tree Preorder Traversal
+  - [2] LC0145: Binary Tree Postorder Traversal
   - LC0105: Construct Binary Tree from Preorder and Inorder Traversal
   - LC0173: Binary Search Tree Iterator
   - LC0039: Combination Sum
@@ -92,7 +92,7 @@
   - LC0088: Merge Sorted Array
   - [1] LC0283: Move Zeroes
   - LC0215: Kth Largest Element in an Array
-  - LC0347: Top K Frequent Elements
+  - [1] LC0347: Top K Frequent Elements
   - [1] LC0349: Intersection of Two Arrays
   - [1] LC0350: Intersection of Two Arrays
   - LC0845: Longest Mountain in Array
@@ -114,7 +114,7 @@
   - LC0011: Container With Most Water
   - [1] LC0076: Minimum Window Substring
   - [1] LC0209: Minimum Size Subarray Sum
-  - LC0239: Sliding Window Maximum
+  - [1] LC0239: Sliding Window Maximum
   - LC0713: Subarray Product Less Than K
   - LC0295: Find Median from Data Stream
   - LC0238: Product of Array Except Self
@@ -125,9 +125,9 @@
   - [2] LC0015: 3Sum
   - [2] LC0018: 4Sum 
   - LN0382: Triangle Count
-  - LC0102: Binary Tree Level Order Traversal
+  - [1] LC0102: Binary Tree Level Order Traversal
   - LC0103: Binary Tree Zigzag Level Order Traversal
-  - LC0107: Binary Tree Level Order Traversal II
+  - [1] LC0107: Binary Tree Level Order Traversal II
   - LC0513: Find Bottom Left Tree Value
   - LC0207: Course Schedule
   - LC0210: Course Schedule II
@@ -153,7 +153,7 @@
   - LC0113: Path Sum II
   - LC0124: Binary Tree Maximum Path Sum
   - [1] LC0236: Lowest Common Ancestor of a Binary Tree
-  - LC0199: Binary Tree Right Side View
+  - [1] LC0199: Binary Tree Right Side View
   - LC0513: Find Bottom Left Tree Value
   - LC0331: Verify Preorder Serialization of a Binary Tree
   - LC0449: Serialize and Deserialize BST
@@ -386,7 +386,10 @@
   - [1] LC0345: Reverse Vowels of a String
   - [1] LC0232: Implement Queue using Stacks
   - [1] LC0225: Implement Stack using Queues
-  - 
+  - [1] LC1047: Remove All Adjacent Duplicates In String
+  - [1] LC0150: Evaluate Reverse Polish Notation
+  - [1] LC0637: Average of Levels in Binary Tree
+  - [1] LC0429: N-ary Tree Level Order Traversal
   - 
   - 
 
