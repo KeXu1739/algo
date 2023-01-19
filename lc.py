@@ -2027,7 +2027,7 @@ def lc_0226():
             return
 
         def inv2(node):
-            # 中序
+            # 正常中序不行，有的点会被调换两次；需要改成两个invert递归都call在left上或都call在right上
             if not node:
                 return
             inv2(node.left)
@@ -2038,7 +2038,8 @@ def lc_0226():
         inv(root)
         return root
 
-    def invertTreeIterative(self, root: Optional[BinaryTree]) -> Optional[BinaryTree]:
+    def invertTreeIterative(root: Optional[BinaryTree]) -> Optional[BinaryTree]:
+        # 层序可以，前序可以，后序可以，中序也可以。。。
         if not root:
             return
 

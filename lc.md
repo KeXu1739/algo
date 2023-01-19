@@ -114,7 +114,7 @@
   - LC0011: Container With Most Water
   - [1] LC0076: Minimum Window Substring
   - [1] LC0209: Minimum Size Subarray Sum
-  - [1] LC0239: Sliding Window Maximum
+  - [2] LC0239: Sliding Window Maximum
   - LC0713: Subarray Product Less Than K
   - LC0295: Find Median from Data Stream
   - LC0238: Product of Array Except Self
@@ -145,10 +145,10 @@
   - LC0230: Kth Smallest Element in a BST
   - LC0285: Inorder Successor in BST
   - LC0098: Validate Binary Search Tree
-  - LC0100: Same Tree
-  - LC0101: Symmetric Tree 
+  - [1] LC0100: Same Tree
+  - [1] LC0101: Symmetric Tree 
   - LC0110: Balanced Binary Tree
-  - LC0111: Minimum Depth of Binary Tree
+  - [1] LC0111: Minimum Depth of Binary Tree
   - LC0112: Path Sum
   - LC0113: Path Sum II
   - LC0124: Binary Tree Maximum Path Sum
@@ -294,7 +294,7 @@
   - LC0272: Closest Binary Search Tree Value II
   - LC0510: Inorder Successor in BST II
   - LN0915: Inorder Predecessor in BST II
-  - LC0104: Maximum Depth of Binary Tree
+  - [1] LC0104: Maximum Depth of Binary Tree
   - LC0333: Largest BST Subtree
   - LN0596: Minimum Subtree
   - LN0597: Subtree with Maximum Average
@@ -381,7 +381,7 @@
   - [1] LCCN剑指offer05: 替换空格
   - [2] LC0151: Reverse Words in a String
   - [1] LCCN剑指Offer58: II. 左旋转字符串
-  - [1] LC0028: Find the Index of the First Occurrence in a String (KMP for strStr)
+  - [2] LC0028: Find the Index of the First Occurrence in a String (KMP for strStr)
   - [1] LC0459: Repeated Substring Pattern
   - [1] LC0345: Reverse Vowels of a String
   - [1] LC0232: Implement Queue using Stacks
@@ -390,6 +390,12 @@
   - [1] LC0150: Evaluate Reverse Polish Notation
   - [1] LC0637: Average of Levels in Binary Tree
   - [1] LC0429: N-ary Tree Level Order Traversal
+  - [1] LC0515: Find Largest Value in Each Tree Row
+  - [1] LC0116: Populating Next Right Pointers in Each Node
+  - [1] LC0116: Populating Next Right Pointers in Each Node II
+  - [1] LC0226: Invert Binary Tree
+  - [1] LC0572: Subtree of Another Tree
+  - [] LC0222: Count Complete Tree Nodes 
   - 
   - 
 
