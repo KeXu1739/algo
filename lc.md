@@ -128,7 +128,7 @@
   - [1] LC0102: Binary Tree Level Order Traversal
   - LC0103: Binary Tree Zigzag Level Order Traversal
   - [1] LC0107: Binary Tree Level Order Traversal II
-  - LC0513: Find Bottom Left Tree Value
+  - [1] LC0513: Find Bottom Left Tree Value
   - LC0207: Course Schedule
   - LC0210: Course Schedule II
   - LC0269: Alien Dictionary
@@ -147,10 +147,10 @@
   - LC0098: Validate Binary Search Tree
   - [1] LC0100: Same Tree
   - [1] LC0101: Symmetric Tree 
-  - LC0110: Balanced Binary Tree
+  - [1] LC0110: Balanced Binary Tree
   - [1] LC0111: Minimum Depth of Binary Tree
-  - LC0112: Path Sum
-  - LC0113: Path Sum II
+  - [1] LC0112: Path Sum
+  - [1] LC0113: Path Sum II
   - LC0124: Binary Tree Maximum Path Sum
   - [1] LC0236: Lowest Common Ancestor of a Binary Tree
   - [1] LC0199: Binary Tree Right Side View
@@ -164,7 +164,7 @@
   - LC0301: Remove Invalid Parentheses
   - LC0491: Increasing Subsequences
   - LC0113: Path Sum II
-  - LC0257: Binary Tree Paths
+  - [1] LC0257: Binary Tree Paths
   - LN0246: Binary Tree Path Sum II
   - LN0376: Binary Tree Path Sum
   - LN0472: Binary Tree Path Sum III
@@ -395,7 +395,7 @@
   - [1] LC0116: Populating Next Right Pointers in Each Node II
   - [1] LC0226: Invert Binary Tree
   - [1] LC0572: Subtree of Another Tree
-  - [] LC0222: Count Complete Tree Nodes 
+  - [1] LC0222: Count Complete Tree Nodes 
   - 
   - 
 

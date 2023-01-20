@@ -2139,6 +2139,9 @@ def lc_0559():
 def lc_0222():
     '''
     222.完全二叉树的节点个数,时间复杂度小于o(n)的解法
+    完全树：只有最后一层可以出现叶子节点，且叶子节点从左往右依次排列
+    完全树子树性质：一定有一个子树是满树，另一个不是满树，持续递归下去，不是满树的那一边到某一个递归一定也是有一边子树是满树，另一边不是
+    满树：节点个数为2**树深度-1
     :return:
     '''
     def countNodes(root: Optional[BinaryTree]) -> int:
@@ -2305,23 +2308,17 @@ def lc_0113():
     :return:
     '''
     def pathSum(root: Optional[BinaryTree], targetSum: int) -> List[List[int]]:
-        def pS(node, targetSum, curpath, res):
-            # if not node:
-            #     return
+        res = []
+        def pS(node, cur):
+            if not node: return # 这里来处理一边有孩子另一边没孩子的递归情况，没孩子的那边会直接返回
             if (not node.left) and (not node.right):
                 if node.value == targetSum:
-                    curpath += [node.val]
-                    res.append(curpath)
-            else:
-                if node.left:
-                    pS(node.left, targetSum - node.value, curpath + [node.value], res)
-                if node.right:
-                    pS(node.right, targetSum - node.value, curpath + [node.value], res)
+                    res.append(cur[:]+[node.val])
+
+            pS(node.left, cur + [node.val])
+            pS(node.left, cur + [node.val])
             return
-        res = []
-        if not root:
-            return res
-        pS(root, targetSum, [], res)
+        pS(root, [])
         return res
 
 
