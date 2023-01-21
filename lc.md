@@ -144,7 +144,7 @@
   - LC0889: Construct Binary Tree from Preorder and Postorder Traversal
   - LC0230: Kth Smallest Element in a BST
   - LC0285: Inorder Successor in BST
-  - LC0098: Validate Binary Search Tree
+  - [1] LC0098: Validate Binary Search Tree
   - [1] LC0100: Same Tree
   - [1] LC0101: Symmetric Tree 
   - [1] LC0110: Balanced Binary Tree
@@ -397,6 +397,9 @@
   - [1] LC0572: Subtree of Another Tree
   - [1] LC0222: Count Complete Tree Nodes 
   - [1] LC0654: Maximum Binary Tree
+  - [1] LC0700: Search in a Binary Search Tree
+  - [1] LC0530: Minimum Absolute Difference in BST
+  - [1] LC0501: Find Mode in Binary Search Tree
   - 
 
 

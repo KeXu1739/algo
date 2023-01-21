@@ -5050,9 +5050,72 @@ def getNext(needle):
             i += 1
     return ret
 
+def lc_0098():
+    def isValidBSTIterative(root: BinaryTree) -> bool:
+        preval = float("-inf")
+        def valid(root):
+            nonlocal preval
+            if not root: return True
+            s = deque([])
+            while root:
+                s.append(root)
+                root = root.left
+
+            while s:
+                cur = s.pop()
+                if cur.value <= preval:
+                    return False
+                preval = cur.value
+                cur_R = cur.right
+                while cur_R:
+                    s.append(cur_R)
+                    cur_R = cur_R.left
+            return True
+
+        return valid(root)
+
+    def isValidBSTRecursive(root: BinaryTree) -> bool:
+        preval = float("-inf")
+        def valid(root):
+            nonlocal preval
+            if not root: return True
+            l = valid(root.left)
+            if root.val <= preval:
+                return False
+            preval = root.val
+            r = valid(root.right)
+            return l and r
+        return valid(root)
+
+    root = BinaryTree(2)
+    root.left = BinaryTree(2)
+    root.right = BinaryTree(2)
+    print(isValidBSTIterative(root))
+
+def lc_0530():
+    def getMinimumDifference(root: BinaryTree) -> int:
+        diff = float("inf")
+        prev = float("-inf")
+        if not root: return 0
+        s = deque([])
+        while root:
+            s.append(root)
+            root = root.left
+
+        while s:
+            cur = s.pop()
+            diff = min(diff, abs(cur.val - prev))
+            prev = cur.val
+            cur_R = cur.right
+            while cur_R:
+                s.append(cur_R)
+                cur_R = cur_R.left
+
+        return diff
+
+
 
 if __name__ == "__main__":
     # TODO: lc 844
     # TODO: 易错题： 15， 18, 28(strstr), 239(滑动窗口最大值)
-    print(getNext("eetc"))
-    # choice()
+    lc_0098()
