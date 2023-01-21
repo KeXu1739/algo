@@ -56,7 +56,7 @@
   - [2] LC0094: Binary Tree Inorder Traversal
   - [2] LC0144: Binary Tree Preorder Traversal
   - [2] LC0145: Binary Tree Postorder Traversal
-  - LC0105: Construct Binary Tree from Preorder and Inorder Traversal
+  - [1] LC0105: Construct Binary Tree from Preorder and Inorder Traversal
   - LC0173: Binary Search Tree Iterator
   - LC0039: Combination Sum
   - LC0040: Combination Sum II
@@ -140,7 +140,7 @@
   - LC0127: Word Ladder
   - LC0261: Graph Valid Tree
   - LC0841: Keys and Rooms
-  - LC0106: Construct Binary Tree from Inorder and Postorder Traversal
+  - [1] LC0106: Construct Binary Tree from Inorder and Postorder Traversal
   - LC0889: Construct Binary Tree from Preorder and Postorder Traversal
   - LC0230: Kth Smallest Element in a BST
   - LC0285: Inorder Successor in BST
@@ -396,7 +396,7 @@
   - [1] LC0226: Invert Binary Tree
   - [1] LC0572: Subtree of Another Tree
   - [1] LC0222: Count Complete Tree Nodes 
-  - 
+  - [1] LC0654: Maximum Binary Tree
   - 
 
 
