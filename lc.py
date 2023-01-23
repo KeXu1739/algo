@@ -2626,7 +2626,7 @@ def lc_0450():
             while cur.left:
                 cur = cur.left
             cur.left = root.left
-            return root
+            return root.right
         if not root: return root
         prev = None
         cur = root
@@ -5117,5 +5117,5 @@ def lc_0530():
 
 if __name__ == "__main__":
     # TODO: lc 844
-    # TODO: 易错题： 15， 18, 28(strstr), 239(滑动窗口最大值)
+    # TODO: 易错题： 15， 18, 28(strstr), 239(滑动窗口最大值), 235(BST里的最低公共祖先), 450()
     lc_0098()

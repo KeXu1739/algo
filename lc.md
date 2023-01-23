@@ -152,7 +152,7 @@
   - [1] LC0112: Path Sum
   - [1] LC0113: Path Sum II
   - LC0124: Binary Tree Maximum Path Sum
-  - [1] LC0236: Lowest Common Ancestor of a Binary Tree
+  - [2] LC0236: Lowest Common Ancestor of a Binary Tree
   - [1] LC0199: Binary Tree Right Side View
   - LC0513: Find Bottom Left Tree Value
   - LC0331: Verify Preorder Serialization of a Binary Tree
@@ -381,7 +381,7 @@
   - [1] LCCN剑指offer05: 替换空格
   - [2] LC0151: Reverse Words in a String
   - [1] LCCN剑指Offer58: II. 左旋转字符串
-  - [2] LC0028: Find the Index of the First Occurrence in a String (KMP for strStr)
+  - [3] LC0028: Find the Index of the First Occurrence in a String (KMP for strStr)
   - [1] LC0459: Repeated Substring Pattern
   - [1] LC0345: Reverse Vowels of a String
   - [1] LC0232: Implement Queue using Stacks
@@ -400,6 +400,8 @@
   - [1] LC0700: Search in a Binary Search Tree
   - [1] LC0530: Minimum Absolute Difference in BST
   - [1] LC0501: Find Mode in Binary Search Tree
+  - [1] LC0450: Delete Node in a BST
+  - 
   - 
 
 
