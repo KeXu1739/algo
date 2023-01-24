@@ -2650,16 +2650,17 @@ def lc_0450():
 
 def lc_0669():
     '''
-    669. 修剪二叉搜索树
+    669. 修剪二叉搜索树，直接看解答很容易，但是自己想有时候一下子想不到，二叉树多考虑递归做法和树形dp
     :return:
     '''
     def trimBST(root: Optional[BinaryTree], low: int, high: int) -> Optional[BinaryTree]:
+
         if not root: return root
         if root.value < low:
-            # 说明root的左树已经完全不符合条件，这时我们trim右边，直接返回trim完之后右边的根节点，隐含删除了当前节点
+            # 说明root的左树包含root自己已经完全不符合条件，这时我们trim右边，直接返回trim完之后右边的根节点，隐含删除了当前节点
             return trimBST(root.right, low, high)
         if root.value > high:
-            # 说明root的右树已经完全不符合条件，这时我们trim左边，直接返回trim完之后左边的根节点， 隐含删除了当前节点
+            # 说明root的右树包含root自己已经完全不符合条件，这时我们trim左边，直接返回trim完之后左边的根节点， 隐含删除了当前节点
             return trimBST(root.left, low, high)
 
         # 到这里为止，当前节点value在low和high之间，则当前节点保留，分别递归trim左右树并将根节点传给当前树的左右孩子
@@ -2700,6 +2701,45 @@ def lc_0108():
             root.right = arr2BST(nums, m+1, r)
             return root
         return arr2BST(nums, 0, len(nums)-1)
+
+def lc_0109():
+    '''
+    108是用有序数组，109是用有序链表，下面的方法对中序遍历进行了一个模拟，同时进行构造
+    :return:
+    '''
+    def sortedListToBST(head: Optional[ListNode]) -> Optional[BinaryTree]:
+        def size(head):
+            c = 0
+            while head:
+                c += 1
+                head = head.next
+            return c
+
+        size = size(head)
+        def convert(l, r):
+            nonlocal head
+            if l > r: return None
+            m = l + ((r-l) >> 1)
+            left = convert(l, m - 1)
+            node = BinaryTree(head.val)
+            node.left = left
+            head = head.next
+            node.right = convert(m+1, r)
+            # printBinaryTree(node)
+            return node
+
+        return convert(0, size-1)
+
+    nums = [0,1,2,3,4,5]
+    head = ListNode(nums[0])
+    cur = head
+    i = 1
+    while i < len(nums):
+        cur.next = ListNode(nums[i])
+        i += 1
+        cur = cur.next
+    root = sortedListToBST(head)
+    printBinaryTree(root)
 
 def lc_0538():
     '''
@@ -5113,9 +5153,35 @@ def lc_0530():
 
         return diff
 
+def lc_0539():
+    '''
+    最小时间差，本质是一个桶排序的应用
+    最小时间差为：有序时间数组相邻两个数的最小时间差，最小时间和最大时间的两个方向的差，这三个数中间的最小值
+    :return:
+    '''
+    def findMinDifference(timePoints: List[str]) -> int:
+        def convert(timePt):
+            return int(timePt[:2]) * 60 + int(timePt[-2:])
 
+        minutes = [False] * 24 * 60
+        for t in timePoints:
+            d = convert(t)
+            if minutes[d]: return 0
+            minutes[d] = True
+
+        lm, sm = -1, -1
+        minInterval = float("inf")
+        for minute in range(len(minutes)):
+            if minutes[minute]:
+                if lm != -1:
+                    minInterval = min(minInterval, minute - lm)
+                lm = minute
+                if sm == -1:
+                    sm = minute
+        return min(minInterval, lm - sm, sm - lm + 1440)
 
 if __name__ == "__main__":
     # TODO: lc 844
-    # TODO: 易错题： 15， 18, 28(strstr), 239(滑动窗口最大值), 235(BST里的最低公共祖先), 450()
-    lc_0098()
+    # TODO: 易错题： 15， 18, 28(strstr), 239(滑动窗口最大值), 235(BST里的最低公共祖先), 450(BST里删除节点)， 669(修剪BST)
+    # TODO: 易错题：77(组合问题)
+    choice()

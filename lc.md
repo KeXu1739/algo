@@ -62,7 +62,7 @@
   - LC0040: Combination Sum II
   - LC0046: Permutations
   - LC0047: Permutations II
-  - LC0077: Combinations
+  - [1] LC0077: Combinations
   - LC0078 Subsets
   - LC0090: Subsets II
   - LC0002: Add Two Numbers
@@ -401,8 +401,13 @@
   - [1] LC0530: Minimum Absolute Difference in BST
   - [1] LC0501: Find Mode in Binary Search Tree
   - [1] LC0450: Delete Node in a BST
+  - [1] LC0669: Trim a Binary Search Tree
+  - [1] LC0108: Convert Sorted Array to Binary Search Tree
+  - [1] LC0109: Convert Sorted List to Binary Search Tree
+  - [1] LC0539: Minimum Time Difference
+  - [1] LC0216: Combination Sum III
+  - [1] LC0217: Contains Duplicate
+  - [1] LC0219: Contains Duplicate II
   - 
-  - 
-
 
 
