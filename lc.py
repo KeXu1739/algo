@@ -2885,15 +2885,11 @@ def lc_0040():
             if target == 0:
                 res.append(cur[:])
                 return
-            i = idx
-            while i <= len(candidates)-1:
-                if i > idx and candidates[i] == candidates[i-1]:
-                    i += 1
-                    continue
+            for i in range(idx, len(candidates)):
+                if i > idx and candidates[i] == candidates[i-1]: continue
                 cur.append(candidates[i])
                 bt(candidates, target - candidates[i], i + 1)
                 cur.pop()
-                i += 1
             return
         candidates.sort()
         bt(candidates, target, 0)

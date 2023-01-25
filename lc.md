@@ -58,13 +58,13 @@
   - [2] LC0145: Binary Tree Postorder Traversal
   - [1] LC0105: Construct Binary Tree from Preorder and Inorder Traversal
   - LC0173: Binary Search Tree Iterator
-  - LC0039: Combination Sum
-  - LC0040: Combination Sum II
+  - [1] LC0039: Combination Sum
+  - [1] LC0040: Combination Sum II
   - LC0046: Permutations
   - LC0047: Permutations II
   - [1] LC0077: Combinations
-  - LC0078 Subsets
-  - LC0090: Subsets II
+  - [1] LC0078 Subsets
+  - [1]LC0090: Subsets II
   - LC0002: Add Two Numbers
   - LC0021: Merge Two Sorted Lists
   - LC0706: Design HashMap
@@ -122,8 +122,8 @@
   - LC0325: Maximum Size Subarray Sum Equals k 
   - LC0528: Random Pick with Weight
   - LC0560: Subarray Sum Equals K
-  - [2] LC0015: 3Sum
-  - [2] LC0018: 4Sum 
+  - [3] LC0015: 3Sum
+  - [3] LC0018: 4Sum 
   - LN0382: Triangle Count
   - [1] LC0102: Binary Tree Level Order Traversal
   - LC0103: Binary Tree Zigzag Level Order Traversal
@@ -157,7 +157,7 @@
   - LC0513: Find Bottom Left Tree Value
   - LC0331: Verify Preorder Serialization of a Binary Tree
   - LC0449: Serialize and Deserialize BST
-  - LC0017: Letter Combinations of a Phone Number
+  - [1] LC0017: Letter Combinations of a Phone Number
   - LC0022: Generate Parentheses
   - LC0051: N-Queens
   - LC0254: Factor Combinations
@@ -308,7 +308,7 @@
   - LC0037: Sudoku Solver
   - LC0052: N-Queens II
   - LC0093: Restore IP Addresses
-  - LC0131: Palindrome Partitioning
+  - [1] LC0131: Palindrome Partitioning
   - LN0010: String Permutation II
   - LN0570: Find the Missing Number II
   - LN0680: Split String
@@ -381,7 +381,7 @@
   - [1] LCCN剑指offer05: 替换空格
   - [2] LC0151: Reverse Words in a String
   - [1] LCCN剑指Offer58: II. 左旋转字符串
-  - [3] LC0028: Find the Index of the First Occurrence in a String (KMP for strStr)
+  - [4] LC0028: Find the Index of the First Occurrence in a String (KMP for strStr)
   - [1] LC0459: Repeated Substring Pattern
   - [1] LC0345: Reverse Vowels of a String
   - [1] LC0232: Implement Queue using Stacks
