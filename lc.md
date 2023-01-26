@@ -62,9 +62,9 @@
   - [1] LC0040: Combination Sum II
   - LC0046: Permutations
   - LC0047: Permutations II
-  - [1] LC0077: Combinations
+  - [2] LC0077: Combinations
   - [1] LC0078 Subsets
-  - [1]LC0090: Subsets II
+  - [3] LC0090: Subsets II
   - LC0002: Add Two Numbers
   - LC0021: Merge Two Sorted Lists
   - LC0706: Design HashMap
@@ -162,7 +162,7 @@
   - LC0051: N-Queens
   - LC0254: Factor Combinations
   - LC0301: Remove Invalid Parentheses
-  - LC0491: Increasing Subsequences
+  - [1] LC0491: Increasing Subsequences
   - LC0113: Path Sum II
   - [1] LC0257: Binary Tree Paths
   - LN0246: Binary Tree Path Sum II
@@ -381,7 +381,7 @@
   - [1] LCCN剑指offer05: 替换空格
   - [2] LC0151: Reverse Words in a String
   - [1] LCCN剑指Offer58: II. 左旋转字符串
-  - [4] LC0028: Find the Index of the First Occurrence in a String (KMP for strStr)
+  - [5] LC0028: Find the Index of the First Occurrence in a String (KMP for strStr)
   - [1] LC0459: Repeated Substring Pattern
   - [1] LC0345: Reverse Vowels of a String
   - [1] LC0232: Implement Queue using Stacks
@@ -401,13 +401,17 @@
   - [1] LC0530: Minimum Absolute Difference in BST
   - [1] LC0501: Find Mode in Binary Search Tree
   - [1] LC0450: Delete Node in a BST
-  - [1] LC0669: Trim a Binary Search Tree
+  - [2] LC0669: Trim a Binary Search Tree
   - [1] LC0108: Convert Sorted Array to Binary Search Tree
   - [1] LC0109: Convert Sorted List to Binary Search Tree
   - [1] LC0539: Minimum Time Difference
   - [1] LC0216: Combination Sum III
   - [1] LC0217: Contains Duplicate
   - [1] LC0219: Contains Duplicate II
+  - [1] LC0492: Construct the Rectangle
+  - 
+  - 
+  - 
   - 
 
 
