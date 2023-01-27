@@ -3125,14 +3125,20 @@ def lc_0332():
     def findItinerary(tickets: List[List[str]]) -> List[str]:
         res = ["JFK"]
         targets = defaultdict(list)
+        # defaultdic(list) 是为了方便直接append
         for s, e in tickets: targets[s].append(e)
+
+        # 给每一个机场的到达机场排序，小的在前面，在回溯里首先被pop(0）出去
+        # 这样最先找的的path就是排序最小的答案，直接返回
         for s in targets: targets[s].sort()
 
         def bt(start):
             if len(res) == len(tickets) + 1: return True
             for _ in targets[start]:
+                #必须及时删除，避免出现死循环
                 dest = targets[start].pop(0)
                 res.append(dest)
+                # 只要找到一个就可以返回了
                 if bt(dest): return True
                 res.pop()
                 targets[start].append(dest)
@@ -3227,7 +3233,14 @@ def lc_0037():
         return bt(board)
 
 def lc_0376():
+    '''
+    贪心法：首先题目只允许删掉点而不允许调整点，当只允许删掉点的时候，是不可能通过删掉某个点增加wiggle数量的，只有可能因为删掉了错的点而减少
+    wiggle的数量，因此，最优的解就是只删掉单调递增或者单调递减的序列除去首尾的点们，这样剩下的序列中，wiggle的数量就是原始序列中山峰和山谷的数量
+    山峰和山谷的判断方法是连续两个difference，一个正(或0)一个负
+    :return:
+    '''
     def wiggleMaxLength(nums: List[int]) -> int:
+
         n = len(nums)
         if n == 0 or n == 1: return n
 
@@ -5176,8 +5189,20 @@ def lc_0539():
                     sm = minute
         return min(minInterval, lm - sm, sm - lm + 1440)
 
+def divide3(n):
+    sm = sum([int(i) for i in n])
+    count = 0
+    for i in n:
+        ii = int(i)
+        sm_base = sm - ii
+        for j in range(10):
+            if (sm_base + j) % 3 == 0 and j != ii:
+                count += 1
+    return count
+
 if __name__ == "__main__":
     # TODO: lc 844
     # TODO: 易错题： 15， 18, 28(strstr), 239(滑动窗口最大值), 235(BST里的最低公共祖先), 450(BST里删除节点)， 669(修剪BST)
-    # TODO: 易错题：77(组合问题), 491(递增子序列), 46(全排列), 47(全排列II)
+    # TODO: 易错题：77(组合问题), 491(递增子序列), 46(全排列), 47(全排列II) 332(更改行程) 欠了一个37还没写
     choice()
+    #print(divide3("01"))#

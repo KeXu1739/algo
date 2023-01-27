@@ -47,7 +47,7 @@
   - LC0021: Merge Two Sorted Lists
   - LN0391: Number of Airplanes in the Sky
   - LC0003: Longest Substring Without Repeating Characters
-  - [1] LC0053: Maximum Subarray
+  - [2] LC0053: Maximum Subarray
   - [3] LC0001: Two Sum
   - LC0297: Serialize and Deserialize Binary Tree
   - LN0127: Topological Sorting
@@ -159,7 +159,7 @@
   - LC0449: Serialize and Deserialize BST
   - [1] LC0017: Letter Combinations of a Phone Number
   - LC0022: Generate Parentheses
-  - LC0051: N-Queens
+  - [1] LC0051: N-Queens
   - LC0254: Factor Combinations
   - LC0301: Remove Invalid Parentheses
   - [1] LC0491: Increasing Subsequences
@@ -306,7 +306,7 @@
   - LN0578: Lowest Common Ancestor III
   - LC0114: Flatten Binary Tree to Linked List
   - LC0037: Sudoku Solver
-  - LC0052: N-Queens II
+  - [1] LC0052: N-Queens II
   - LC0093: Restore IP Addresses
   - [1] LC0131: Palindrome Partitioning
   - LN0010: String Permutation II
@@ -409,8 +409,10 @@
   - [1] LC0217: Contains Duplicate
   - [1] LC0219: Contains Duplicate II
   - [1] LC0492: Construct the Rectangle
-  - 
-  - 
+  - [1] LC0332: Reconstruct Itinerary
+  - [1] LC0455: Assign Cookies
+  - [1] LC0376: Wiggle Subsequence
+  - [1] LC2291: Maximum Profit From Trading Stocks
   - 
   - 
 
