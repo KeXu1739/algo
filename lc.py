@@ -2994,7 +2994,7 @@ def lc_0090():
                 return
 
             for i in range(idx, len(nums)):
-                if i != idx and nums[i] == nums[i-1] and used[i-1]:
+                if i != idx and nums[i] == nums[i-1] and not used[i-1]:
                     continue
                 cur.append(nums[i])
                 used[i]=True

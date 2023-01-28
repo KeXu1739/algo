@@ -60,11 +60,11 @@
   - LC0173: Binary Search Tree Iterator
   - [1] LC0039: Combination Sum
   - [1] LC0040: Combination Sum II
-  - LC0046: Permutations
-  - LC0047: Permutations II
-  - [2] LC0077: Combinations
-  - [1] LC0078 Subsets
-  - [3] LC0090: Subsets II
+  - [1] LC0046: Permutations
+  - [1] LC0047: Permutations II
+  - [3] LC0077: Combinations
+  - [2] LC0078 Subsets
+  - [4] LC0090: Subsets II
   - LC0002: Add Two Numbers
   - LC0021: Merge Two Sorted Lists
   - LC0706: Design HashMap
@@ -122,8 +122,8 @@
   - LC0325: Maximum Size Subarray Sum Equals k 
   - LC0528: Random Pick with Weight
   - LC0560: Subarray Sum Equals K
-  - [3] LC0015: 3Sum
-  - [3] LC0018: 4Sum 
+  - [4] LC0015: 3Sum
+  - [4] LC0018: 4Sum 
   - LN0382: Triangle Count
   - [1] LC0102: Binary Tree Level Order Traversal
   - LC0103: Binary Tree Zigzag Level Order Traversal
@@ -152,6 +152,7 @@
   - [1] LC0112: Path Sum
   - [1] LC0113: Path Sum II
   - LC0124: Binary Tree Maximum Path Sum
+  - [2] LC0235: Lowest Common Ancestor of a Binary Searh Tree
   - [2] LC0236: Lowest Common Ancestor of a Binary Tree
   - [1] LC0199: Binary Tree Right Side View
   - LC0513: Find Bottom Left Tree Value
@@ -178,7 +179,7 @@
   - LC0289. Game of Life
   - LC0006. ZigZag Conversion
   - LC0013. Roman to Integer
-  - LC0014. Longest Common Prefix
+  - [1] LC0014. Longest Common Prefix
   - LC0068. Text Justification
   - LC0443. String Compression
   - LC0025: Reverse Nodes in k-Group
@@ -381,7 +382,7 @@
   - [1] LCCN剑指offer05: 替换空格
   - [2] LC0151: Reverse Words in a String
   - [1] LCCN剑指Offer58: II. 左旋转字符串
-  - [5] LC0028: Find the Index of the First Occurrence in a String (KMP for strStr)
+  - [6] LC0028: Find the Index of the First Occurrence in a String (KMP for strStr)
   - [1] LC0459: Repeated Substring Pattern
   - [1] LC0345: Reverse Vowels of a String
   - [1] LC0232: Implement Queue using Stacks
@@ -401,7 +402,7 @@
   - [1] LC0530: Minimum Absolute Difference in BST
   - [1] LC0501: Find Mode in Binary Search Tree
   - [1] LC0450: Delete Node in a BST
-  - [2] LC0669: Trim a Binary Search Tree
+  - [3] LC0669: Trim a Binary Search Tree
   - [1] LC0108: Convert Sorted Array to Binary Search Tree
   - [1] LC0109: Convert Sorted List to Binary Search Tree
   - [1] LC0539: Minimum Time Difference
@@ -409,7 +410,7 @@
   - [1] LC0217: Contains Duplicate
   - [1] LC0219: Contains Duplicate II
   - [1] LC0492: Construct the Rectangle
-  - [1] LC0332: Reconstruct Itinerary
+  - [2] LC0332: Reconstruct Itinerary
   - [1] LC0455: Assign Cookies
   - [1] LC0376: Wiggle Subsequence
   - [1] LC2291: Maximum Profit From Trading Stocks
