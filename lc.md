@@ -47,7 +47,7 @@
   - LC0021: Merge Two Sorted Lists
   - LN0391: Number of Airplanes in the Sky
   - LC0003: Longest Substring Without Repeating Characters
-  - [2] LC0053: Maximum Subarray
+  - [3] LC0053: Maximum Subarray
   - [3] LC0001: Two Sum
   - LC0297: Serialize and Deserialize Binary Tree
   - LN0127: Topological Sorting
@@ -114,7 +114,7 @@
   - LC0011: Container With Most Water
   - [1] LC0076: Minimum Window Substring
   - [1] LC0209: Minimum Size Subarray Sum
-  - [2] LC0239: Sliding Window Maximum
+  - [3] LC0239: Sliding Window Maximum
   - LC0713: Subarray Product Less Than K
   - LC0295: Find Median from Data Stream
   - LC0238: Product of Array Except Self
@@ -160,7 +160,7 @@
   - LC0449: Serialize and Deserialize BST
   - [1] LC0017: Letter Combinations of a Phone Number
   - LC0022: Generate Parentheses
-  - [1] LC0051: N-Queens
+  - [2] LC0051: N-Queens
   - LC0254: Factor Combinations
   - LC0301: Remove Invalid Parentheses
   - [1] LC0491: Increasing Subsequences
@@ -306,8 +306,8 @@
   - LN0474: Lowest Common Ancestor II
   - LN0578: Lowest Common Ancestor III
   - LC0114: Flatten Binary Tree to Linked List
-  - LC0037: Sudoku Solver
-  - [1] LC0052: N-Queens II
+  - [1] LC0037: Sudoku Solver
+  - [2] LC0052: N-Queens II
   - LC0093: Restore IP Addresses
   - [1] LC0131: Palindrome Partitioning
   - LN0010: String Permutation II
@@ -332,7 +332,7 @@
   - LN0564: Backpack VI (Combination Sum IV)
   - LN0971: Surplus Value Backpack
   - LC0474. Ones and Zeroes
-  - [1] LC0122: Best Time to Buy and Sell Stock II
+  - [2] LC0122: Best Time to Buy and Sell Stock II
   - [1] LC0123: Best Time to Buy and Sell Stock III
   - [1] LC0188: Best Time to Buy and Sell Stock IV
   - LC0256: Paint House
@@ -401,7 +401,7 @@
   - [1] LC0700: Search in a Binary Search Tree
   - [1] LC0530: Minimum Absolute Difference in BST
   - [1] LC0501: Find Mode in Binary Search Tree
-  - [1] LC0450: Delete Node in a BST
+  - [2] LC0450: Delete Node in a BST
   - [3] LC0669: Trim a Binary Search Tree
   - [1] LC0108: Convert Sorted Array to Binary Search Tree
   - [1] LC0109: Convert Sorted List to Binary Search Tree
@@ -414,7 +414,12 @@
   - [1] LC0455: Assign Cookies
   - [1] LC0376: Wiggle Subsequence
   - [1] LC2291: Maximum Profit From Trading Stocks
-  - 
+  - [1] LC1005: Maximize Sum Of Array After K Negations
+  - [1] LC2099: Find Subsequence of Length K With the Largest Sum
+  - [1] LC0134: Gas Station
+  - [1] LC0135: Candy
+  - [1] LC0136: Single Number
+  - [1] LC0137: Single Number II
   - 
 
 

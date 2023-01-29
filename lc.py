@@ -3350,12 +3350,15 @@ def lc_0045():
     :return:
     '''
     def jump(nums: List[int]) -> int:
+        if len(nums) == 1: return 0
         j = 0
-        crm = 0
-        nrm = 0
+        crm = 0 # 当前可到达的最远距离
+        nrm = 0 # 下一个可到达的最远距离
         for i, num in enumerate(nums):
-            nrm = max(nrm, i+nums)
+            nrm = max(nrm, i + nums[i])
             if i == crm and i != len(nums)-1:
+                # 如果当前idx到了当前的最远距离，那么需要用更长的最远距离，则说明在初始化了crm和更新了当前nrm的中间位置需要跳一次
+                #如果现在的指针已经到了最后一个位置那就不用跳并加1了
                 j += 1
                 crm = nrm
         return j
@@ -5189,20 +5192,27 @@ def lc_0539():
                     sm = minute
         return min(minInterval, lm - sm, sm - lm + 1440)
 
-def divide3(n):
-    sm = sum([int(i) for i in n])
-    count = 0
-    for i in n:
-        ii = int(i)
-        sm_base = sm - ii
-        for j in range(10):
-            if (sm_base + j) % 3 == 0 and j != ii:
-                count += 1
-    return count
+def lc_0137():
+    '''
+    一个数出现一次，剩下数出现三次，找到出现一次的数，要求常数space，线性time
+    https://www.cnblogs.com/bjwu/p/9323808.html
+    https://leetcode.cn/problems/single-number-ii/solution/single-number-ii-mo-ni-san-jin-zhi-fa-by-jin407891/
+    :return:
+    '''
+    def singleNumber(nums):
+        one, two = 0, 0
+        print((one, two))
+        for num in nums:
+            one = ~two & (one ^ num)
+            two = ~one & (two ^ num)
+            print((one, two))
+        return one
+    nums = [1,2,2,2]
+    print(singleNumber(nums))
 
 if __name__ == "__main__":
     # TODO: lc 844
     # TODO: 易错题： 15， 18, 28(strstr), 239(滑动窗口最大值), 235(BST里的最低公共祖先), 450(BST里删除节点)， 669(修剪BST)
-    # TODO: 易错题：77(组合问题), 491(递增子序列), 46(全排列), 47(全排列II) 332(更改行程) 欠了一个37还没写
-    choice()
+    # TODO: 易错题：77(组合问题), 491(递增子序列), 46(全排列), 47(全排列II) 332(更改行程) 51(NQueen) 37(数独) 55(跳跃游戏)
+    lc_0137()
     #print(divide3("01"))#
