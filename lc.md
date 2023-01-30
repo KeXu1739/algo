@@ -103,8 +103,8 @@
   - [1] LC0160: Intersection of Two Linked Lists
   - LC0234: Palindrome Linked List
   - LC0328: Odd Even Linked List
-  - LC0056: Merge Intervals
-  - LC0057: Insert Interval
+  - [1] LC0056: Merge Intervals
+  - [1] LC0057: Insert Interval
   - LC0252: Meeting Rooms
   - LC0253: Meeting Rooms II
   - LC0986: Interval List Intersections
@@ -235,9 +235,9 @@
   - LC0221: Maximal Square
   - LC0091: Decode Ways
   - LN0394: Coins in a Line
-  - LC0055: Jump Game
-  - LC0045: Jump Game II
-  - LC0763: Partition Labels
+  - [1] LC0055: Jump Game
+  - [1] LC0045: Jump Game II
+  - [1] LC0763: Partition Labels
 - [C： 核心题之外的高频题，基本在5遍左右。这样遇到原题或者类似题的时候，基本思路、逻辑不会错。能不能临场完全bug free要看基本功和运气。]
   - LC0153: Find Minimum in Rotated Sorted Array
   - LC0154: Find Minimum in Rotated Sorted Array II
@@ -416,10 +416,17 @@
   - [1] LC2291: Maximum Profit From Trading Stocks
   - [1] LC1005: Maximize Sum Of Array After K Negations
   - [1] LC2099: Find Subsequence of Length K With the Largest Sum
-  - [1] LC0134: Gas Station
+  - [2] LC0134: Gas Station
   - [1] LC0135: Candy
   - [1] LC0136: Single Number
   - [1] LC0137: Single Number II
+  - [1] LC0860: Lemonade Change
+  - [1] LC0406: Queue Reconstruction by Height
+  - [1] LC0452: Minimum Number of Arrows to Burst Balloons
+  - [1] LC0435: Non-overlapping Intervals
+  - 
+  - [1] LC0509: Fibonacci Number
+  - [1] LC0070: Climbing Stairs
   - 
 
 
