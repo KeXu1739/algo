@@ -76,8 +76,8 @@
   - LC0307: Range Sum Query - Mutable
   - LC0146: LRU Cache
   - LC0460: LFU Cache
-  - [1] LN0092: Backpack
-  - LC0062: Unique Paths
+  - [2] LN0092: Backpack
+  - [1] LC0062: Unique Paths
   - LC0063: Unique Paths II 
 - [B： 主要是各种高频题和经典题，基本在5~8遍以上，需要做到最优解，medium难度10分钟以内，hard难度15分钟以内，无错一遍过，同时要能解释清楚思路。另外有多重解法的也要掌握，知道不同解法间的优缺点和trade off原因，任何情况下都要一遍写出来]
   - [1] LC0034: Find First and Last Position of Element in Sorted Array
@@ -170,7 +170,7 @@
   - LN0376: Binary Tree Path Sum
   - LN0472: Binary Tree Path Sum III
   - LC0140: Word Break II
-  - LC0494: Target Sum
+  - [1] LC0494: Target Sum
   - LC1192: Critical Connections in a Network
   - LC0442. Find All Duplicates in an Array
   - LC0048. Rotate Image
@@ -427,6 +427,10 @@
   - 
   - [1] LC0509: Fibonacci Number
   - [1] LC0070: Climbing Stairs
+  - [1] LC0416: Partition Equal Subset Sum
+  - [1] LC1049: Last Stone Weight II
+  - [1] LC1046: Last Stone Weight
   - 
+
 
 

@@ -3952,6 +3952,7 @@ def ln_0092():
 
 
     def backpackOptimal(weights, values, limit):
+        # 这里注意j循环的遍历方向，若方向相反代表每个物品可以重复放很多个；以及dp本身所包含的dp[i][j] = dp[i-1][j] for j <= weights[i]
         dp = [0 for i in range(limit + 1)]
         for i in range(len(dp)):
             if i >= weights[0]:
