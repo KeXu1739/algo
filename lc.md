@@ -44,7 +44,7 @@
   - LC0081: Search in Rotated Sorted Array II
   - LC0912: Sort an Array (Quick Sort and Merge Sort)
   - LC0075: Sort an Array (Quick Sort and Merge Sort)
-  - LC0021: Merge Two Sorted Lists
+  - [1] LC0021: Merge Two Sorted Lists
   - LN0391: Number of Airplanes in the Sky
   - LC0003: Longest Substring Without Repeating Characters
   - [3] LC0053: Maximum Subarray
@@ -78,7 +78,7 @@
   - LC0460: LFU Cache
   - [2] LN0092: Backpack
   - [1] LC0062: Unique Paths
-  - LC0063: Unique Paths II 
+  - [1] LC0063: Unique Paths II 
 - [B： 主要是各种高频题和经典题，基本在5~8遍以上，需要做到最优解，medium难度10分钟以内，hard难度15分钟以内，无错一遍过，同时要能解释清楚思路。另外有多重解法的也要掌握，知道不同解法间的优缺点和trade off原因，任何情况下都要一遍写出来]
   - [1] LC0034: Find First and Last Position of Element in Sorted Array
   - LC0702: Search in a Sorted Array of Unknown Size
@@ -230,7 +230,7 @@
   - LC0010: Regular Expression Matching
   - LC0312: Burst Balloons
   - LC0516: Longest Palindromic Subsequence
-  - LC0064: Minimum Path Sum
+  - [1] LC0064: Minimum Path Sum
   - LC0085: Maximal Rectangle
   - LC0221: Maximal Square
   - LC0091: Decode Ways
@@ -331,7 +331,7 @@
   - [1] LN0563: Backpack V
   - LN0564: Backpack VI (Combination Sum IV)
   - LN0971: Surplus Value Backpack
-  - LC0474. Ones and Zeroes
+  - [1] LC0474. Ones and Zeroes
   - [2] LC0122: Best Time to Buy and Sell Stock II
   - [1] LC0123: Best Time to Buy and Sell Stock III
   - [1] LC0188: Best Time to Buy and Sell Stock IV
@@ -363,7 +363,7 @@
   - [1] LC0337: House Robber III
   - [1] LC0213: House Robber II
   - [1] LC0198: House Robber I
-  - [1] LC0377: Combination Sum IV
+  - [2] LC0377: Combination Sum IV
   - [1] LC0739: Daily Temperatures
   - [2] LC0027: Remove Element
   - [1] LC0977: Squares of a Sorted Array
@@ -375,7 +375,7 @@
   - [1] LC0438: Find All Anagrams in a String
   - [1] LC0202: Happy Number
   - [3] LC0454: 4Sum II: Sum to 0
-  - [2] LC0344: Reverse String
+  - [3] LC0344: Reverse String
   - [1] LC0541: Reverse String II
   - [1] LC1644: Lowest Common Ancestor of a Binary Tree II (not necessarily in tree)
   - [1] LC1650: Lowest Common Ancestor of a Binary Tree III (with parent, in tree)
@@ -430,6 +430,9 @@
   - [1] LC0416: Partition Equal Subset Sum
   - [1] LC1049: Last Stone Weight II
   - [1] LC1046: Last Stone Weight
+  - [1] LC0343: Integer Break
+  - [1] LC0096: Unique Binary Search Trees
+  - [1] LC0518: 
   - 
 
 
