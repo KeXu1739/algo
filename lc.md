@@ -154,7 +154,7 @@
   - LC0124: Binary Tree Maximum Path Sum
   - [2] LC0235: Lowest Common Ancestor of a Binary Searh Tree
   - [2] LC0236: Lowest Common Ancestor of a Binary Tree
-  - [1] LC0199: Binary Tree Right Side View
+  - [2] LC0199: Binary Tree Right Side View
   - LC0513: Find Bottom Left Tree Value
   - LC0331: Verify Preorder Serialization of a Binary Tree
   - LC0449: Serialize and Deserialize BST
@@ -225,7 +225,7 @@
   - LC1396: Design Underground System
   - [1] LN0125: Backpack II
   - [1] LN0440: Backpack III
-  - [1] LC0139: Word Break
+  - [2] LC0139: Word Break
   - [1] LC0121: Best Time to Buy and Sell Stock
   - LC0010: Regular Expression Matching
   - LC0312: Burst Balloons
@@ -346,7 +346,7 @@
   - LC0087: Scramble String
   - LC0361: Bomb Enemy
   - LC0132: Palindrome Partitioning II
-  - [1] LC0279: Perfect Squares
+  - [2] LC0279: Perfect Squares
   - LC0639: Decode Ways II
   - LN0395: Coins in a Line II
   - LN0396: Coins in a Line III 
@@ -362,7 +362,7 @@
   - [1] LC0309: Best Time to Buy and Sell Stock with Cooldown
   - [1] LC0337: House Robber III
   - [1] LC0213: House Robber II
-  - [1] LC0198: House Robber I
+  - [1] [1] LC0198: House Robber I
   - [2] LC0377: Combination Sum IV
   - [1] LC0739: Daily Temperatures
   - [2] LC0027: Remove Element
@@ -424,15 +424,14 @@
   - [1] LC0406: Queue Reconstruction by Height
   - [1] LC0452: Minimum Number of Arrows to Burst Balloons
   - [1] LC0435: Non-overlapping Intervals
-  - 
   - [1] LC0509: Fibonacci Number
-  - [1] LC0070: Climbing Stairs
+  - [2] LC0070: Climbing Stairs
   - [1] LC0416: Partition Equal Subset Sum
   - [1] LC1049: Last Stone Weight II
   - [1] LC1046: Last Stone Weight
   - [1] LC0343: Integer Break
   - [1] LC0096: Unique Binary Search Trees
-  - [1] LC0518: 
+  - [2] LC0518: Coin Change II
   - 
 
 
