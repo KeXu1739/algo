@@ -71,14 +71,14 @@
   - [1] LC0707: Design LinkedList
   - LC0023: Merge k Sorted Lists
   - LC0155: Min Stack
-  - [1] LC0300: Longest Increasing Subsequence (Patience Sort)
+  - [2] LC0300: Longest Increasing Subsequence (Patience Sort)
   - LC0208: Implement Trie (Prefix Tree)
   - LC0307: Range Sum Query - Mutable
   - LC0146: LRU Cache
   - LC0460: LFU Cache
   - [2] LN0092: Backpack
-  - [1] LC0062: Unique Paths
-  - [1] LC0063: Unique Paths II 
+  - [2] LC0062: Unique Paths
+  - [2] LC0063: Unique Paths II 
 - [B： 主要是各种高频题和经典题，基本在5~8遍以上，需要做到最优解，medium难度10分钟以内，hard难度15分钟以内，无错一遍过，同时要能解释清楚思路。另外有多重解法的也要掌握，知道不同解法间的优缺点和trade off原因，任何情况下都要一遍写出来]
   - [1] LC0034: Find First and Last Position of Element in Sorted Array
   - LC0702: Search in a Sorted Array of Unknown Size
@@ -226,7 +226,7 @@
   - [1] LN0125: Backpack II
   - [1] LN0440: Backpack III
   - [2] LC0139: Word Break
-  - [1] LC0121: Best Time to Buy and Sell Stock
+  - [2] LC0121: Best Time to Buy and Sell Stock
   - LC0010: Regular Expression Matching
   - LC0312: Burst Balloons
   - LC0516: Longest Palindromic Subsequence
@@ -332,9 +332,9 @@
   - LN0564: Backpack VI (Combination Sum IV)
   - LN0971: Surplus Value Backpack
   - [1] LC0474. Ones and Zeroes
-  - [2] LC0122: Best Time to Buy and Sell Stock II
-  - [1] LC0123: Best Time to Buy and Sell Stock III
-  - [1] LC0188: Best Time to Buy and Sell Stock IV
+  - [3] LC0122: Best Time to Buy and Sell Stock II
+  - [2] LC0123: Best Time to Buy and Sell Stock III
+  - [2] LC0188: Best Time to Buy and Sell Stock IV
   - LC0256: Paint House
   - LC0265: Paint House II
   - LC0843: Digital Flip
@@ -358,11 +358,11 @@
   - [1] LC0392: Is Subsequence 
   - [1] LC1035: Uncrossed Lines
   - [1] LC0718: Maximum Length of Repeated Subarray
-  - [1] LC0674: Longest Continuous Increasing Subsequence
-  - [1] LC0309: Best Time to Buy and Sell Stock with Cooldown
-  - [1] LC0337: House Robber III
-  - [1] LC0213: House Robber II
-  - [1] [1] LC0198: House Robber I
+  - [2] LC0674: Longest Continuous Increasing Subsequence
+  - [2] LC0309: Best Time to Buy and Sell Stock with Cooldown
+  - [2] LC0337: House Robber III
+  - [2] LC0213: House Robber II
+  - [2] LC0198: House Robber I
   - [2] LC0377: Combination Sum IV
   - [1] LC0739: Daily Temperatures
   - [2] LC0027: Remove Element
@@ -432,6 +432,7 @@
   - [1] LC0343: Integer Break
   - [1] LC0096: Unique Binary Search Trees
   - [2] LC0518: Coin Change II
+  - [1] LC0714: Best Time to Buy and Sell Stock with Transaction Fee 
   - 
 
 

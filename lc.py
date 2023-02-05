@@ -4312,10 +4312,29 @@ def lc_0309():
             dp[2][i] = dp[1][i-1]+prices[i]
             dp[3][i] = max(dp[3][i-1], dp[4][i-1])
             dp[4][i] = dp[2][i-1]
+        print(dp)
         mx = 0
         for i in range(5):
             mx = max(dp[i][-1], mx)
         return mx
+
+    def maxProfitWrong(prices: List[int]) -> int:
+        dp = [[0 for p in prices] for i in range(4)]
+        dp[0][0] = -prices[0]
+        # status 0: current hold stock
+        # status 1: sell stock today
+        # status 2: current no stock
+        # status 3: current cool down
+        for i in range(1, len(prices)):
+            dp[0][i] = max(dp[0][i-1], -prices[i], dp[2][i-1]-prices[i], dp[3][i-1]-prices[i])
+            dp[1][i] = dp[0][i-1] + prices[i]
+            dp[2][i] = max(dp[2][i-1], dp[3][i-1])
+            dp[3][i] = dp[1][i-1]
+        print(dp)
+        print(dp[:][-1])
+        return max(dp[:][-1])
+    print(maxProfit([1,2,3,0,2]))
+    print(maxProfitWrong([1,2,3,0,2]))
 
 def lc_0300():
     import bisect
@@ -5217,4 +5236,4 @@ if __name__ == "__main__":
     # TODO: 易错题：77(组合问题), 491(递增子序列), 46(全排列), 47(全排列II) 332(更改行程) 51(NQueen) 37(数独) 55(跳跃游戏)
     # TODO: 贪心：738, 376, 45, 763
     #print(divide3("01"))#
-    lc_0139()
+    lc_0309()
