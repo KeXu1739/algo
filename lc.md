@@ -47,7 +47,7 @@
   - [1] LC0021: Merge Two Sorted Lists
   - LN0391: Number of Airplanes in the Sky
   - LC0003: Longest Substring Without Repeating Characters
-  - [3] LC0053: Maximum Subarray
+  - [4] LC0053: Maximum Subarray
   - [3] LC0001: Two Sum
   - LC0297: Serialize and Deserialize Binary Tree
   - LN0127: Topological Sorting
@@ -122,8 +122,8 @@
   - LC0325: Maximum Size Subarray Sum Equals k 
   - LC0528: Random Pick with Weight
   - LC0560: Subarray Sum Equals K
-  - [4] LC0015: 3Sum
-  - [4] LC0018: 4Sum 
+  - [5] LC0015: 3Sum
+  - [5] LC0018: 4Sum 
   - LN0382: Triangle Count
   - [1] LC0102: Binary Tree Level Order Traversal
   - LC0103: Binary Tree Zigzag Level Order Traversal
@@ -342,7 +342,7 @@
   - [1] LC0072: Edit Distance
   - LC0097: Interleaving String
   - [1] LC0115: Distinct Subsequences
-  - [1] LC1143: Longest Common Subsequence
+  - [2] LC1143: Longest Common Subsequence
   - LC0087: Scramble String
   - LC0361: Bomb Enemy
   - LC0132: Palindrome Partitioning II
@@ -356,7 +356,7 @@
   - [1] LC0367: Valid Perfect Square
   - [1] LC0583: Delete Operation for Two Strings 
   - [1] LC0392: Is Subsequence 
-  - [1] LC1035: Uncrossed Lines
+  - [2] LC1035: Uncrossed Lines
   - [1] LC0718: Maximum Length of Repeated Subarray
   - [2] LC0674: Longest Continuous Increasing Subsequence
   - [2] LC0309: Best Time to Buy and Sell Stock with Cooldown
@@ -382,7 +382,7 @@
   - [1] LCCN剑指offer05: 替换空格
   - [2] LC0151: Reverse Words in a String
   - [1] LCCN剑指Offer58: II. 左旋转字符串
-  - [6] LC0028: Find the Index of the First Occurrence in a String (KMP for strStr)
+  - [7] LC0028: Find the Index of the First Occurrence in a String (KMP for strStr)
   - [1] LC0459: Repeated Substring Pattern
   - [1] LC0345: Reverse Vowels of a String
   - [1] LC0232: Implement Queue using Stacks
@@ -432,7 +432,9 @@
   - [1] LC0343: Integer Break
   - [1] LC0096: Unique Binary Search Trees
   - [2] LC0518: Coin Change II
-  - [1] LC0714: Best Time to Buy and Sell Stock with Transaction Fee 
+  - [1] LC0714: Best Time to Buy and Sell Stock with Transaction Fee
+  - [1] LC1302: Deepest Leaves Sum
+  - [1] LC1630: Arithmetic Subarrays
   - 
 
 
