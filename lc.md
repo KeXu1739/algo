@@ -341,7 +341,7 @@
   - LC0044: Wildcard Matching
   - [1] LC0072: Edit Distance
   - LC0097: Interleaving String
-  - [1] LC0115: Distinct Subsequences
+  - [2] LC0115: Distinct Subsequences
   - [2] LC1143: Longest Common Subsequence
   - LC0087: Scramble String
   - LC0361: Bomb Enemy
@@ -354,8 +354,8 @@
   - [1] LC0032: Longest Valid Parentheses 
   - [1] LC0035: Search Insert Position
   - [1] LC0367: Valid Perfect Square
-  - [1] LC0583: Delete Operation for Two Strings 
-  - [1] LC0392: Is Subsequence 
+  - [2] LC0583: Delete Operation for Two Strings 
+  - [2] LC0392: Is Subsequence 
   - [2] LC1035: Uncrossed Lines
   - [1] LC0718: Maximum Length of Repeated Subarray
   - [2] LC0674: Longest Continuous Increasing Subsequence
