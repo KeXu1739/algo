@@ -48,7 +48,7 @@
   - LN0391: Number of Airplanes in the Sky
   - LC0003: Longest Substring Without Repeating Characters
   - [4] LC0053: Maximum Subarray
-  - [3] LC0001: Two Sum
+  - [4] LC0001: Two Sum
   - LC0297: Serialize and Deserialize Binary Tree
   - LN0127: Topological Sorting
   - LC0200: Number of Islands (DFS/UnionFind)
@@ -60,14 +60,14 @@
   - LC0173: Binary Search Tree Iterator
   - [1] LC0039: Combination Sum
   - [1] LC0040: Combination Sum II
-  - [1] LC0046: Permutations
+  - [2] LC0046: Permutations
   - [1] LC0047: Permutations II
   - [3] LC0077: Combinations
   - [2] LC0078 Subsets
   - [4] LC0090: Subsets II
   - LC0002: Add Two Numbers
   - LC0021: Merge Two Sorted Lists
-  - LC0706: Design HashMap
+  - [1] LC0706: Design HashMap
   - [1] LC0707: Design LinkedList
   - LC0023: Merge k Sorted Lists
   - LC0155: Min Stack
