@@ -53,7 +53,7 @@
   - LN0127: Topological Sorting
   - LC0200: Number of Islands (DFS/UnionFind)
   - LC0133: Clone Graph
-  - [2] LC0094: Binary Tree Inorder Traversal
+  - [3] LC0094: Binary Tree Inorder Traversal
   - [2] LC0144: Binary Tree Preorder Traversal
   - [2] LC0145: Binary Tree Postorder Traversal
   - [1] LC0105: Construct Binary Tree from Preorder and Inorder Traversal
@@ -96,7 +96,7 @@
   - [1] LC0349: Intersection of Two Arrays
   - [1] LC0350: Intersection of Two Arrays
   - LC0845: Longest Mountain in Array
-  - [1] LC0042: Trapping Rain Water
+  - [2] LC0042: Trapping Rain Water
   - LC0043: Multiply Strings
   - LC0086: Partition List
   - [1] LC0141: Linked List Cycle
@@ -210,7 +210,7 @@
   - LC0227: Basic Calculator II
   - LC0394: Decode String 
   - LC1249: Minimum Remove to Make Valid Parentheses
-  - [1] LC0084: Largest Rectangle in Histogram
+  - [2] LC0084: Largest Rectangle in Histogram
   - LC0239: Sliding Window Maximum
   - LC1019: Next Greater Node In Linked List
   - LC0211: Design Add and Search Words Data Structure
@@ -229,7 +229,7 @@
   - [2] LC0121: Best Time to Buy and Sell Stock
   - LC0010: Regular Expression Matching
   - LC0312: Burst Balloons
-  - LC0516: Longest Palindromic Subsequence
+  - [1] LC0516: Longest Palindromic Subsequence
   - [1] LC0064: Minimum Path Sum
   - LC0085: Maximal Rectangle
   - LC0221: Maximal Square
@@ -364,7 +364,7 @@
   - [2] LC0213: House Robber II
   - [2] LC0198: House Robber I
   - [2] LC0377: Combination Sum IV
-  - [1] LC0739: Daily Temperatures
+  - [2] LC0739: Daily Temperatures
   - [2] LC0027: Remove Element
   - [1] LC0977: Squares of a Sorted Array
   - [1] LC0904: Fruit Into Baskets
@@ -435,6 +435,10 @@
   - [1] LC0714: Best Time to Buy and Sell Stock with Transaction Fee
   - [1] LC1302: Deepest Leaves Sum
   - [1] LC1630: Arithmetic Subarrays
+  - [1] LC0647: Palindromic Substrings
+  - [1] LC0496: Next Greater Element I
+  - [1] LC0503: Next Greater Element II
+  - 
   - 
 
 

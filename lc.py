@@ -5095,13 +5095,99 @@ def choice():
          'LC0639: Decode Ways II',
          'LN0395: Coins in a Line II',
          'LN0396: Coins in a Line III',]
-
+    D = [
+        "LC0032",
+        "LC0035",
+        "LC0367",
+        "LC0583",
+        "LC0392",
+        "LC1035",
+        "LC0718",
+        "LC0674",
+        "LC0309",
+        "LC0337",
+        "LC0213",
+        "LC0198",
+        "LC0377",
+        "LC0739",
+        "LC0027",
+        "LC0977",
+        "LC0904",
+        "LC0024",
+        "LC0019",
+        "LC0242",
+        "LC0383",
+        "LC0438",
+        "LC0202",
+        "LC0454",
+        "LC0344",
+        "LC0541",
+        "LC1644",
+        "LC1650",
+        "LC0151",
+        "LC0028",
+        "LC0459",
+        "LC0345",
+        "LC0232",
+        "LC0225",
+        "LC1047",
+        "LC0150",
+        "LC0637",
+        "LC0429",
+        "LC0515",
+        "LC0116",
+        "LC0116",
+        "LC0226",
+        "LC0572",
+        "LC0222",
+        "LC0654",
+        "LC0700",
+        "LC0530",
+        "LC0501",
+        "LC0450",
+        "LC0669",
+        "LC0108",
+        "LC0109",
+        "LC0539",
+        "LC0216",
+        "LC0217",
+        "LC0219",
+        "LC0492",
+        "LC0332",
+        "LC0455",
+        "LC0376",
+        "LC2291",
+        "LC1005",
+        "LC2099",
+        "LC0134",
+        "LC0135",
+        "LC0136",
+        "LC0137",
+        "LC0860",
+        "LC0406",
+        "LC0452",
+        "LC0435",
+        "LC0509",
+        "LC0070",
+        "LC0416",
+        "LC1049",
+        "LC1046",
+        "LC0343",
+        "LC0096",
+        "LC0518",
+        "LC0714",
+        "LC1302",
+        "LC1630",
+        "LC0647"
+    ]
     print("A")
     print(np.random.choice(A, 5, replace=False))
     print("B")
-    print(np.random.choice(B, 5, replace=False))
+    print(np.random.choice(B, 2, replace=False))
     print("C")
-    print(np.random.choice(C, 5, replace=False))
+    print(np.random.choice(C, 2, replace=False))
+    print("D")
+    print(np.random.choice(C, 2, replace=False))
 
 def getNext(needle):
     ret = [0 for e in needle]
@@ -5235,6 +5321,6 @@ if __name__ == "__main__":
     # TODO: 数组，树： 15， 18, 28(strstr), 239(滑动窗口最大值), 235(BST里的最低公共祖先), 450(BST里删除节点)， 669(修剪BST)
     # TODO: 回溯：77(组合问题), 491(递增子序列), 46(全排列), 47(全排列II) 332(更改行程) 51(NQueen) 37(数独)
     # TODO: 贪心：55(跳跃游戏), 738, 376, 45, 763
-    # TODO: 动态:
+    # TODO: 动态: 647, 516
     #print(divide3("01"))#
-    lc_0309()
+    choice()
