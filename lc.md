@@ -39,7 +39,7 @@
   - https://leetcode.com/
 - 说明：每个大类按重要性递减，最优先为A
 - [A： 各类型题目的典型模板题，基本需要刷十几遍，做到迷迷糊糊半昏迷状态也能熟练默写的肌肉记忆状态，任何情况下都要一遍写出来]: 
-  - [3] LC0704: Binary Search LC704
+  - [4] LC0704: Binary Search
   - [1] LC0033: Search in Rotated Sorted Array　
   - LC0081: Search in Rotated Sorted Array II
   - LC0912: Sort an Array (Quick Sort and Merge Sort)
@@ -383,7 +383,7 @@
   - [2] LC0151: Reverse Words in a String
   - [1] LCCN剑指Offer58: II. 左旋转字符串
   - [7] LC0028: Find the Index of the First Occurrence in a String (KMP for strStr)
-  - [1] LC0459: Repeated Substring Pattern
+  - [2] LC0459: Repeated Substring Pattern
   - [1] LC0345: Reverse Vowels of a String
   - [1] LC0232: Implement Queue using Stacks
   - [1] LC0225: Implement Stack using Queues
@@ -438,6 +438,10 @@
   - [1] LC0647: Palindromic Substrings
   - [1] LC0496: Next Greater Element I
   - [1] LC0503: Next Greater Element II
+  - [1] LC1275: Find Winner on a Tic Tac Toe Game
+  - [1] LC0559: Maximum Depth of N-ary Tree
+  - [1] LC0697: Degree of an Array
+  - [1] LC2091: Removing Minimum and Maximum From Array
   - 
   - 
 
