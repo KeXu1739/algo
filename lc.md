@@ -40,8 +40,8 @@
 - 说明：每个大类按重要性递减，最优先为A
 - [A： 各类型题目的典型模板题，基本需要刷十几遍，做到迷迷糊糊半昏迷状态也能熟练默写的肌肉记忆状态，任何情况下都要一遍写出来]: 
   - [4] LC0704: Binary Search
-  - [1] LC0033: Search in Rotated Sorted Array　
-  - LC0081: Search in Rotated Sorted Array II
+  - [2] LC0033: Search in Rotated Sorted Array　
+  - [1] LC0081: Search in Rotated Sorted Array II
   - LC0912: Sort an Array (Quick Sort and Merge Sort)
   - LC0075: Sort an Array (Quick Sort and Merge Sort)
   - [1] LC0021: Merge Two Sorted Lists
@@ -52,17 +52,17 @@
   - LC0297: Serialize and Deserialize Binary Tree
   - LN0127: Topological Sorting
   - LC0200: Number of Islands (DFS/UnionFind)
-  - LC0133: Clone Graph
-  - [3] LC0094: Binary Tree Inorder Traversal
+  - [1] LC0133: Clone Graph
+  - [4] LC0094: Binary Tree Inorder Traversal
   - [2] LC0144: Binary Tree Preorder Traversal
-  - [2] LC0145: Binary Tree Postorder Traversal
+  - [3] LC0145: Binary Tree Postorder Traversal
   - [1] LC0105: Construct Binary Tree from Preorder and Inorder Traversal
   - LC0173: Binary Search Tree Iterator
   - [1] LC0039: Combination Sum
   - [1] LC0040: Combination Sum II
   - [2] LC0046: Permutations
   - [1] LC0047: Permutations II
-  - [3] LC0077: Combinations
+  - [4] LC0077: Combinations
   - [2] LC0078 Subsets
   - [4] LC0090: Subsets II
   - LC0002: Add Two Numbers
@@ -234,7 +234,7 @@
   - LC0085: Maximal Rectangle
   - LC0221: Maximal Square
   - LC0091: Decode Ways
-  - LN0394: Coins in a Line
+  - [1] LN0394: Coins in a Line
   - [1] LC0055: Jump Game
   - [1] LC0045: Jump Game II
   - [1] LC0763: Partition Labels

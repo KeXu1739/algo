@@ -5317,7 +5317,30 @@ def lc_0137():
     nums = [1,2,2,2]
     print(singleNumber(nums))
 
+def LC_0133():
+    class Node:
+        def __init__(self, val = 0, neighbors = None):
+            self.val = val
+            self.neighbors = neighbors if neighbors is not None else []
+
+    def cloneGraph(node: 'Node') -> 'Node':
+        def dfs(node, mp):
+            if not node: return None
+            if node in mp:
+                return mp[node]
+            clone = Node(node.val, None)
+            mp[node] = clone
+
+            for nei in node.neighbors:
+                clone.neighbors.append(dfs(nei, mp))
+
+            return clone
+
+        mp = {}
+        return dfs(node, mp)
+
 if __name__ == "__main__":
+    import math
     # TODO: lc 844
     # TODO: 数组，树： 15， 18, 28(strstr), 239(滑动窗口最大值), 235(BST里的最低公共祖先), 450(BST里删除节点)， 669(修剪BST)
     # TODO: 回溯：77(组合问题), 491(递增子序列), 46(全排列), 47(全排列II) 332(更改行程) 51(NQueen) 37(数独)
