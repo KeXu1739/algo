@@ -151,7 +151,7 @@
   - [1] LC0111: Minimum Depth of Binary Tree
   - [1] LC0112: Path Sum
   - [1] LC0113: Path Sum II
-  - LC0124: Binary Tree Maximum Path Sum
+  - [1] LC0124: Binary Tree Maximum Path Sum
   - [2] LC0235: Lowest Common Ancestor of a Binary Searh Tree
   - [2] LC0236: Lowest Common Ancestor of a Binary Tree
   - [2] LC0199: Binary Tree Right Side View
@@ -167,7 +167,7 @@
   - LC0113: Path Sum II
   - [1] LC0257: Binary Tree Paths
   - LN0246: Binary Tree Path Sum II
-  - LN0376: Binary Tree Path Sum
+  - [1] LN0376: Binary Tree Path Sum
   - LN0472: Binary Tree Path Sum III
   - LC0140: Word Break II
   - [1] LC0494: Target Sum
