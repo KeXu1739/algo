@@ -62,9 +62,9 @@
   - [1] LC0040: Combination Sum II
   - [2] LC0046: Permutations
   - [1] LC0047: Permutations II
-  - [4] LC0077: Combinations
-  - [2] LC0078 Subsets
-  - [4] LC0090: Subsets II
+  - [5] LC0077: Combinations
+  - [3] LC0078 Subsets
+  - [5] LC0090: Subsets II
   - LC0002: Add Two Numbers
   - LC0021: Merge Two Sorted Lists
   - [1] LC0706: Design HashMap
@@ -293,7 +293,7 @@
   - LN0624: Remove Substrings
   - LC0270: Closest Binary Search Tree Value
   - LC0272: Closest Binary Search Tree Value II
-  - LC0510: Inorder Successor in BST II
+  - [1] LC0510: Inorder Successor in BST II
   - LN0915: Inorder Predecessor in BST II
   - [1] LC0104: Maximum Depth of Binary Tree
   - LC0333: Largest BST Subtree
