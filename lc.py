@@ -5338,6 +5338,37 @@ def LC_0133():
 
         mp = {}
         return dfs(node, mp)
+def lc_0002():
+    # 省空间的方法是重用已有的点，并且利用dummy节点简化逻辑
+    def addTwoNumbers(l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
+        carry = 0
+        dummy_ = ListNode(0, l1)
+        cur = dummy_
+        while l1 and l2:
+            sm = l1.val + l2.val + carry
+            carry = sm // 10
+            l1.val= sm % 10
+            cur.next = l1
+            l1 = l1.next
+            l2 = l2.next
+            cur = cur.next
+        while l1:
+            sm = l1.val + carry
+            carry = sm // 10
+            l1.val = sm % 10
+            cur.next = l1
+            l1 = l1.next
+            cur = cur.next
+        while l2:
+            sm = l2.val + carry
+            carry = sm // 10
+            l2.val = sm % 10
+            cur.next = l2
+            l2 = l2.next
+            cur = cur.next
+        if carry != 0:
+            cur.next = ListNode(carry)
+        return dummy_.next
 
 if __name__ == "__main__":
     import math
