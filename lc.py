@@ -5370,6 +5370,50 @@ def lc_0002():
             cur.next = ListNode(carry)
         return dummy_.next
 
+
+def ln_0391():
+    import heapq
+
+    class Interval(object):
+        def __init__(self, start, end):
+            self.start = start
+            self.end = end
+
+    def count_of_airplanes(airplanes) -> int:
+        # write your code here
+        mh = []
+        heapq.heapify(mh)
+        airplanes.sort(key=lambda x: x.start) # 以起飞时间从小到大排序
+        mx = 0
+        for it in airplanes:
+            while mh and mh[0] <= it.start:
+                heapq.heappop(mh)
+
+            heapq.heappush(mh, it.end)
+            mx = max(mx, len(mh))
+        return mx
+
+    def count_of_airplains(airplanes):
+        start, end = [], []
+        for it in airplanes:
+            start.append(it.start)
+            end.append(it.end)
+        start.sort()
+        end.sort()
+        i, j = 0, 0
+        res, cur = 0, 0
+        while i < len(start) and j < len(end):
+            if start[i] < end[j]:
+                cur += 1
+                res = max(res, cur)
+                i += 1
+            else:
+                cur -= 1
+                j += 1
+        return res
+
+
+
 if __name__ == "__main__":
     import math
     # TODO: lc 844

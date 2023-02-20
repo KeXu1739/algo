@@ -5997,7 +5997,9 @@ def getTransformedLength(word, t):
 
 
 if __name__ == "__main__":
-    print(getNextArr(""))
+    grid = [[1,1,1,1,0],[1,1,0,1,0],[1,1,0,0,0],[0,0,0,0,0]]
+    print(countIsland(grid))
+    # print(getNextArr(""))
     # print("Hi")
     # print(equalizeTeamSize([1,2,2,3,4], 3))
 

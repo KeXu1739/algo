@@ -40,25 +40,25 @@
 - 说明：每个大类按重要性递减，最优先为A
 - [A： 各类型题目的典型模板题，基本需要刷十几遍，做到迷迷糊糊半昏迷状态也能熟练默写的肌肉记忆状态，任何情况下都要一遍写出来]: 
   - [5] LC0704: Binary Search
-  - [2] LC0033: Search in Rotated Sorted Array　
-  - [1] LC0081: Search in Rotated Sorted Array II
-  - LC0912: Sort an Array (Quick Sort and Merge Sort)
-  - LC0075: Sort an Array (Quick Sort and Merge Sort)
+  - [3] LC0033: Search in Rotated Sorted Array　
+  - [2] LC0081: Search in Rotated Sorted Array II
+  - [1] LC0912: Sort an Array (Quick Sort and Merge Sort)
+  - [1] LC0075: Sort Color (荷兰国旗问题)
   - [1] LC0021: Merge Two Sorted Lists
-  - LN0391: Number of Airplanes in the Sky
+  - [1] LN0391: Number of Airplanes in the Sky
   - LC0003: Longest Substring Without Repeating Characters
   - [4] LC0053: Maximum Subarray
   - [4] LC0001: Two Sum
   - LC0297: Serialize and Deserialize Binary Tree
   - LN0127: Topological Sorting
-  - LC0200: Number of Islands (DFS/UnionFind)
+  - [1] LC0200: Number of Islands (DFS/UnionFind)
   - [1] LC0133: Clone Graph
   - [4] LC0094: Binary Tree Inorder Traversal
   - [2] LC0144: Binary Tree Preorder Traversal
   - [3] LC0145: Binary Tree Postorder Traversal
   - [1] LC0105: Construct Binary Tree from Preorder and Inorder Traversal
   - LC0173: Binary Search Tree Iterator
-  - [2] LC0039: Combination Sum
+  - [3] LC0039: Combination Sum
   - [2] LC0040: Combination Sum II
   - [3] LC0046: Permutations
   - [1] LC0047: Permutations II
