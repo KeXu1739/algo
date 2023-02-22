@@ -45,31 +45,31 @@
   - [1] LC0912: Sort an Array (Quick Sort and Merge Sort)
   - [1] LC0075: Sort Color (荷兰国旗问题)
   - [1] LC0021: Merge Two Sorted Lists
-  - [1] LN0391: Number of Airplanes in the Sky
-  - LC0003: Longest Substring Without Repeating Characters
+  - [2] LN0391: Number of Airplanes in the Sky
+  - [2] LC0003: Longest Substring Without Repeating Characters
   - [4] LC0053: Maximum Subarray
   - [4] LC0001: Two Sum
-  - LC0297: Serialize and Deserialize Binary Tree
-  - LN0127: Topological Sorting
+  - [1] LC0297: Serialize and Deserialize Binary Tree
+  - [1] LN0127: Topological Sorting
   - [1] LC0200: Number of Islands (DFS/UnionFind)
   - [1] LC0133: Clone Graph
   - [4] LC0094: Binary Tree Inorder Traversal
-  - [2] LC0144: Binary Tree Preorder Traversal
+  - [3] LC0144: Binary Tree Preorder Traversal
   - [3] LC0145: Binary Tree Postorder Traversal
   - [1] LC0105: Construct Binary Tree from Preorder and Inorder Traversal
-  - LC0173: Binary Search Tree Iterator
+  - [1] LC0173: Binary Search Tree Iterator
   - [3] LC0039: Combination Sum
   - [2] LC0040: Combination Sum II
-  - [3] LC0046: Permutations
+  - [4] LC0046: Permutations
   - [1] LC0047: Permutations II
   - [5] LC0077: Combinations
   - [3] LC0078 Subsets
   - [5] LC0090: Subsets II
   - [1] LC0002: Add Two Numbers
-  - LC0021: Merge Two Sorted Lists
+  - [2] LC0021: Merge Two Sorted Lists
   - [1] LC0706: Design HashMap
   - [1] LC0707: Design LinkedList
-  - LC0023: Merge k Sorted Lists
+  - [1] LC0023: Merge k Sorted Lists
   - LC0155: Min Stack
   - [2] LC0300: Longest Increasing Subsequence (Patience Sort)
   - LC0208: Implement Trie (Prefix Tree)
@@ -392,8 +392,8 @@
   - [1] LC0637: Average of Levels in Binary Tree
   - [1] LC0429: N-ary Tree Level Order Traversal
   - [1] LC0515: Find Largest Value in Each Tree Row
-  - [1] LC0116: Populating Next Right Pointers in Each Node
-  - [1] LC0116: Populating Next Right Pointers in Each Node II
+  - [2] LC0116: Populating Next Right Pointers in Each Node
+  - [2] LC0117: Populating Next Right Pointers in Each Node II
   - [1] LC0226: Invert Binary Tree
   - [1] LC0572: Subtree of Another Tree
   - [1] LC0222: Count Complete Tree Nodes 

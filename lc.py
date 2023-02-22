@@ -5179,16 +5179,22 @@ def choice():
         "LC0714",
         "LC1302",
         "LC1630",
-        "LC0647"
+        "LC0647",
+        "LC0496",
+        "LC0503",
+        "LC1275",
+        "LC0559",
+        "LC0697",
+        "LC2091",
     ]
     print("A")
-    print(np.random.choice(A, 5, replace=False))
+    print(np.random.choice(A, 9, replace=False))
     print("B")
-    print(np.random.choice(B, 2, replace=False))
+    print(np.random.choice(B, 1, replace=False))
     print("C")
-    print(np.random.choice(C, 2, replace=False))
+    print(np.random.choice(C, 1, replace=False))
     print("D")
-    print(np.random.choice(C, 2, replace=False))
+    print(np.random.choice(D, 1, replace=False))
 
 def getNext(needle):
     ret = [0 for e in needle]
@@ -5412,7 +5418,19 @@ def ln_0391():
                 j += 1
         return res
 
+def lc_0003():
+    def lengthOfLongestSubstring(s: str) -> int:
+        # if len(s) == 1: return 1
+        mp = {}
+        res = 0
+        i = -1 # 为了处理特殊情况即为整个字符串没有重复字符
+        for j in range(len(s)):
+            if s[j] in mp:
+                i = max(i, mp[s[j]])
 
+            res = max(res, j - i)
+            mp[s[j]] = j
+        return res
 
 if __name__ == "__main__":
     import math
