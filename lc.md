@@ -70,9 +70,9 @@
   - [1] LC0706: Design HashMap
   - [1] LC0707: Design LinkedList
   - [1] LC0023: Merge k Sorted Lists
-  - LC0155: Min Stack
+  - [1] LC0155: Min Stack
   - [2] LC0300: Longest Increasing Subsequence (Patience Sort)
-  - LC0208: Implement Trie (Prefix Tree)
+  - [1] LC0208: Implement Trie (Prefix Tree)
   - LC0307: Range Sum Query - Mutable
   - LC0146: LRU Cache
   - LC0460: LFU Cache
