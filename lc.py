@@ -5432,6 +5432,136 @@ def lc_0003():
             mp[s[j]] = j
         return res
 
+def lc_0460():
+    from collections import defaultdict
+    from collections import OrderedDict
+    
+    class Node:
+        def __init__(self, key, value, count):
+            self.key = key
+            self.value = value
+            self.count = count
+
+
+    class LFUCache:
+        def __init__(self, capacity):
+            self.key2Node = {}
+            self.count2Node = defaultdict(OrderedDict)
+            self.cap = capacity
+            self.min_count = None
+
+        def get(self, key):
+            if key not in self.key2Node:
+                return -1
+
+            nd = self.key2Node[key]
+            del self.count2Node[nd.count][key]
+            if not self.count2Node[nd.count]:
+                # 如果这个dict删干净了，把整个dict也删掉
+                del self.count2Node[nd.count]
+            nd.count += 1
+            self.count2Node[nd.count][key] = nd
+
+            # check if capacity is reached
+            if not self.count2Node[self.min_count]:
+                self.min_count += 1
+            return nd.value
+
+        def put(self, key, value):
+            if not self.cap:
+                return
+            # 更新老的点
+            if key in self.key2Node:
+                self.key2Node[key].value = value
+                # 这个非常巧，是试图使用get来增加count
+                self.get(key)
+                return
+
+            # 加一个新的点,检查当前是不是到达了容量上限
+            if self.cap == len(self.key2Node):
+                k, n = self.count2Node[self.min_count].popitem(last=False)
+                del self.key2Node[k]
+
+            self.key2Node[key] = self.count2Node[1][key] = Node(key, value, 1)
+            self.min_count = 1
+            return
+
+    lfu = LFUCache(2)
+    lfu.put(1, 1)
+    lfu.put(2, 2)
+    lfu.get(1)
+    lfu.put(3, 3)
+    lfu.get(2)
+    lfu.get(3)
+    lfu.put(3, 3)
+    lfu.get(1)
+    lfu.get(3)
+    lfu.get(4)
+# class Node:
+#     def __init__(self, key, val, count):
+#         self.key = key
+#         self.val = val
+#         self.count = count
+
+# class LFUCache(object):
+#     def __init__(self, capacity):
+#         """
+#         :type capacity: int
+#         """
+#         self.cap = capacity
+#         self.key2node = {}
+#         self.count2node = defaultdict(OrderedDict)
+#         self.minCount = None
+
+#     def get(self, key):
+#         """
+#         :type key: int
+#         :rtype: int
+#         """
+#         if key not in self.key2node:
+#             return -1
+
+#         node = self.key2node[key]
+#         del self.count2node[node.count][key]
+
+#         # clean memory
+#         if not self.count2node[node.count]:
+#             del self.count2node[node.count]
+
+#         node.count += 1
+#         self.count2node[node.count][key] = node
+
+#         # NOTICE check minCount!!!
+#         if not self.count2node[self.minCount]:
+#             self.minCount += 1
+
+
+#         return node.val
+
+#     def put(self, key, value):
+#         """
+#         :type key: int
+#         :type value: int
+#         :rtype: void
+#         """
+#         if not self.cap:
+#             return
+
+#         if key in self.key2node:
+#             self.key2node[key].val = value
+#             self.get(key) # NOTICE, put makes count+1 too
+#             return
+
+#         if len(self.key2node) == self.cap:
+#             # popitem(last=False) is FIFO, like queue
+#             # it return key and value!!!
+#             k, n = self.count2node[self.minCount].popitem(last=False)
+#             del self.key2node[k]
+
+#         self.count2node[1][key] = self.key2node[key] = Node(key, value, 1)
+#         self.minCount = 1
+#         return
+
 if __name__ == "__main__":
     import math
     # TODO: lc 844
@@ -5439,4 +5569,5 @@ if __name__ == "__main__":
     # TODO: 回溯：77(组合问题), 491(递增子序列), 46(全排列), 47(全排列II) 332(更改行程) 51(NQueen) 37(数独)
     # TODO: 贪心：55(跳跃游戏), 738, 376, 45, 763
     # TODO: 动态: 647, 516
-    choice()
+    # choice()
+    lc_0460()

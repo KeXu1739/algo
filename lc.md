@@ -47,8 +47,8 @@
   - [1] LC0021: Merge Two Sorted Lists
   - [2] LN0391: Number of Airplanes in the Sky
   - [2] LC0003: Longest Substring Without Repeating Characters
-  - [4] LC0053: Maximum Subarray
-  - [4] LC0001: Two Sum
+  - [5] LC0053: Maximum Subarray
+  - [5] LC0001: Two Sum
   - [1] LC0297: Serialize and Deserialize Binary Tree
   - [1] LN0127: Topological Sorting
   - [1] LC0200: Number of Islands (DFS/UnionFind)
@@ -64,7 +64,7 @@
   - [1] LC0047: Permutations II
   - [5] LC0077: Combinations
   - [3] LC0078 Subsets
-  - [5] LC0090: Subsets II
+  - [6] LC0090: Subsets II
   - [1] LC0002: Add Two Numbers
   - [2] LC0021: Merge Two Sorted Lists
   - [1] LC0706: Design HashMap
@@ -73,12 +73,12 @@
   - [1] LC0155: Min Stack
   - [2] LC0300: Longest Increasing Subsequence (Patience Sort)
   - [1] LC0208: Implement Trie (Prefix Tree)
-  - LC0307: Range Sum Query - Mutable
-  - LC0146: LRU Cache
-  - LC0460: LFU Cache
+  - [1] LC0307: Range Sum Query - Mutable
+  - [1] LC0146: LRU Cache
+  - [1] LC0460: LFU Cache
   - [2] LN0092: Backpack
   - [2] LC0062: Unique Paths
-  - [2] LC0063: Unique Paths II 
+  - [3] LC0063: Unique Paths II 
 - [B： 主要是各种高频题和经典题，基本在5~8遍以上，需要做到最优解，medium难度10分钟以内，hard难度15分钟以内，无错一遍过，同时要能解释清楚思路。另外有多重解法的也要掌握，知道不同解法间的优缺点和trade off原因，任何情况下都要一遍写出来]
   - [1] LC0034: Find First and Last Position of Element in Sorted Array
   - LC0702: Search in a Sorted Array of Unknown Size
