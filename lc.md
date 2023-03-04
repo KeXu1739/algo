@@ -42,12 +42,12 @@
   - [5] LC0704: Binary Search
   - [3] LC0033: Search in Rotated Sorted Array　
   - [2] LC0081: Search in Rotated Sorted Array II
-  - [1] LC0912: Sort an Array (Quick Sort and Merge Sort)
+  - [2] LC0912: Sort an Array (Quick Sort and Merge Sort)
   - [1] LC0075: Sort Color (荷兰国旗问题)
   - [1] LC0021: Merge Two Sorted Lists
   - [2] LN0391: Number of Airplanes in the Sky
   - [2] LC0003: Longest Substring Without Repeating Characters
-  - [5] LC0053: Maximum Subarray
+  - [6] LC0053: Maximum Subarray
   - [5] LC0001: Two Sum
   - [1] LC0297: Serialize and Deserialize Binary Tree
   - [1] LN0127: Topological Sorting
@@ -55,29 +55,29 @@
   - [1] LC0133: Clone Graph
   - [4] LC0094: Binary Tree Inorder Traversal
   - [3] LC0144: Binary Tree Preorder Traversal
-  - [3] LC0145: Binary Tree Postorder Traversal
+  - [4] LC0145: Binary Tree Postorder Traversal
   - [1] LC0105: Construct Binary Tree from Preorder and Inorder Traversal
   - [1] LC0173: Binary Search Tree Iterator
   - [3] LC0039: Combination Sum
   - [2] LC0040: Combination Sum II
   - [4] LC0046: Permutations
   - [1] LC0047: Permutations II
-  - [5] LC0077: Combinations
-  - [3] LC0078 Subsets
+  - [6] LC0077: Combinations
+  - [4] LC0078 Subsets
   - [6] LC0090: Subsets II
   - [1] LC0002: Add Two Numbers
   - [2] LC0021: Merge Two Sorted Lists
   - [1] LC0706: Design HashMap
   - [1] LC0707: Design LinkedList
   - [1] LC0023: Merge k Sorted Lists
-  - [1] LC0155: Min Stack
+  - [3] LC0155: Min Stack
   - [2] LC0300: Longest Increasing Subsequence (Patience Sort)
   - [1] LC0208: Implement Trie (Prefix Tree)
   - [1] LC0307: Range Sum Query - Mutable
   - [1] LC0146: LRU Cache
   - [1] LC0460: LFU Cache
   - [2] LN0092: Backpack
-  - [2] LC0062: Unique Paths
+  - [3] LC0062: Unique Paths
   - [3] LC0063: Unique Paths II 
 - [B： 主要是各种高频题和经典题，基本在5~8遍以上，需要做到最优解，medium难度10分钟以内，hard难度15分钟以内，无错一遍过，同时要能解释清楚思路。另外有多重解法的也要掌握，知道不同解法间的优缺点和trade off原因，任何情况下都要一遍写出来]
   - [1] LC0034: Find First and Last Position of Element in Sorted Array
