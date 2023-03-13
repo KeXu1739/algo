@@ -39,19 +39,19 @@
   - https://leetcode.com/
 - 说明：每个大类按重要性递减，最优先为A
 - [A： 各类型题目的典型模板题，基本需要刷十几遍，做到迷迷糊糊半昏迷状态也能熟练默写的肌肉记忆状态，任何情况下都要一遍写出来]: 
-  - [5] LC0704: Binary Search
-  - [3] LC0033: Search in Rotated Sorted Array　
-  - [2] LC0081: Search in Rotated Sorted Array II
-  - [2] LC0912: Sort an Array (Quick Sort and Merge Sort)
-  - [1] LC0075: Sort Color (荷兰国旗问题)
-  - [1] LC0021: Merge Two Sorted Lists
-  - [2] LN0391: Number of Airplanes in the Sky
-  - [2] LC0003: Longest Substring Without Repeating Characters
-  - [6] LC0053: Maximum Subarray
-  - [5] LC0001: Two Sum
-  - [1] LC0297: Serialize and Deserialize Binary Tree
-  - [1] LN0127: Topological Sorting
-  - [1] LC0200: Number of Islands (DFS/UnionFind)
+  - [6] LC0704: Binary Search
+  - [4] LC0033: Search in Rotated Sorted Array　
+  - [3] LC0081: Search in Rotated Sorted Array II
+  - [3] LC0912: Sort an Array (Quick Sort and Merge Sort)
+  - [2] LC0075: Sort Color (荷兰国旗问题)
+  - [2] LC0021: Merge Two Sorted Lists
+  - [3] LN0391: Number of Airplanes in the Sky
+  - [3] LC0003: Longest Substring Without Repeating Characters
+  - [7] LC0053: Maximum Subarray
+  - [6] LC0001: Two Sum
+  - [2] LC0297: Serialize and Deserialize Binary Tree
+  - [2] LN0127: Topological Sorting
+  - [2] LC0200: Number of Islands (DFS/UnionFind)
   - [1] LC0133: Clone Graph
   - [4] LC0094: Binary Tree Inorder Traversal
   - [3] LC0144: Binary Tree Preorder Traversal
@@ -60,10 +60,10 @@
   - [1] LC0173: Binary Search Tree Iterator
   - [3] LC0039: Combination Sum
   - [2] LC0040: Combination Sum II
-  - [4] LC0046: Permutations
+  - [5] LC0046: Permutations
   - [1] LC0047: Permutations II
   - [6] LC0077: Combinations
-  - [4] LC0078 Subsets
+  - [5] LC0078 Subsets
   - [6] LC0090: Subsets II
   - [1] LC0002: Add Two Numbers
   - [2] LC0021: Merge Two Sorted Lists

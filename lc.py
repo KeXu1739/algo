@@ -5497,6 +5497,39 @@ def lc_0460():
     lfu.get(1)
     lfu.get(3)
     lfu.get(4)
+
+def lintcode_0127():
+    # 127 · Topological Sorting
+    class DirectedGraphNode:
+        def __init__(self, x):
+            self.label = x
+            self.neighbors = []
+
+    from collections import deque
+    def topSort(graphs: List[DirectedGraphNode]):
+        in_ = {}
+        for g in graphs:
+            for nb in g.neighbors:
+                in_[nb] = in_.get(nb, 0) + 1
+        zq = deque([])
+        for g in graphs:
+            if in_.get(g) == 0:
+                zq.append(g)
+        res = []
+        while zq:
+            cur = zq.popleft()
+            res.append(cur.label)
+            for nb in cur.neighbors:
+                in_[nb] -= 1
+                if in_[nb] == 0:
+                    zq.append(nb)
+        return res
+
+
+
+
+
+
 # class Node:
 #     def __init__(self, key, val, count):
 #         self.key = key
