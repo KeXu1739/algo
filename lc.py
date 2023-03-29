@@ -4670,7 +4670,6 @@ def lc_0496():
             st.append(i)
         return res
 
-
 def lc_0503():
     '''
     503.下一个更大元素II
@@ -5323,7 +5322,8 @@ def lc_0137():
     nums = [1,2,2,2]
     print(singleNumber(nums))
 
-def LC_0133():
+def lc_0133():
+    # 克隆图
     class Node:
         def __init__(self, val = 0, neighbors = None):
             self.val = val
@@ -5344,6 +5344,7 @@ def LC_0133():
 
         mp = {}
         return dfs(node, mp)
+
 def lc_0002():
     # 省空间的方法是重用已有的点，并且利用dummy节点简化逻辑
     def addTwoNumbers(l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
@@ -5378,6 +5379,7 @@ def lc_0002():
 
 
 def ln_0391():
+    # 天上最多同时有几架飞机
     import heapq
 
     class Interval(object):
@@ -5510,15 +5512,19 @@ def lintcode_0127():
         in_ = {}
         for g in graphs:
             for nb in g.neighbors:
-                in_[nb] = in_.get(nb, 0) + 1
+                if nb not in in_:
+                    in_[nb] = 1
+                else:
+                    in_[nb] += 1
+
         zq = deque([])
         for g in graphs:
-            if in_.get(g) == 0:
+            if g not in in_:
                 zq.append(g)
         res = []
         while zq:
             cur = zq.popleft()
-            res.append(cur.label)
+            res.append(cur)
             for nb in cur.neighbors:
                 in_[nb] -= 1
                 if in_[nb] == 0:
@@ -5526,74 +5532,205 @@ def lintcode_0127():
         return res
 
 
+def lc_0162():
+    def findPeakElement(self, nums: List[int]) -> int:
+        l, r = 0, len(nums)-1
+        while l < r:
+            m = l + ((r-l) >> 1)
+            if nums[m] < nums[m+1]:
+                l = m + 1
+            else:
+                r = m
+
+        return l
+
+def lc_0208():
+    # 前缀树结构
+    class TrieNode:
+        def __init__(self):
+            self.children = [None for i in range(26)]
+            self.isEnd = False
+        def _hasKey(self, char):
+            return self.children[ord(char)-ord('a')] is not None
+
+        def _get(self, char):
+            return self.children[ord(char)-ord('a')]
+
+        def _set(self, char, trienode):
+            self.children[ord(char)-ord('a')] = trienode
+            return
+
+        def setEnd(self):
+            self.isEnd = True
+
+        def getEnd(self):
+            return self.isEnd
 
 
+    class Trie:
+        def __init__(self):
+            self.root = TrieNode()
+            return
 
 
-# class Node:
-#     def __init__(self, key, val, count):
-#         self.key = key
-#         self.val = val
-#         self.count = count
+        def insert(self, word: str) -> None:
+            cur = self.root
+            for i in range(len(word)):
+                if not cur._hasKey(word[i]):
+                    cur._set(word[i], TrieNode())
+                cur = cur._get(word[i])
 
-# class LFUCache(object):
-#     def __init__(self, capacity):
-#         """
-#         :type capacity: int
-#         """
-#         self.cap = capacity
-#         self.key2node = {}
-#         self.count2node = defaultdict(OrderedDict)
-#         self.minCount = None
+            cur.setEnd()
+            return
 
-#     def get(self, key):
-#         """
-#         :type key: int
-#         :rtype: int
-#         """
-#         if key not in self.key2node:
-#             return -1
+        def searchPrefix(self, word):
+            cur = self.root
+            for i in range(len(word)):
+                if not cur._hasKey(word[i]):
+                    return None
+                cur = cur._get(word[i])
+            return cur
 
-#         node = self.key2node[key]
-#         del self.count2node[node.count][key]
-
-#         # clean memory
-#         if not self.count2node[node.count]:
-#             del self.count2node[node.count]
-
-#         node.count += 1
-#         self.count2node[node.count][key] = node
-
-#         # NOTICE check minCount!!!
-#         if not self.count2node[self.minCount]:
-#             self.minCount += 1
+        def search(self, word: str) -> bool:
+            res = self.searchPrefix(word)
+            return res is not None and res.getEnd()
 
 
-#         return node.val
+        def startsWith(self, prefix: str) -> bool:
+            res = self.searchPrefix(prefix)
+            return res is not None
 
-#     def put(self, key, value):
-#         """
-#         :type key: int
-#         :type value: int
-#         :rtype: void
-#         """
-#         if not self.cap:
-#             return
+def lc_0307():
+    '''
+    Segment Tree, 线段树
+    :return:
+    '''
+    class NumArray:
 
-#         if key in self.key2node:
-#             self.key2node[key].val = value
-#             self.get(key) # NOTICE, put makes count+1 too
-#             return
+        def __init__(self, nums: List[int]):
+            self.n = len(nums)
+            self.tree = []
+            if self.n > 0:
+                self.tree = [0] * (2 * self.n)
+                self._buildTree(nums)
+            return
 
-#         if len(self.key2node) == self.cap:
-#             # popitem(last=False) is FIFO, like queue
-#             # it return key and value!!!
-#             k, n = self.count2node[self.minCount].popitem(last=False)
-#             del self.key2node[k]
+        def _buildTree(self, nums):
+            for i in range(self.n, 2 * self.n):
+                self.tree[i] = nums[i-self.n]
+            for i in range(self.n-1, 0, -1):
+                #  0位置的数字没有意义
+                self.tree[i] = self.tree[2 * i] + self.tree[2 * i + 1]
+            return
 
-#         self.count2node[1][key] = self.key2node[key] = Node(key, value, 1)
-#         self.minCount = 1
-#         return
+        def update(self, index: int, val: int) -> None:
+            pos = index + self.n
+            self.tree[pos] = val
+            while pos > 0:
+                l = pos
+                r = pos
+                if pos % 2 == 0:
+                    r = pos + 1
+                else:
+                    l = pos - 1
+                self.tree[pos // 2] = self.tree[l] + self.tree[r]
+                pos = pos // 2
+            return
+
+
+        def sumRange(self, left: int, right: int) -> int:
+            l = self.n + left
+            r = self.n + right
+            sm = 0
+            while l <= r:
+                if l % 2 == 1:
+                    sm += self.tree[l]
+                    l += 1
+                if r % 2 == 0:
+                    sm += self.tree[r]
+                    r -= 1
+                r = r // 2
+                l = l // 2
+            return sm
+
+
+def lc_0460():
+    # LFU cache
+    from collections import defaultdict
+    from collections import OrderedDict
+    class Node:
+        def __init__(self, key, val, count):
+            self.key = key
+            self.val = val
+            self.count = count
+
+    class LFUCache(object):
+        def __init__(self, capacity):
+            """
+            :type capacity: int
+            """
+            self.cap = capacity
+            # 正常字典 {key:node}
+            self.key2Node = {}
+            # 频率字典: {count : {key:node}}
+            self.count2node = defaultdict(OrderedDict)
+            self.minCount = None
+
+        def get(self, key):
+            """
+            :type key: int
+            :rtype: int
+            """
+            if key not in self.key2node:
+                return -1
+
+            node = self.key2node[key]
+            # 由于计数变了，需要删掉原来这个key的计数的node
+            del self.count2node[node.count][key]
+
+            # clean memory
+            if not self.count2node[node.count]:
+                # 如果这个计数的所有node都没了，就把这个计数的dict也删掉
+                del self.count2node[node.count]
+
+            node.count += 1
+            # 在新的计数下做一个key:node的记录
+            self.count2node[node.count][key] = node
+
+            # NOTICE check minCount!!!
+            if not self.count2node[self.minCount]:
+                self.minCount += 1
+
+
+            return node.val
+
+        def put(self, key, value):
+            """
+            :type key: int
+            :type value: int
+            :rtype: void
+            """
+            if not self.cap:
+                # capacity为0那么不能放任何元素直接返回
+                return
+
+            if key in self.key2node:
+                # key在key2node里面存在
+                self.key2node[key].val = value
+                self.get(key) # NOTICE, put makes count+1 too
+                return
+
+            if len(self.key2node) == self.cap:
+                # key在key2node里面并不存在， 而且到达了容量上限，需要把新的这个记录放进来，把最低频的东西pop出去
+                # popitem(last=False) is FIFO, like queue
+                # it return key and value!!!
+                k, n = self.count2node[self.minCount].popitem(last=False)
+                del self.key2node[k]
+            # 创造这个新的点并且放在两个字典里
+            self.count2node[1][key] = self.key2node[key] = Node(key, value, 1)
+            # 由于有最新的记录进来了，那么mincount变为1
+            self.minCount = 1
+            return
 
 if __name__ == "__main__":
     import math
@@ -5602,5 +5739,5 @@ if __name__ == "__main__":
     # TODO: 回溯：77(组合问题), 491(递增子序列), 46(全排列), 47(全排列II) 332(更改行程) 51(NQueen) 37(数独)
     # TODO: 贪心：55(跳跃游戏), 738, 376, 45, 763
     # TODO: 动态: 647, 516
-    choice()
+    print()
 

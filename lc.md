@@ -35,59 +35,59 @@
 
 ## LC 题目集合 [https://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=678970&page=1&authorid=682747]
 - Website:
-  - https://www.lintcode.com/accounts/signin?next=%2F
+  - https://www.lintcode.com/accounts/signin?next=%2F  
   - https://leetcode.com/
 - 说明：每个大类按重要性递减，最优先为A
 - [A： 各类型题目的典型模板题，基本需要刷十几遍，做到迷迷糊糊半昏迷状态也能熟练默写的肌肉记忆状态，任何情况下都要一遍写出来]: 
-  - [6] LC0704: Binary Search
-  - [4] LC0033: Search in Rotated Sorted Array　
-  - [3] LC0081: Search in Rotated Sorted Array II
-  - [3] LC0912: Sort an Array (Quick Sort and Merge Sort)
-  - [2] LC0075: Sort Color (荷兰国旗问题)
-  - [2] LC0021: Merge Two Sorted Lists
-  - [3] LN0391: Number of Airplanes in the Sky
-  - [3] LC0003: Longest Substring Without Repeating Characters
-  - [7] LC0053: Maximum Subarray
-  - [6] LC0001: Two Sum
-  - [2] LC0297: Serialize and Deserialize Binary Tree
-  - [2] LN0127: Topological Sorting
-  - [2] LC0200: Number of Islands (DFS/UnionFind)
-  - [1] LC0133: Clone Graph
-  - [4] LC0094: Binary Tree Inorder Traversal
-  - [3] LC0144: Binary Tree Preorder Traversal
-  - [4] LC0145: Binary Tree Postorder Traversal
-  - [1] LC0105: Construct Binary Tree from Preorder and Inorder Traversal
-  - [1] LC0173: Binary Search Tree Iterator
-  - [3] LC0039: Combination Sum
-  - [2] LC0040: Combination Sum II
-  - [5] LC0046: Permutations
-  - [1] LC0047: Permutations II
-  - [6] LC0077: Combinations
-  - [5] LC0078 Subsets
-  - [6] LC0090: Subsets II
-  - [1] LC0002: Add Two Numbers
-  - [2] LC0021: Merge Two Sorted Lists
-  - [1] LC0706: Design HashMap
-  - [1] LC0707: Design LinkedList
-  - [1] LC0023: Merge k Sorted Lists
-  - [3] LC0155: Min Stack
-  - [2] LC0300: Longest Increasing Subsequence (Patience Sort)
-  - [1] LC0208: Implement Trie (Prefix Tree)
-  - [1] LC0307: Range Sum Query - Mutable
-  - [1] LC0146: LRU Cache
-  - [1] LC0460: LFU Cache
-  - [2] LN0092: Backpack
-  - [3] LC0062: Unique Paths
-  - [3] LC0063: Unique Paths II 
+  - [7] LC0704: Binary Search
+  - [5] LC0033: Search in Rotated Sorted Array　
+  - [4] LC0081: Search in Rotated Sorted Array II
+  - [4] LC0912: Sort an Array (Quick Sort and Merge Sort)
+  - [3] LC0075: Sort Color (荷兰国旗问题)
+  - [3] LC0021: Merge Two Sorted Lists
+  - [4] LN0391: Number of Airplanes in the Sky
+  - [4] LC0003: Longest Substring Without Repeating Characters
+  - [8] LC0053: Maximum Subarray
+  - [7] LC0001: Two Sum
+  - [3] LC0297: Serialize and Deserialize Binary Tree
+  - [3] LN0127: Topological Sorting
+  - [3] LC0200: Number of Islands (DFS/UnionFind)
+  - [2] LC0133: Clone Graph
+  - [6] LC0094: Binary Tree Inorder Traversal
+  - [5] LC0144: Binary Tree Preorder Traversal
+  - [6] LC0145: Binary Tree Postorder Traversal
+  - [2] LC0105: Construct Binary Tree from Preorder and Inorder Traversal
+  - [2] LC0173: Binary Search Tree Iterator # 中序遍历的本质
+  - [4] LC0039: Combination Sum
+  - [3] LC0040: Combination Sum II
+  - [6] LC0046: Permutations
+  - [2] LC0047: Permutations II
+  - [7] LC0077: Combinations
+  - [6] LC0078 Subsets
+  - [7] LC0090: Subsets II
+  - [2] LC0002: Add Two Numbers
+  - [3] LC0021: Merge Two Sorted Lists
+  - [2] LC0706: Design HashMap
+  - [2] LC0707: Design LinkedList
+  - [3] LC0023: Merge k Sorted Lists
+  - [4] LC0155: Min Stack
+  - [3] LC0300: Longest Increasing Subsequence (Patience Sort)
+  - [2] LC0208: Implement Trie (Prefix Tree)
+  - [2] LC0307: Range Sum Query - Mutable
+  - [2] LC0146: LRU Cache (python ordered dict move to end and popitem)
+  - [2] LC0460: LFU Cache
+  - [3] LN0092: Backpack
+  - [4] LC0062: Unique Paths
+  - [4] LC0063: Unique Paths II 
 - [B： 主要是各种高频题和经典题，基本在5~8遍以上，需要做到最优解，medium难度10分钟以内，hard难度15分钟以内，无错一遍过，同时要能解释清楚思路。另外有多重解法的也要掌握，知道不同解法间的优缺点和trade off原因，任何情况下都要一遍写出来]
   - [1] LC0034: Find First and Last Position of Element in Sorted Array
-  - LC0702: Search in a Sorted Array of Unknown Size
+  - [1] LC0702: Search in a Sorted Array of Unknown Size
   - LC0004: Median of Two Sorted Arrays
-  - LC0074: Search a 2D Matrix
-  - LC0162: Find Peak Element
+  - [1] LC0074: Search a 2D Matrix
+  - [2] LC0162: Find Peak Element # 研究一下边界条件
   - LC0875: Koko Eating Bananas
   - LC1283: Find the Smallest Divisor Given a Threshold
-  - LC0026: Remove Duplicates from Sorted Array
+  - [1] LC0026: Remove Duplicates from Sorted Array
   - LC0080: Remove Duplicates from Sorted Array II
   - LC0088: Merge Sorted Array
   - [1] LC0283: Move Zeroes
@@ -390,7 +390,7 @@
   - [1] LC1047: Remove All Adjacent Duplicates In String
   - [1] LC0150: Evaluate Reverse Polish Notation
   - [1] LC0637: Average of Levels in Binary Tree
-  - [1] LC0429: N-ary Tree Level Order Traversal
+  - [2] LC0429: N-ary Tree Level Order Traversal
   - [1] LC0515: Find Largest Value in Each Tree Row
   - [2] LC0116: Populating Next Right Pointers in Each Node
   - [2] LC0117: Populating Next Right Pointers in Each Node II
@@ -442,8 +442,8 @@
   - [1] LC0559: Maximum Depth of N-ary Tree
   - [1] LC0697: Degree of an Array
   - [1] LC2091: Removing Minimum and Maximum From Array
-  - 
-  - 
-
+  - [1] LC0590: N-ary Tree Postorder Traversal
+  - [1] LC0589: N-ary Tree Preorder Traversal
+  - [1] LC0705: Design HashSet
 
 
