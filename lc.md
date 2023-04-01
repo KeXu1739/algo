@@ -39,15 +39,15 @@
   - https://leetcode.com/
 - 说明：每个大类按重要性递减，最优先为A
 - [A： 各类型题目的典型模板题，基本需要刷十几遍，做到迷迷糊糊半昏迷状态也能熟练默写的肌肉记忆状态，任何情况下都要一遍写出来]: 
-  - [7] LC0704: Binary Search
+  - [8] LC0704: Binary Search
   - [5] LC0033: Search in Rotated Sorted Array　
-  - [4] LC0081: Search in Rotated Sorted Array II
+  - [5] LC0081: Search in Rotated Sorted Array II
   - [4] LC0912: Sort an Array (Quick Sort and Merge Sort)
   - [3] LC0075: Sort Color (荷兰国旗问题)
   - [3] LC0021: Merge Two Sorted Lists
-  - [4] LN0391: Number of Airplanes in the Sky
+  - [5] LN0391: Number of Airplanes in the Sky (扫描线算法)
   - [4] LC0003: Longest Substring Without Repeating Characters
-  - [8] LC0053: Maximum Subarray
+  - [9] LC0053: Maximum Subarray
   - [7] LC0001: Two Sum
   - [3] LC0297: Serialize and Deserialize Binary Tree
   - [3] LN0127: Topological Sorting
@@ -55,25 +55,25 @@
   - [2] LC0133: Clone Graph
   - [6] LC0094: Binary Tree Inorder Traversal
   - [5] LC0144: Binary Tree Preorder Traversal
-  - [6] LC0145: Binary Tree Postorder Traversal
-  - [2] LC0105: Construct Binary Tree from Preorder and Inorder Traversal
+  - [7] LC0145: Binary Tree Postorder Traversal
+  - [4] LC0105: Construct Binary Tree from Preorder and Inorder Traversal
   - [2] LC0173: Binary Search Tree Iterator # 中序遍历的本质
   - [4] LC0039: Combination Sum
   - [3] LC0040: Combination Sum II
   - [6] LC0046: Permutations
   - [2] LC0047: Permutations II
-  - [7] LC0077: Combinations
-  - [6] LC0078 Subsets
+  - [8] LC0077: Combinations
+  - [6] LC0078: Subsets
   - [7] LC0090: Subsets II
   - [2] LC0002: Add Two Numbers
   - [3] LC0021: Merge Two Sorted Lists
-  - [2] LC0706: Design HashMap
+  - [3] LC0706: Design HashMap
   - [2] LC0707: Design LinkedList
   - [3] LC0023: Merge k Sorted Lists
-  - [4] LC0155: Min Stack
+  - [5] LC0155: Min Stack
   - [3] LC0300: Longest Increasing Subsequence (Patience Sort)
   - [2] LC0208: Implement Trie (Prefix Tree)
-  - [2] LC0307: Range Sum Query - Mutable
+  - [4] LC0307: Range Sum Query - Mutable
   - [2] LC0146: LRU Cache (python ordered dict move to end and popitem)
   - [2] LC0460: LFU Cache
   - [3] LN0092: Backpack
@@ -431,7 +431,7 @@
   - [1] LC1046: Last Stone Weight
   - [1] LC0343: Integer Break
   - [1] LC0096: Unique Binary Search Trees
-  - [2] LC0518: Coin Change II
+  - [3] LC0518: Coin Change II
   - [1] LC0714: Best Time to Buy and Sell Stock with Transaction Fee
   - [1] LC1302: Deepest Leaves Sum
   - [1] LC1630: Arithmetic Subarrays

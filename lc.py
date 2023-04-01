@@ -5187,7 +5187,7 @@ def choice():
         "LC2091",
     ]
     print("A")
-    print(np.random.choice(A, 9, replace=False))
+    print(np.random.choice(A, 6, replace=False))
     print("B")
     print(np.random.choice(B, 1, replace=False))
     print("C")
@@ -5739,5 +5739,5 @@ if __name__ == "__main__":
     # TODO: 回溯：77(组合问题), 491(递增子序列), 46(全排列), 47(全排列II) 332(更改行程) 51(NQueen) 37(数独)
     # TODO: 贪心：55(跳跃游戏), 738, 376, 45, 763
     # TODO: 动态: 647, 516
-    print()
-
+    # TODO: 数据结构实现题目：LFU Cache， LRU Cache, Min Stack, Prefix Tree，Range Sum Query, Design HashMap, Design HashSet, Design LinkedList
+    choice()
