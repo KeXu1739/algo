@@ -4781,13 +4781,53 @@ def lc_0141():
                 return True
         return False
 
+def lc_0073():
+    '''
+    73. Set Matrix Zeroes
+    :return:
+    '''
+    def setZeroes(matrix: List[List[int]]) -> None:
+        """
+        Do not return anything, modify matrix in-place instead.
+        """
+        # o(mn) time, o(1) space, optimal sol
+        m, n = len(matrix), len(matrix[0])
+        first_row_0 = False
+        first_col_0 = False
+
+        for i in range(m):
+            for j in range(n):
+                if matrix[i][j] == 0:
+                    if i == 0:
+                        first_row_0 = True
+                    if j == 0:
+                        first_col_0 = True
+
+                    matrix[i][0] = 0
+                    matrix[0][j] = 0
+
+        for i in range(1, m):
+            for j in range(1, n):
+                if matrix[0][j] == 0 or matrix[i][0] == 0:
+                    matrix[i][j] = 0
+
+        if first_row_0:
+            for j in range(n):
+                matrix[0][j] = 0
+        if first_col_0:
+            for i in range(m):
+                matrix[i][0] = 0
+        return
+
+
+
 def choice():
     A = [
         'LC0704: Binary Search LC704',
         'LC0033: Search in Rotated Sorted Array',
         'LC0081: Search in Rotated Sorted Array II',
         'LC0912: Sort an Array (Quick Sort and Merge Sort)',
-        'LC0075: Sort an Array (Quick Sort and Merge Sort)',
+        'LC0075: Sort Color',
         'LC0021: Merge Two Sorted Lists',
         'LN0391: Number of Airplanes in the Sky',
         'LC0003: Longest Substring Without Repeating Characters',
@@ -5731,6 +5771,16 @@ def lc_0460():
             # 由于有最新的记录进来了，那么mincount变为1
             self.minCount = 1
             return
+
+def lc_0004():
+    def findMedianSortedArrays(nums1: List[int], nums2: List[int]) -> float:
+        if len(nums1) > len(nums2):
+            nums1, nums2 = nums2, nums1
+        
+        m, n = len(nums1), len(nums2)
+        # 3
+        totalleft = (m+n+1) // 2
+
 
 if __name__ == "__main__":
     import math

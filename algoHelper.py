@@ -2116,7 +2116,7 @@ def quickSort(arr):
             return ll, rr
         # ARR[r]作为pivot值
         pivot = ARR[rr]
-        # 小于区域，大于区域的边界index
+        # 小于区域，大于区域的边界index,这个边界是左开右闭的
         less_ptr, more_ptr = ll - 1, rr
         floating_ptr = ll
         # 小于区域从左往右，大于区域从右往左，遍历一遍array

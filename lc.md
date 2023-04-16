@@ -39,30 +39,30 @@
   - https://leetcode.com/
 - 说明：每个大类按重要性递减，最优先为A
 - [A： 各类型题目的典型模板题，基本需要刷十几遍，做到迷迷糊糊半昏迷状态也能熟练默写的肌肉记忆状态，任何情况下都要一遍写出来]: 
-  - [8] LC0704: Binary Search
-  - [5] LC0033: Search in Rotated Sorted Array　
-  - [5] LC0081: Search in Rotated Sorted Array II
-  - [4] LC0912: Sort an Array (Quick Sort and Merge Sort)
-  - [3] LC0075: Sort Color (荷兰国旗问题)
-  - [3] LC0021: Merge Two Sorted Lists
-  - [5] LN0391: Number of Airplanes in the Sky (扫描线算法)
-  - [4] LC0003: Longest Substring Without Repeating Characters
-  - [9] LC0053: Maximum Subarray
-  - [7] LC0001: Two Sum
-  - [3] LC0297: Serialize and Deserialize Binary Tree
+  - [9] LC0704: Binary Search
+  - [7] LC0033: Search in Rotated Sorted Array　
+  - [7] LC0081: Search in Rotated Sorted Array II
+  - [6] LC0912: Sort an Array (Quick Sort and Merge Sort)
+  - [5] LC0075: Sort Color (荷兰国旗问题)
+  - [4] LC0021: Merge Two Sorted Lists
+  - [6] LN0391: Number of Airplanes in the Sky (扫描线算法)
+  - [5] LC0003: Longest Substring Without Repeating Characters
+  - [10] LC0053: Maximum Subarray
+  - [9] LC0001: Two Sum
+  - [3] LC0297: Serialize and Deserialize Binary Tree # to Start
   - [3] LN0127: Topological Sorting
-  - [3] LC0200: Number of Islands (DFS/UnionFind)
-  - [2] LC0133: Clone Graph
-  - [6] LC0094: Binary Tree Inorder Traversal
+  - [4] LC0200: Number of Islands (DFS/UnionFind)
+  - [3] LC0133: Clone Graph
+  - [7] LC0094: Binary Tree Inorder Traversal
   - [5] LC0144: Binary Tree Preorder Traversal
   - [7] LC0145: Binary Tree Postorder Traversal
   - [4] LC0105: Construct Binary Tree from Preorder and Inorder Traversal
   - [2] LC0173: Binary Search Tree Iterator # 中序遍历的本质
-  - [4] LC0039: Combination Sum
+  - [5] LC0039: Combination Sum
   - [3] LC0040: Combination Sum II
   - [6] LC0046: Permutations
   - [2] LC0047: Permutations II
-  - [8] LC0077: Combinations
+  - [10] LC0077: Combinations
   - [6] LC0078: Subsets
   - [7] LC0090: Subsets II
   - [2] LC0002: Add Two Numbers
@@ -78,10 +78,10 @@
   - [2] LC0460: LFU Cache
   - [3] LN0092: Backpack
   - [4] LC0062: Unique Paths
-  - [4] LC0063: Unique Paths II 
+  - [5] LC0063: Unique Paths II 
 - [B： 主要是各种高频题和经典题，基本在5~8遍以上，需要做到最优解，medium难度10分钟以内，hard难度15分钟以内，无错一遍过，同时要能解释清楚思路。另外有多重解法的也要掌握，知道不同解法间的优缺点和trade off原因，任何情况下都要一遍写出来]
   - [1] LC0034: Find First and Last Position of Element in Sorted Array
-  - [1] LC0702: Search in a Sorted Array of Unknown Size
+  - [2] LC0702: Search in a Sorted Array of Unknown Size
   - LC0004: Median of Two Sorted Arrays
   - [1] LC0074: Search a 2D Matrix
   - [2] LC0162: Find Peak Element # 研究一下边界条件
@@ -89,7 +89,7 @@
   - LC1283: Find the Smallest Divisor Given a Threshold
   - [1] LC0026: Remove Duplicates from Sorted Array
   - LC0080: Remove Duplicates from Sorted Array II
-  - LC0088: Merge Sorted Array
+  - [1] LC0088: Merge Sorted Array
   - [1] LC0283: Move Zeroes
   - LC0215: Kth Largest Element in an Array
   - [1] LC0347: Top K Frequent Elements
@@ -175,7 +175,7 @@
   - LC0442. Find All Duplicates in an Array
   - LC0048. Rotate Image
   - LC0054. Spiral Matrix
-  - LC0073. Set Matrix Zeroes
+  - [1] LC0073. Set Matrix Zeroes
   - LC0289. Game of Life
   - LC0006. ZigZag Conversion
   - LC0013. Roman to Integer
@@ -216,7 +216,7 @@
   - LC0211: Design Add and Search Words Data Structure
   - LC0305: Number of Islands II
   - LC0252. Meeting Rooms
-  - LC0253. Meeting Rooms II
+  - [1] LC0253. Meeting Rooms II
   - LC0211: Design Add and Search Words Data Structure
   - LC0380: Insert Delete GetRandom O(1)
   - LC0528: Random Pick with Weight
@@ -317,7 +317,7 @@
   - LC0290: Word Pattern
   - LC0291: Word Pattern II
   - LC0142: Linked List Cycle II
-  - LC0876: Middle of the Linked List
+  - [1] LC0876: Middle of the Linked List
   - LC0290: Word Pattern
   - LC0480: Sliding Window Median
   - LC0703: Kth Largest Element in a Stream
@@ -422,7 +422,7 @@
   - [1] LC0137: Single Number II
   - [1] LC0860: Lemonade Change
   - [1] LC0406: Queue Reconstruction by Height
-  - [1] LC0452: Minimum Number of Arrows to Burst Balloons
+  - [2] LC0452: Minimum Number of Arrows to Burst Balloons
   - [1] LC0435: Non-overlapping Intervals
   - [1] LC0509: Fibonacci Number
   - [2] LC0070: Climbing Stairs
@@ -445,5 +445,4 @@
   - [1] LC0590: N-ary Tree Postorder Traversal
   - [1] LC0589: N-ary Tree Preorder Traversal
   - [1] LC0705: Design HashSet
-
-
+  - [1] LC2300:Successful Pairs of Spells and Potions
