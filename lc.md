@@ -49,36 +49,36 @@
   - [5] LC0003: Longest Substring Without Repeating Characters
   - [10] LC0053: Maximum Subarray
   - [9] LC0001: Two Sum
-  - [3] LC0297: Serialize and Deserialize Binary Tree # to Start
-  - [3] LN0127: Topological Sorting
-  - [4] LC0200: Number of Islands (DFS/UnionFind)
-  - [3] LC0133: Clone Graph
-  - [7] LC0094: Binary Tree Inorder Traversal
-  - [5] LC0144: Binary Tree Preorder Traversal
-  - [7] LC0145: Binary Tree Postorder Traversal
-  - [4] LC0105: Construct Binary Tree from Preorder and Inorder Traversal
-  - [2] LC0173: Binary Search Tree Iterator # 中序遍历的本质
-  - [5] LC0039: Combination Sum
-  - [3] LC0040: Combination Sum II
-  - [6] LC0046: Permutations
-  - [2] LC0047: Permutations II
-  - [10] LC0077: Combinations
-  - [6] LC0078: Subsets
-  - [7] LC0090: Subsets II
-  - [2] LC0002: Add Two Numbers
-  - [3] LC0021: Merge Two Sorted Lists
-  - [3] LC0706: Design HashMap
-  - [2] LC0707: Design LinkedList
-  - [3] LC0023: Merge k Sorted Lists
-  - [5] LC0155: Min Stack
-  - [3] LC0300: Longest Increasing Subsequence (Patience Sort)
-  - [2] LC0208: Implement Trie (Prefix Tree)
-  - [4] LC0307: Range Sum Query - Mutable
-  - [2] LC0146: LRU Cache (python ordered dict move to end and popitem)
-  - [2] LC0460: LFU Cache
-  - [3] LN0092: Backpack
-  - [4] LC0062: Unique Paths
-  - [5] LC0063: Unique Paths II 
+  - [4] LC0297: Serialize and Deserialize Binary Tree
+  - [4] LN0127: Topological Sorting
+  - [5] LC0200: Number of Islands (DFS/UnionFind)
+  - [4] LC0133: Clone Graph
+  - [8] LC0094: Binary Tree Inorder Traversal
+  - [6] LC0144: Binary Tree Preorder Traversal
+  - [8] LC0145: Binary Tree Postorder Traversal
+  - [5] LC0105: Construct Binary Tree from Preorder and Inorder Traversal
+  - [3] LC0173: Binary Search Tree Iterator # 中序遍历的本质
+  - [6] LC0039: Combination Sum
+  - [4] LC0040: Combination Sum II
+  - [7] LC0046: Permutations
+  - [3] LC0047: Permutations II
+  - [11] LC0077: Combinations
+  - [7] LC0078: Subsets
+  - [8] LC0090: Subsets II
+  - [3] LC0002: Add Two Numbers
+  - [4] LC0021: Merge Two Sorted Lists
+  - [4] LC0706: Design HashMap
+  - [3] LC0707: Design LinkedList
+  - [4] LC0023: Merge k Sorted Lists
+  - [6] LC0155: Min Stack
+  - [4] LC0300: Longest Increasing Subsequence (Patience Sort)
+  - [3] LC0208: Implement Trie (Prefix Tree)
+  - [5] LC0307: Range Sum Query - Mutable
+  - [3] LC0146: LRU Cache (python ordered dict move to end and popitem)
+  - [3] LC0460: LFU Cache
+  - [4] LN0092: Backpack
+  - [5] LC0062: Unique Paths
+  - [6] LC0063: Unique Paths II 
 - [B： 主要是各种高频题和经典题，基本在5~8遍以上，需要做到最优解，medium难度10分钟以内，hard难度15分钟以内，无错一遍过，同时要能解释清楚思路。另外有多重解法的也要掌握，知道不同解法间的优缺点和trade off原因，任何情况下都要一遍写出来]
   - [1] LC0034: Find First and Last Position of Element in Sorted Array
   - [2] LC0702: Search in a Sorted Array of Unknown Size
